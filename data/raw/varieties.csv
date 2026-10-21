@@ -1,0 +1,13 @@
+variety,alt_min,alt_max,ph_min,ph_max,shade_required,rust_resistance,yield_score
+Caturra,1000,1700,4.5,6.0,1,2,6
+Bourbon,1200,2000,4.5,6.0,1,2,5
+Catuai,800,1700,5.0,6.5,1,2,7
+Typica,1000,1800,5.0,6.0,2,1,4
+Pache,900,1700,5.0,6.0,1,2,6
+Pacas,1000,1700,5.0,6.5,1,2,6
+Pacamara,1100,1800,5.0,6.0,1,2,5
+Maragogype,1000,1600,5.0,6.5,1,1,4
+Gesha,1500,2200,5.0,6.0,2,2,4
+Catimor,600,1300,5.0,6.5,0,8,8
+Anacafe 14,1200,1800,5.0,6.5,1,8,8
+Marsellesa,1000,1700,5.0,6.5,1,8,8

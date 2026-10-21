@@ -1,0 +1,17 @@
+.git
+.gitignore
+.agents
+.claude
+.vscode
+.idea
+__pycache__
+**/__pycache__
+*.pyc
+.ipynb_checkpoints
+**/.ipynb_checkpoints
+notebooks
+data/processed
+GUIDE.md
+README.md
+skills-lock.json
+requirements.txt
