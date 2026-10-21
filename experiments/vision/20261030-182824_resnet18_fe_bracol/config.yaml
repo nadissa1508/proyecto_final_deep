@@ -1,0 +1,14 @@
+amp: true
+batch_size: 32
+class_weights: true
+epochs: 15
+img_size: 256
+lr: 0.001
+model: resnet18
+name: resnet18_fe_bracol
+num_workers: 4
+patience: 5
+seed: 42
+strategy: feature_extraction
+train_on: bracol
+weight_decay: 0.01

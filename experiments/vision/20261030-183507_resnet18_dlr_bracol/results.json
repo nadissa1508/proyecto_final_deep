@@ -1,0 +1,112 @@
+{
+  "nombre": "resnet18_dlr_bracol",
+  "configuracion": {
+    "name": "resnet18_dlr_bracol",
+    "model": "resnet18",
+    "strategy": "full_dlr",
+    "train_on": "bracol",
+    "img_size": 256,
+    "batch_size": 32,
+    "epochs": 15,
+    "patience": 5,
+    "lr": 0.001,
+    "lrs_dlr": [
+      1e-06,
+      1e-05,
+      5e-05,
+      0.0001,
+      0.0005,
+      0.001
+    ],
+    "weight_decay": 0.01,
+    "class_weights": true,
+    "amp": true,
+    "num_workers": 4,
+    "seed": 42
+  },
+  "parametros": {
+    "total": 11178564,
+    "entrenables": 11178564,
+    "congelados": 0
+  },
+  "mejor_epoca": 13,
+  "f1_macro_val": 0.9518,
+  "segundos": 131.3,
+  "loss_train_baja": true,
+  "test": {
+    "bracol": {
+      "n": 239,
+      "accuracy": 0.9456,
+      "f1_macro": 0.9276,
+      "recall_por_clase": {
+        "sana": 1.0,
+        "roya_leve": 0.8958,
+        "roya_severa": 0.8182,
+        "otra_afeccion": 0.9829
+      },
+      "matriz_confusion": [
+        [
+          41,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          43,
+          2,
+          2
+        ],
+        [
+          0,
+          6,
+          27,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          115
+        ]
+      ]
+    },
+    "rocole": {
+      "n": 218,
+      "accuracy": 0.1789,
+      "f1_macro": 0.1256,
+      "recall_por_clase": {
+        "sana": 0.0,
+        "roya_leve": 0.0,
+        "roya_severa": 0.9444,
+        "otra_afeccion": 0.2083
+      },
+      "matriz_confusion": [
+        [
+          0,
+          0,
+          42,
+          68
+        ],
+        [
+          0,
+          0,
+          33,
+          15
+        ],
+        [
+          0,
+          0,
+          34,
+          2
+        ],
+        [
+          0,
+          0,
+          19,
+          5
+        ]
+      ]
+    }
+  }
+}

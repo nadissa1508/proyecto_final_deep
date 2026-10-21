@@ -1,0 +1,16 @@
+# Corrida de visión: ResNet-18, layer4 + cabeza (fine-tuning parcial), BRACOL
+name: resnet18_partial_bracol
+model: resnet18                 # resnet18 | efficientnet_b0 | small_cnn
+strategy: partial   # feature_extraction | partial | full_dlr | scratch
+train_on: bracol                # bracol | rocole | both
+img_size: 256
+batch_size: 32
+epochs: 15
+patience: 5
+lr: 1.0e-3                      # cabeza (o todo, en scratch)
+lr_block: 1.0e-4            # layer4
+weight_decay: 0.01
+class_weights: true             # pesos inversos a la frecuencia de cada clase en train
+amp: true
+num_workers: 4
+seed: 42

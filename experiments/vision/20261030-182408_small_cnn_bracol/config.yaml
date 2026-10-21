@@ -1,0 +1,14 @@
+amp: true
+batch_size: 32
+class_weights: true
+epochs: 25
+img_size: 256
+lr: 0.001
+model: small_cnn
+name: small_cnn_bracol
+num_workers: 4
+patience: 5
+seed: 42
+strategy: scratch
+train_on: bracol
+weight_decay: 0.01

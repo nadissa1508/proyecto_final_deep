@@ -1,0 +1,21 @@
+amp: true
+batch_size: 32
+class_weights: true
+epochs: 15
+img_size: 256
+lr: 0.001
+lrs_dlr:
+- 1.0e-06
+- 1.0e-05
+- 5.0e-05
+- 0.0001
+- 0.0005
+- 0.001
+model: resnet18
+name: resnet18_dlr_bracol
+num_workers: 4
+patience: 5
+seed: 42
+strategy: full_dlr
+train_on: bracol
+weight_decay: 0.01
