@@ -1,0 +1,40 @@
+# Puntos de clima para el pronóstico: una ESTACIÓN DE ANACAFE por región cafetalera.
+# Se usan estaciones (no cabeceras municipales) para comparar Open-Meteo contra
+# datos medidos en la finca.
+#   lat / lon: columnas LATITUD / LONGITUD de los CSV diarios exportados del portal
+#              https://meteorologia.anacafe.org (estaciones ClimaCafé).
+#   elevation_m: relieve de 90 m de Open-Meteo en esas coordenadas
+#              (https://api.open-meteo.com/v1/elevation, consultado 2026-10-30).
+#              El portal no publica la altitud de la estación.
+# Open-Meteo corrige la temperatura a esa altitud (parámetro `elevation`).
+regions:
+  huehuetenango:        # región 5, Huehuetenango
+    estacion_anacafe: 15      # Rancho Carmela, La Democracia
+    lat: 15.62838
+    lon: -91.95908
+    elevation_m: 966
+  antigua:              # región 3, Sacatepéquez
+    estacion_anacafe: 3       # Bella Vista, Antigua Guatemala
+    lat: 14.52932
+    lon: -90.74739
+    elevation_m: 1521
+  coban:                # región 6, Alta Verapaz
+    estacion_anacafe: 163     # Oficina Regional VI, Cobán
+    lat: 15.46096
+    lon: -90.376
+    elevation_m: 1332
+  atitlan:              # región 2, Sololá
+    estacion_anacafe: 71      # Cooperativa Nahualá
+    lat: 14.65905
+    lon: -91.43093
+    elevation_m: 1197
+  fraijanes:            # región 3, Guatemala
+    estacion_anacafe: 8       # La Mandarina, Fraijanes
+    lat: 14.48467
+    lon: -90.44667
+    elevation_m: 1713
+  nuevo_oriente:        # región 7, Chiquimula
+    estacion_anacafe: 130     # Chiramay, Quetzaltepeque
+    lat: 14.62282
+    lon: -89.37523
+    elevation_m: 1399

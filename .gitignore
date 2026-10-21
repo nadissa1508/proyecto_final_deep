@@ -20,3 +20,21 @@ env/
 .claude/
 
 Ver2/
+# Datos descargados (reproducibles con src/*/download.py)
+data/raw/openmeteo/
+data/raw/rocole/
+data/raw/bracol/
+data/raw/insivumeh/
+data/raw/anacafe/
+data/processed/
+*.part
+
+# Pesos entrenados (se publican como release)
+models/vision/
+models/forecast/
+
+# Logs de descargas
+experiments/*.log
+
+# Material del curso (PDFs del profesor): no se publica
+contenido del curso/
