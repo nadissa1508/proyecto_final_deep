@@ -120,3 +120,19 @@ def split_windows(region: str, cfg: dict | None = None) -> Dict[str, object]:
     out["columns"] = list(frame.columns)
     out["targets"] = list(cfg["targets"])
     return out
+
+def all_windows(region: str, cfg: dict | None = None) -> Dict[str, object]:
+    """Todas las ventanas de una región (sin partir por conjunto), con la normalización ajustada en train.
+
+    Sirve para evaluar contra las estaciones: ahí la fecha del día objetivo decide a qué periodo
+    pertenece cada ventana, no las fechas de corte del entrenamiento con ERA5.
+    """
+    cfg = cfg or load_config()
+    frame = transform(load_region(region))
+    norm = Normalizer.fit(frame.loc[: split_bounds(cfg)["train"][1]])
+    scaled = norm.apply(frame)
+    target_cols = [frame.columns.get_loc(t) for t in cfg["targets"]]
+    x, y, t_index = make_windows(scaled.to_numpy(), scaled.to_numpy()[:, target_cols],
+                                 cfg["input_days"], cfg["max_horizon"])
+    return {"x": x, "y": y, "t_index": t_index, "dates": frame.index[t_index], "normalizer": norm,
+            "targets": list(cfg["targets"])}

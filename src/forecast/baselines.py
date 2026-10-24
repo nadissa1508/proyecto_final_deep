@@ -33,14 +33,29 @@ LEAD_COLUMN = {"temperature_2m_mean": "temperature_2m_mean_lead{h}",
                "precipitation_sum": "precipitation_sum_lead{h}"}
 
 
-def climatology(df: pd.DataFrame, target: str, train_end: pd.Timestamp, window: int) -> pd.Series:
-    """Media por día del año con el periodo de train, suavizada en ±window días (circular)."""
+def climatology(df: pd.DataFrame, target: str, train_end: pd.Timestamp, window: int,
+                stat: str = "mean") -> pd.Series:
+    """Climatología por día del año con el periodo de train, en una ventana de ±window días (circular).
+
+    `stat="mean"` usa la media y `stat="median"` la mediana. Para el error absoluto (MAE) el
+    predictor óptimo es la mediana, no la media: en la lluvia, que tiene muchos días secos y una
+    cola larga, la diferencia es grande, así que la mediana es el baseline justo para el MAE.
+    """
     train = df.loc[:train_end, target]
     doy = np.minimum(train.index.dayofyear.to_numpy(), 365)   # el 29-feb y el 31-dic comparten día
-    by_doy = train.groupby(doy).mean().reindex(range(1, 366))
-    padded = pd.concat([by_doy.iloc[-window:], by_doy, by_doy.iloc[:window]])
-    smooth = padded.rolling(2 * window + 1, center=True).mean().iloc[window:-window]
-    return pd.Series(smooth.to_numpy(), index=range(1, 366))
+    if stat == "mean":
+        by_doy = train.groupby(doy).mean().reindex(range(1, 366))
+        padded = pd.concat([by_doy.iloc[-window:], by_doy, by_doy.iloc[:window]])
+        smooth = padded.rolling(2 * window + 1, center=True).mean().iloc[window:-window]
+        return pd.Series(smooth.to_numpy(), index=range(1, 366))
+    if stat != "median":
+        raise ValueError(stat)
+    values = train.to_numpy()
+    out = np.empty(365)
+    for d in range(1, 366):
+        near = [((d - 1 + k) % 365) + 1 for k in range(-window, window + 1)]
+        out[d - 1] = np.median(values[np.isin(doy, near)])
+    return pd.Series(out, index=range(1, 366))
 
 
 def evaluate_region(region: str, cfg: dict) -> pd.DataFrame:
