@@ -1,7 +1,7 @@
 # Proyecto Final: CoffeeMind GT
 
 **Curso:** CC3085 - Inteligencia Artificial  
-**Integrantes:** Cristian Túnchez (231359), Dulce Ambrosio (231143), Daniel Chet (231177), Nadissa Vela (23764)
+**Integrantes:** Cristian Túnchez (231359), Javier Linares (231135), Dulce Ambrosio (231143), Daniel Chet (231177), Nadissa Vela (23764)
 
 ## Descripción
 

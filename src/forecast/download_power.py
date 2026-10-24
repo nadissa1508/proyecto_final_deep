@@ -23,6 +23,7 @@ from __future__ import annotations
 import time
 from datetime import date, timedelta
 
+import numpy as np
 import pandas as pd
 import requests
 
@@ -50,7 +51,7 @@ def fetch(lat: float, lon: float, start: date, end: date, retries: int = 5) -> p
         if resp.status_code == 200:
             df = pd.DataFrame(resp.json()["properties"]["parameter"])
             df.index = pd.to_datetime(df.index, format="%Y%m%d")
-            return df.replace(FILL, pd.NA).astype(float)
+            return df.astype(float).replace(FILL, np.nan)
         if resp.status_code in (429, 500, 502, 503):
             time.sleep(30 * (attempt + 1))
             continue
@@ -69,7 +70,10 @@ def main() -> None:
             block_end = min(date(year + 9, 12, 31), end)
             frames.append(fetch(region["lat"], region["lon"], date(year, 1, 1), block_end))
         df = pd.concat(frames).sort_index()
-        nulls = df.isna().mean()
+        # La radiación solar de POWER empieza en 1984 (satélite CERES): 1981-1983 faltan por diseño.
+        checked = df.copy()
+        checked.loc[checked.index < "1984-01-01", "ALLSKY_SFC_SW_DWN"] = 0.0
+        nulls = checked.isna().mean()
         if (nulls > 0.01).any():
             raise RuntimeError(f"{key}: variables con >1 % de nulos: {nulls[nulls > 0.01].round(3).to_dict()}")
         df.rename_axis("date").to_csv(OUT_DIR / f"power_{key}.csv")

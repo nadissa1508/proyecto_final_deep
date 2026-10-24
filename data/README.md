@@ -77,6 +77,21 @@ Detección de duplicados: SHA-256 en ambos datasets; pHash (Hamming ≤ 4) solo 
 - **Fuente:** [NASA POWER](https://power.larc.nasa.gov/) diario desde 1981 (MERRA-2 y satélite; grilla ~0.5° x 0.625°). Consulta por coordenadas, sin API key. Probado para Antigua 2020: 366 días sin nulos.
 - **Descarga:** `python -m src.forecast.download_power` (cuando `regions.yaml` esté completo). Archivos `power_<region>.csv`.
 - **Limitación:** no recibe altitud; su temperatura corresponde a la altura media de su celda. Sirve para contrastar variaciones y lluvia con Open-Meteo, no para el nivel absoluto de temperatura.
+- **Descarga hecha:** 6 regiones, 16,734 días (1981 a oct-2026). La radiación solar no existe de 1981 a 1983 (el sensor de satélite empieza en 1984); es la única excepción que acepta la validación.
+- **Comparación contra las estaciones de ANACAFE (2022–2025, `python -m src.forecast.compare_sources`, resultado en `experiments/forecast/source_comparison.csv`):**
+  - *Temperatura media:* ERA5 con la altitud de la estación tiene sesgo de −0.6 a +2.2 °C y correlación diaria de 0.74–0.89; POWER sesga +3 a +4 °C (−4.3 en Huehuetenango) por no corregir altitud.
+  - *Humedad:* ERA5 correlaciona mejor en las 6 regiones (0.65–0.86 frente a 0.46–0.79); las dos subestiman la humedad medida (2 a 10 puntos).
+  - *Lluvia:* ERA5 correlaciona mejor en 5 de 6 regiones, a nivel diario (0.38–0.55) y mensual (0.77–0.93). Ninguna fuente acierta los totales: el cociente fuente/estación va de 0.56 a 1.63 en ERA5 y de 0.56 a 1.48 en POWER.
+  - *Conclusión:* ERA5 es la fuente de entrenamiento; POWER solo sirve de contraste. La lluvia es la variable débil, lo que justifica afinar con las estaciones.
+
+## Baselines del pronóstico (`python -m src.forecast.baselines` → `experiments/forecast/baselines.csv`)
+
+Split temporal (`configs/forecast.yaml`): train hasta 2017, val 2018–2020, test desde 2021. Ventana de 90 días, salida de 14 días, normalización solo con train, `log1p` a la lluvia. MAE contra ERA5 en el test:
+
+- **Temperatura:** la persistencia gana a todos los horizontes en 4 de 6 regiones (0.4–0.65 °C a 1 día; 0.8–1.4 °C a 14 días); el estacional ingenuo (0.8–1.2 °C) gana a 14 días en Cobán, Huehuetenango y Nuevo Oriente.
+- **Humedad:** persistencia mejor a 1–3 días, estacional mejor desde ~7 días.
+- **Lluvia:** el estacional (climatología) iguala o supera a la persistencia en casi todas las regiones; la lluvia de ayer predice poco la de mañana.
+- **Pronóstico numérico de Open-Meteo (solo 1–7 días, desde 2024):** **no es un techo limpio.** Medido contra ERA5 pierde frente a la persistencia en temperatura (1.11 °C frente a 0.53 °C a 1 día). Parte es sesgo (Huehuetenango +1.7 °C), pero en Antigua y Atitlán el error se mantiene sin sesgo (≈1.1–1.7 °C): son dos modelos distintos con topografía distinta. La comparación justa es contra las estaciones de ANACAFE; está pendiente.
 
 ## raw/anacafe/ — estaciones de ANACAFE (descarga manual, no versionada)
 
