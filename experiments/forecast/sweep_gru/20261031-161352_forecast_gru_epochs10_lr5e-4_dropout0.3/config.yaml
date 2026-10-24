@@ -1,0 +1,12 @@
+amp: true
+batch_size: 256
+dropout: 0.3
+epochs: 10
+hidden: 128
+layers: 2
+lr: 5e-4
+model: gru
+name: forecast_gru_epochs10_lr5e-4_dropout0.3
+patience: 6
+seed: 42
+weight_decay: 0.01

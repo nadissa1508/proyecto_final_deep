@@ -1,0 +1,22 @@
+{
+  "nombre": "forecast_gru_hidden64_dropout0.3_weight_decay0.05",
+  "configuracion": {
+    "name": "forecast_gru_hidden64_dropout0.3_weight_decay0.05",
+    "model": "gru",
+    "hidden": 64,
+    "layers": 2,
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.05,
+    "batch_size": 256,
+    "epochs": 30,
+    "patience": 6,
+    "amp": true,
+    "seed": 42
+  },
+  "parametros": 42410,
+  "mejor_epoca": 3,
+  "loss_val": 0.23261858522891998,
+  "segundos": 75.1,
+  "loss_train_baja": true
+}

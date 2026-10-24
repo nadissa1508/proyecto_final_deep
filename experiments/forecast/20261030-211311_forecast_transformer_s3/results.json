@@ -1,0 +1,24 @@
+{
+  "nombre": "forecast_transformer_s3",
+  "configuracion": {
+    "name": "forecast_transformer_s3",
+    "model": "transformer",
+    "d_model": 64,
+    "heads": 4,
+    "layers": 3,
+    "ff": 128,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 256,
+    "epochs": 30,
+    "patience": 6,
+    "amp": true,
+    "seed": 3
+  },
+  "parametros": 106794,
+  "mejor_epoca": 3,
+  "loss_val": 0.2296799272298813,
+  "segundos": 114.4,
+  "loss_train_baja": true
+}

@@ -1,0 +1,22 @@
+{
+  "nombre": "forecast_lstm",
+  "configuracion": {
+    "name": "forecast_lstm",
+    "model": "lstm",
+    "hidden": 128,
+    "layers": 2,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 256,
+    "epochs": 30,
+    "patience": 6,
+    "amp": true,
+    "seed": 42
+  },
+  "parametros": 209450,
+  "mejor_epoca": 2,
+  "loss_val": 0.23476837575435638,
+  "segundos": 34.7,
+  "loss_train_baja": true
+}

@@ -1,0 +1,13 @@
+modelo,semilla,sum,count
+gru,1,46,72
+gru,2,49,72
+gru,3,46,72
+gru,42,48,72
+lstm,1,44,72
+lstm,2,45,72
+lstm,3,43,72
+lstm,42,36,72
+transformer,1,47,72
+transformer,2,42,72
+transformer,3,50,72
+transformer,42,44,72

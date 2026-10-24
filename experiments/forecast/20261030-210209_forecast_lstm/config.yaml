@@ -1,0 +1,12 @@
+amp: true
+batch_size: 256
+dropout: 0.1
+epochs: 30
+hidden: 128
+layers: 2
+lr: 0.001
+model: lstm
+name: forecast_lstm
+patience: 6
+seed: 42
+weight_decay: 0.01

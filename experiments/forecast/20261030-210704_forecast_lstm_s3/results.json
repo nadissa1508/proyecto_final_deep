@@ -1,0 +1,22 @@
+{
+  "nombre": "forecast_lstm_s3",
+  "configuracion": {
+    "name": "forecast_lstm_s3",
+    "model": "lstm",
+    "hidden": 128,
+    "layers": 2,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 256,
+    "epochs": 30,
+    "patience": 6,
+    "amp": true,
+    "seed": 3
+  },
+  "parametros": 209450,
+  "mejor_epoca": 2,
+  "loss_val": 0.2333923727273941,
+  "segundos": 33.2,
+  "loss_train_baja": true
+}

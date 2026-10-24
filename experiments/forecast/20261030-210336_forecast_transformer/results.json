@@ -1,0 +1,24 @@
+{
+  "nombre": "forecast_transformer",
+  "configuracion": {
+    "name": "forecast_transformer",
+    "model": "transformer",
+    "d_model": 64,
+    "heads": 4,
+    "layers": 3,
+    "ff": 128,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 256,
+    "epochs": 30,
+    "patience": 6,
+    "amp": true,
+    "seed": 42
+  },
+  "parametros": 106794,
+  "mejor_epoca": 2,
+  "loss_val": 0.22714081406593323,
+  "segundos": 85.7,
+  "loss_train_baja": true
+}

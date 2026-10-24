@@ -1,0 +1,12 @@
+amp: true
+batch_size: 256
+dropout: 0.1
+epochs: 30
+hidden: 128
+layers: 2
+lr: 0.001
+model: gru
+name: forecast_gru_s2
+patience: 6
+seed: 2
+weight_decay: 0.01
