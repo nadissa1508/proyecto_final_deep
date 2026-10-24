@@ -186,8 +186,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--config", required=True)
     parser.add_argument("--smoke", action="store_true")
+    parser.add_argument("--seed", type=int, default=None, help="reemplaza la semilla del YAML y la agrega al nombre")
     args = parser.parse_args()
     cfg = yaml.safe_load(Path(args.config).read_text(encoding="utf-8"))
+    if args.seed is not None:
+        cfg["seed"], cfg["name"] = args.seed, f"{cfg['name']}_s{args.seed}"
     run(cfg, smoke=args.smoke)
 
 

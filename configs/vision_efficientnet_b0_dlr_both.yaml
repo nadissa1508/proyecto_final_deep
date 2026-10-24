@@ -1,0 +1,16 @@
+# Corrida de visión: EfficientNet-B0 completo con LR diferencial, BRACOL + RoCoLe combinados
+name: efficientnet_b0_dlr_both
+model: efficientnet_b0                 # resnet18 | efficientnet_b0 | small_cnn
+strategy: full_dlr   # feature_extraction | partial | full_dlr | scratch
+train_on: both                # bracol | rocole | both
+img_size: 256
+batch_size: 32
+epochs: 15
+patience: 5
+lr: 1.0e-3                      # cabeza (o todo, en scratch)
+lrs_dlr: [1.0e-6, 1.0e-5, 5.0e-5, 1.0e-4, 5.0e-4, 1.0e-3]   # stem, layer1-4, fc
+weight_decay: 0.01
+class_weights: true             # pesos inversos a la frecuencia de cada clase en train
+amp: true
+num_workers: 4
+seed: 42
