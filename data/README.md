@@ -90,7 +90,7 @@ Split temporal (`configs/forecast.yaml`): train hasta 2017, val 2018–2020, tes
 
 - **Temperatura:** la persistencia gana a todos los horizontes en 4 de 6 regiones (0.4–0.65 °C a 1 día; 0.8–1.4 °C a 14 días); el estacional ingenuo (0.8–1.2 °C) gana a 14 días en Cobán, Huehuetenango y Nuevo Oriente.
 - **Humedad:** persistencia mejor a 1–3 días, estacional mejor desde ~7 días.
-- **Lluvia:** el estacional (climatología) iguala o supera a la persistencia en casi todas las regiones; la lluvia de ayer predice poco la de mañana.
+- **Lluvia:** el estacional (climatología) iguala o supera a la persistencia en casi todas las regiones; la lluvia de ayer predice poco la de mañana. Nota: para el error absoluto el baseline estacional correcto usa la **mediana**, no la media (4.23 frente a 4.63 mm/día); `experiments/forecast/baselines.csv` solo trae la versión con media, y los 4 baselines completos están en `docs/resultados_forecast.md`.
 - **Pronóstico numérico de Open-Meteo (solo 1–7 días, desde 2024):** **no es un techo limpio.** Medido contra ERA5 pierde frente a la persistencia en temperatura (1.11 °C frente a 0.53 °C a 1 día). Parte es sesgo (Huehuetenango +1.7 °C), pero en Antigua y Atitlán el error se mantiene sin sesgo (≈1.1–1.7 °C): son dos modelos distintos con topografía distinta. La comparación justa es contra las estaciones de ANACAFE; está pendiente.
 
 ## raw/anacafe/ — estaciones de ANACAFE (descarga manual, no versionada)
