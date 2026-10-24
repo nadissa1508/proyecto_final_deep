@@ -1,0 +1,13 @@
+# Pronóstico a 14 días: LSTM
+name: forecast_lstm
+model: lstm
+hidden: 128
+layers: 2
+dropout: 0.1
+lr: 1.0e-3
+weight_decay: 0.01
+batch_size: 256
+epochs: 30
+patience: 6
+amp: true
+seed: 42
