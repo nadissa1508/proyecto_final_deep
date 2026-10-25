@@ -1,0 +1,63 @@
+{
+  "candidato": "D_ensamble_resnet18_efficientnet",
+  "clases": [
+    "sana",
+    "roya_leve",
+    "roya_severa",
+    "otra_afeccion"
+  ],
+  "filas": "clase real",
+  "columnas": "clase predicha",
+  "test_bracol": [
+    [
+      40,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      45,
+      3,
+      0
+    ],
+    [
+      0,
+      3,
+      30,
+      0
+    ],
+    [
+      0,
+      2,
+      0,
+      115
+    ]
+  ],
+  "test_rocole": [
+    [
+      108,
+      2,
+      0,
+      0
+    ],
+    [
+      6,
+      35,
+      4,
+      3
+    ],
+    [
+      0,
+      9,
+      26,
+      1
+    ],
+    [
+      0,
+      4,
+      4,
+      16
+    ]
+  ]
+}
