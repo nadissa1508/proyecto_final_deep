@@ -1,0 +1,49 @@
+Muestras comparadas por región (mín–máx): 380–480
+
+== temperature_2m_mean: MAE contra la estación, media de las regiones (test desde 2025-07-01)
+horizonte                     1     3     7     14
+familia                                           
+clima_era5                  1.40  1.40  1.40  1.40
+clima_era5+sesgo            1.43  1.43  1.44  1.44
+forecast_gru                1.13  1.27  1.31  1.35
+forecast_gru+sesgo          1.09  1.28  1.34  1.39
+forecast_lstm               1.13  1.28  1.32  1.35
+forecast_lstm+sesgo         1.07  1.27  1.35  1.40
+forecast_transformer        1.15  1.29  1.32  1.37
+forecast_transformer+sesgo  1.10  1.29  1.37  1.42
+numerico                    1.32  1.40  1.39   NaN
+numerico+sesgo              1.63  1.71  1.44   NaN
+persistencia_era5           1.21  1.42  1.48  1.59
+persistencia_estacion       0.89  1.25  1.33  1.44
+
+== relative_humidity_2m_mean: MAE contra la estación, media de las regiones (test desde 2025-07-01)
+horizonte                     1     3     7     14
+familia                                           
+clima_era5                  6.74  6.74  6.71  6.71
+clima_era5+sesgo            5.71  5.71  5.69  5.67
+forecast_gru                6.61  6.62  6.66  6.63
+forecast_gru+sesgo          4.53  4.92  5.27  5.53
+forecast_lstm               6.66  6.67  6.77  6.86
+forecast_lstm+sesgo         4.52  5.00  5.40  5.66
+forecast_transformer        6.66  6.59  6.73  6.72
+forecast_transformer+sesgo  4.54  5.12  5.45  5.70
+numerico                    6.21  6.39  5.63   NaN
+numerico+sesgo              6.17  6.45  5.71   NaN
+persistencia_era5           7.25  7.91  8.26  8.50
+persistencia_estacion       3.61  4.96  5.61  5.88
+
+== precipitation_sum: MAE contra la estación, media de las regiones (test desde 2025-07-01)
+horizonte                     1     3     7     14
+familia                                           
+clima_era5                  6.38  6.39  6.44  6.41
+clima_era5+sesgo            7.67  7.67  7.71  7.66
+forecast_gru                5.98  6.30  6.57  6.73
+forecast_gru+sesgo          6.79  7.30  7.69  7.89
+forecast_lstm               5.89  6.32  6.70  6.78
+forecast_lstm+sesgo         6.84  7.40  7.81  7.97
+forecast_transformer        5.98  6.28  6.46  6.65
+forecast_transformer+sesgo  6.81  7.31  7.63  7.81
+numerico                    6.31  6.68  7.10   NaN
+numerico+sesgo              7.25  7.12  9.21   NaN
+persistencia_era5           6.48  6.90  7.55  7.31
+persistencia_estacion       6.77  7.57  8.17  8.01
