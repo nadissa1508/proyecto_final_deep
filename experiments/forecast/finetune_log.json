@@ -1,0 +1,98 @@
+[
+  {
+    "modelo": "forecast_gru_fthead",
+    "val_inicial": 0.546531617641449,
+    "val_mejor": 0.39342430233955383,
+    "epocas": 7
+  },
+  {
+    "modelo": "forecast_gru_ftfull",
+    "val_inicial": 0.546531617641449,
+    "val_mejor": 0.4002000391483307,
+    "epocas": 5
+  },
+  {
+    "modelo": "forecast_transformer_fthead",
+    "val_inicial": 0.532686173915863,
+    "val_mejor": 0.38392940163612366,
+    "epocas": 7
+  },
+  {
+    "modelo": "forecast_transformer_ftfull",
+    "val_inicial": 0.532686173915863,
+    "val_mejor": 0.3889222741127014,
+    "epocas": 5
+  },
+  {
+    "modelo": "forecast_gru_fthead_s1",
+    "val_inicial": 0.5462967157363892,
+    "val_mejor": 0.3928600251674652,
+    "epocas": 15
+  },
+  {
+    "modelo": "forecast_gru_ftfull_s1",
+    "val_inicial": 0.5462967157363892,
+    "val_mejor": 0.40695664286613464,
+    "epocas": 4
+  },
+  {
+    "modelo": "forecast_gru_fthead_s2",
+    "val_inicial": 0.5449496507644653,
+    "val_mejor": 0.3875768482685089,
+    "epocas": 8
+  },
+  {
+    "modelo": "forecast_gru_ftfull_s2",
+    "val_inicial": 0.5449496507644653,
+    "val_mejor": 0.3981849253177643,
+    "epocas": 4
+  },
+  {
+    "modelo": "forecast_gru_fthead_s3",
+    "val_inicial": 0.5377308130264282,
+    "val_mejor": 0.38454383611679077,
+    "epocas": 8
+  },
+  {
+    "modelo": "forecast_gru_ftfull_s3",
+    "val_inicial": 0.5377308130264282,
+    "val_mejor": 0.39466434717178345,
+    "epocas": 5
+  },
+  {
+    "modelo": "forecast_transformer_fthead_s1",
+    "val_inicial": 0.5595991015434265,
+    "val_mejor": 0.3942711055278778,
+    "epocas": 6
+  },
+  {
+    "modelo": "forecast_transformer_ftfull_s1",
+    "val_inicial": 0.5595991015434265,
+    "val_mejor": 0.37995514273643494,
+    "epocas": 6
+  },
+  {
+    "modelo": "forecast_transformer_fthead_s2",
+    "val_inicial": 0.5510802865028381,
+    "val_mejor": 0.38979557156562805,
+    "epocas": 10
+  },
+  {
+    "modelo": "forecast_transformer_ftfull_s2",
+    "val_inicial": 0.5510802865028381,
+    "val_mejor": 0.3946840763092041,
+    "epocas": 7
+  },
+  {
+    "modelo": "forecast_transformer_fthead_s3",
+    "val_inicial": 0.5676887035369873,
+    "val_mejor": 0.393282026052475,
+    "epocas": 8
+  },
+  {
+    "modelo": "forecast_transformer_ftfull_s3",
+    "val_inicial": 0.5676887035369873,
+    "val_mejor": 0.3948919177055359,
+    "epocas": 5
+  }
+]
