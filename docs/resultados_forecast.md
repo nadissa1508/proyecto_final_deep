@@ -174,6 +174,42 @@ ERA5 llega con 5–8 días de retraso, así que al pronosticar "hoy" los último
 
 La API de pronóstico de Open-Meteo (`past_days`) sí trae los días recientes, pero **no es un buen relleno**: contra ERA5 en los mismos 38 días, la temperatura media difiere 0.95 °C de error medio (la variación natural es 0.72 °C), la mínima tiene correlación 0.42 y la lluvia 0.52. Decisión: relleno por persistencia y, con retraso, los horizontes menores a 7 días (`min_horizon_with_gap`, calculado con tolerancia de 5 % a k = 5) se marcan como poco confiables. Limitación: es el peor caso sin datos nuevos; no se probó un relleno mejor (p. ej. entrenar con entradas incompletas), que podría recuperar parte del error a 1–3 días.
 
+### Repetición con otro corte de fechas
+
+Para ver si lo anterior depende del periodo de test, se repitió la validación en finca nueva con un corte distinto
+(`stations_alt.corte2` en `configs/forecast.yaml`): ajuste 2022–2023 (un año menos), validación en 2024-01 a 2024-06 y
+test desde 2024-07-01 (762–845 días por región y variable, frente a ~16 meses antes). Solo GRU, 4 semillas
+(`experiments/forecast/loso_eval_corte2.csv`):
+
+| Variable | h | Preentrenado | Afinado con otras 5 | Cambio | Regiones donde mejora | Numérico |
+|---|---|---|---|---|---|---|
+| Lluvia (mm/día) | 1 | 6.05 | **5.32** | −12 % | 6 de 6 | 5.98 |
+| | 7 | 6.32 | **5.51** | −13 % | 6 de 6 | 6.49 |
+| | 14 | 6.44 | **5.56** | −14 % | 6 de 6 | — |
+| Humedad (pts) | 1 | 6.76 | **5.33** | −21 % | 5 de 6 | 7.51 |
+| | 7 | 7.02 | **5.91** | −16 % | 5 de 6 | 6.17 |
+| | 14 | 7.00 | **6.05** | −14 % | 5 de 6 | — |
+| Temperatura (°C) | 1 | **1.15** | 1.42 | +23 % | 2 de 6 | 1.33 |
+| | 7 | **1.31** | 1.56 | +19 % | 2 de 6 | 1.32 |
+| | 14 | **1.32** | 1.56 | +18 % | 2 de 6 | — |
+
+Las tres conclusiones se mantienen con el otro corte: lluvia y humedad mejoran con el afinado, la temperatura empeora y se
+usa el modelo preentrenado. Dos diferencias: la mejora de humedad es mayor (a 7 días el afinado ya supera al pronóstico
+numérico, que antes ganaba), y la climatología queda cerca del modelo preentrenado en temperatura (1.32 frente a 1.31 a 14
+días), así que ahí el modelo casi no aporta. Esto reduce la preocupación por el periodo de test, no la elimina: los dos
+cortes comparten estaciones, años y el mismo preentrenamiento.
+
+### Entrenar con entradas incompletas (probado y descartado)
+
+Se probó entrenar el GRU repitiendo el último día conocido en los últimos 1–8 días de la entrada en la mitad de las
+muestras, para reducir el costo del retraso de ERA5 a 1–3 días (4 semillas, MAE contra ERA5 en el test). Con 5 días de
+retraso y 1 día de horizonte el error bajó 5–8 % (temperatura 0.90 → 0.84 °C, humedad 5.56 → 5.13 pts, lluvia 4.55 →
+4.31 mm/día), pero con la entrada completa el modelo empeoró (+3 % en lluvia, +10 % en humedad, +16 % en temperatura) y de 3
+días en adelante no cambió. El error relativo con retraso siguió siendo grande a 1 día (+29 % a +39 %), así que el
+horizonte mínimo confiable seguía siendo 7. **Se descartó y se eliminó el código**: la limitación a 1–3 días es de
+información (los últimos días no existen), no algo que se corrija entrenando mejor. Estas cifras quedan aquí como
+evidencia del intento; ya no se pueden reproducir desde el repositorio.
+
 ## Artefacto e inferencia
 
 `python -m src.forecast.export` escribe `models/forecast/artifact.json` (pesos por variable, normalizadores por región, horizonte mínimo con retraso) y `src/forecast/infer.py` (`WeatherForecaster`) lo usa. `python -m src.forecast.check_infer` lo verifica con los pesos reales: coincide con el camino de evaluación (diferencia 0) y marca el retraso correctamente. Una finca nueva usa el normalizador de la región más cercana (aproximación).
