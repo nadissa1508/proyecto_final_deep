@@ -15,3 +15,12 @@ stations:
   adjust_end: "2024-12-31"     # ...termina aquí
   val_end: "2025-06-30"        # 2025-01 a 2025-06: validación del afinado
   test_start: "2025-07-01"     # test: desde aquí (jul-2025 a oct-2026, ~16 meses); nunca se usa para ajustar
+
+# Segundo corte de fechas para repetir la validación en finca nueva (`loso.py --cut corte2`): menos datos de ajuste y
+# un test más largo y distinto. Mismas reglas: el test nunca se usa para ajustar.
+stations_alt:
+  corte2:
+    adjust_start: "2022-01-01"
+    adjust_end: "2023-12-31"
+    val_end: "2024-06-30"
+    test_start: "2024-07-01"

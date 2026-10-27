@@ -104,9 +104,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--bases", nargs="*", default=["forecast_gru", "forecast_transformer"])
     parser.add_argument("--strategy", default="head", choices=["head", "full"])
+    parser.add_argument("--cut", default=None, help="corte alterno de `stations_alt` en configs/forecast.yaml")
     args = parser.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     fc = load_config()
+    if args.cut:
+        fc["stations"] = fc["stations_alt"][args.cut]
+    out_path = OUT.with_name(f"loso_eval_{args.cut}.csv") if args.cut else OUT
     stations, _ = load_clean()
     regions = load_regions()
     ctx = {r: region_context(r, spec, fc, stations) for r, spec in regions.items()}
@@ -158,7 +162,7 @@ def main() -> None:
                     rows.append({"region": hold, "variable": target, "horizonte": h, "n": int(valid.sum()),
                                  "predictor": key, "mae": float(np.abs(v[valid] - truth[valid]).mean())})
     table = pd.DataFrame(rows)
-    table.round(4).to_csv(OUT, index=False)
+    table.round(4).to_csv(out_path, index=False)
 
     table["familia"] = table["predictor"].str.replace(r"_s\d$", "", regex=True)
     summary = table.groupby(["variable", "horizonte", "familia"])["mae"].mean().unstack("familia")
