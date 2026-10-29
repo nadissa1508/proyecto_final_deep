@@ -1,0 +1,15 @@
+escenario,ingreso_medio,vs_sin_informacion,error_estandar,aplicaciones,meses_roya_alta,fraccion_del_techo,retraso,gamma,hojas,confusion_mundo
+A_techo,4271.4839,149.6989,4.5747,8.1039,1.4043,1.0,0,0.15,10,pooled
+B0_sin_informacion,4121.785,0.0,0.0,8.6667,1.3299,0.0,0,0.15,10,pooled
+B_clima_observado,4112.0297,-9.7553,3.1678,8.7917,1.4329,-0.0652,0,0.15,10,pooled
+C_pronostico,4119.2206,-2.5644,1.2388,8.625,1.4135,-0.0171,0,0.15,10,pooled
+C0_pronostico_perfecto,4114.2792,-7.5058,2.7961,8.6667,1.4136,-0.0501,0,0.15,10,pooled
+D_pronostico_y_CNN,4123.8819,2.0969,1.974,8.7146,1.4017,0.014,0,0.15,10,pooled
+D0_solo_CNN,4131.1017,9.3167,2.1978,8.7724,1.3846,0.0622,0,0.15,10,pooled
+A_techo,4271.4839,149.6989,4.5747,8.1039,1.4043,1.0,5,0.15,10,pooled
+B0_sin_informacion,4121.785,0.0,0.0,8.6667,1.3299,0.0,5,0.15,10,pooled
+B_clima_observado,4112.0297,-9.7553,3.1678,8.7917,1.4329,-0.0652,5,0.15,10,pooled
+C_pronostico,4120.5628,-1.2222,0.6801,8.625,1.3932,-0.0082,5,0.15,10,pooled
+C0_pronostico_perfecto,4114.2792,-7.5058,2.7961,8.6667,1.4136,-0.0501,5,0.15,10,pooled
+D_pronostico_y_CNN,4125.3317,3.5467,1.8705,8.7156,1.4201,0.0237,5,0.15,10,pooled
+D0_solo_CNN,4131.1017,9.3167,2.1978,8.7724,1.3846,0.0622,5,0.15,10,pooled
