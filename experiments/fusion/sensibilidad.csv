@@ -1,0 +1,1216 @@
+clima,mes,hojas,con_roya,p_alto,accion,variacion
+desfavorable,3,0,0,0.0599,nada,base
+desfavorable,3,10,0,0.0179,nada,base
+desfavorable,3,10,1,0.0513,nada,base
+desfavorable,3,10,3,0.2858,nada,base
+desfavorable,3,10,10,0.9831,cobre,base
+desfavorable,3,30,0,0.0014,nada,base
+desfavorable,3,30,3,0.0374,nada,base
+desfavorable,3,30,10,0.9139,cobre,base
+desfavorable,3,30,30,1.0,cobre,base
+desfavorable,7,0,0,0.0599,cobre,base
+desfavorable,7,10,0,0.0179,cobre,base
+desfavorable,7,10,1,0.0513,cobre,base
+desfavorable,7,10,3,0.2858,cobre,base
+desfavorable,7,10,10,0.9831,triazol,base
+desfavorable,7,30,0,0.0014,cobre,base
+desfavorable,7,30,3,0.0374,cobre,base
+desfavorable,7,30,10,0.9139,triazol,base
+desfavorable,7,30,30,1.0,triazol,base
+desfavorable,10,0,0,0.0599,triazol,base
+desfavorable,10,10,0,0.0179,cobre,base
+desfavorable,10,10,1,0.0513,triazol,base
+desfavorable,10,10,3,0.2858,triazol,base
+desfavorable,10,10,10,0.9831,triazol,base
+desfavorable,10,30,0,0.0014,cobre,base
+desfavorable,10,30,3,0.0374,triazol,base
+desfavorable,10,30,10,0.9139,triazol,base
+desfavorable,10,30,30,1.0,triazol,base
+neutro,3,0,0,0.171,nada,base
+neutro,3,10,0,0.0599,nada,base
+neutro,3,10,1,0.1469,nada,base
+neutro,3,10,3,0.4984,cobre,base
+neutro,3,10,10,0.9895,cobre,base
+neutro,3,30,0,0.0054,nada,base
+neutro,3,30,3,0.1066,nada,base
+neutro,3,30,10,0.9464,cobre,base
+neutro,3,30,30,1.0,cobre,base
+neutro,7,0,0,0.171,cobre,base
+neutro,7,10,0,0.0599,cobre,base
+neutro,7,10,1,0.1469,cobre,base
+neutro,7,10,3,0.4984,cobre,base
+neutro,7,10,10,0.9895,triazol,base
+neutro,7,30,0,0.0054,cobre,base
+neutro,7,30,3,0.1066,cobre,base
+neutro,7,30,10,0.9464,triazol,base
+neutro,7,30,30,1.0,triazol,base
+neutro,10,0,0,0.171,triazol,base
+neutro,10,10,0,0.0599,triazol,base
+neutro,10,10,1,0.1469,triazol,base
+neutro,10,10,3,0.4984,triazol,base
+neutro,10,10,10,0.9895,triazol,base
+neutro,10,30,0,0.0054,cobre,base
+neutro,10,30,3,0.1066,triazol,base
+neutro,10,30,10,0.9464,triazol,base
+neutro,10,30,30,1.0,triazol,base
+favorable,3,0,0,0.3602,nada,base
+favorable,3,10,0,0.1603,nada,base
+favorable,3,10,1,0.3156,nada,base
+favorable,3,10,3,0.6808,cobre,base
+favorable,3,10,10,0.9939,cobre,base
+favorable,3,30,0,0.0183,nada,base
+favorable,3,30,3,0.2353,nada,base
+favorable,3,30,10,0.9685,cobre,base
+favorable,3,30,30,1.0,cobre,base
+favorable,7,0,0,0.3602,cobre,base
+favorable,7,10,0,0.1603,cobre,base
+favorable,7,10,1,0.3156,cobre,base
+favorable,7,10,3,0.6808,triazol,base
+favorable,7,10,10,0.9939,triazol,base
+favorable,7,30,0,0.0183,cobre,base
+favorable,7,30,3,0.2353,cobre,base
+favorable,7,30,10,0.9685,triazol,base
+favorable,7,30,30,1.0,triazol,base
+favorable,10,0,0,0.3602,triazol,base
+favorable,10,10,0,0.1603,triazol,base
+favorable,10,10,1,0.3156,triazol,base
+favorable,10,10,3,0.6808,triazol,base
+favorable,10,10,10,0.9939,triazol,base
+favorable,10,30,0,0.0183,triazol,base
+favorable,10,30,3,0.2353,triazol,base
+favorable,10,30,10,0.9685,triazol,base
+favorable,10,30,30,1.0,triazol,base
+desfavorable,3,0,0,0.0599,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,10,0,0.0221,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,10,1,0.0608,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,10,3,0.3136,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,10,10,0.9858,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,30,0,0.0027,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,30,3,0.0621,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,30,10,0.9421,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,30,30,1.0,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,0,0,0.0599,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,10,0,0.0221,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,10,1,0.0608,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,10,3,0.3136,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,10,10,0.9858,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,30,0,0.0027,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,30,3,0.0621,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,30,10,0.9421,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,7,30,30,1.0,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,0,0,0.0599,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,10,0,0.0221,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,10,1,0.0608,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,10,3,0.3136,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,10,10,0.9858,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,30,0,0.0027,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,30,3,0.0621,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,30,10,0.9421,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,10,30,30,1.0,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,0,0,0.171,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,10,0,0.0721,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,10,1,0.1694,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,10,3,0.5324,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,10,10,0.9913,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,30,0,0.0101,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,30,3,0.1637,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,30,10,0.9645,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,3,30,30,1.0,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,0,0,0.171,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,10,0,0.0721,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,10,1,0.1694,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,10,3,0.5324,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,10,10,0.9913,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,30,0,0.0101,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,30,3,0.1637,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,30,10,0.9645,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,7,30,30,1.0,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,0,0,0.171,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,10,0,0.0721,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,10,1,0.1694,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,10,3,0.5324,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,10,10,0.9913,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,30,0,0.0101,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,30,3,0.1637,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,30,10,0.9645,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+neutro,10,30,30,1.0,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,0,0,0.3602,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,10,0,0.1861,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,10,1,0.3502,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,10,3,0.7102,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,10,10,0.9949,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,30,0,0.0328,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,30,3,0.3268,nada,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,30,10,0.9793,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,3,30,30,1.0,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,0,0,0.3602,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,10,0,0.1861,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,10,1,0.3502,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,10,3,0.7102,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,10,10,0.9949,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,30,0,0.0328,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,30,3,0.3268,cobre,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,30,10,0.9793,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,7,30,30,1.0,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,0,0,0.3602,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,10,0,0.1861,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,10,1,0.3502,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,10,3,0.7102,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,10,10,0.9949,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,30,0,0.0328,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,30,3,0.3268,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,30,10,0.9793,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+favorable,10,30,30,1.0,triazol,cortes 3 % / 8 % (incidencia 1 / 5 / 12 %)
+desfavorable,3,0,0,0.0599,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,10,0,0.0116,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,10,1,0.0383,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,10,3,0.265,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,10,10,0.9834,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,30,0,0.0004,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,30,3,0.0153,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,30,10,0.8685,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,30,30,1.0,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,0,0,0.0599,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,10,0,0.0116,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,10,1,0.0383,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,10,3,0.265,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,10,10,0.9834,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,30,0,0.0004,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,30,3,0.0153,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,30,10,0.8685,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,7,30,30,1.0,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,0,0,0.0599,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,10,0,0.0116,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,10,1,0.0383,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,10,3,0.265,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,10,10,0.9834,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,30,0,0.0004,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,30,3,0.0153,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,30,10,0.8685,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,10,30,30,1.0,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,0,0,0.171,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,10,0,0.0404,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,10,1,0.1142,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,10,3,0.4653,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,10,10,0.9897,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,30,0,0.0014,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,30,3,0.0479,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,30,10,0.9155,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,3,30,30,1.0,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,0,0,0.171,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,10,0,0.0404,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,10,1,0.1142,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,10,3,0.4653,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,10,10,0.9897,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,30,0,0.0014,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,30,3,0.0479,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,30,10,0.9155,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,7,30,30,1.0,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,0,0,0.171,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,10,0,0.0404,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,10,1,0.1142,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,10,3,0.4653,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,10,10,0.9897,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,30,0,0.0014,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,30,3,0.0479,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,30,10,0.9155,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+neutro,10,30,30,1.0,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,0,0,0.3602,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,10,0,0.1157,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,10,1,0.2604,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,10,3,0.647,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,10,10,0.994,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,30,0,0.0052,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,30,3,0.121,nada,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,30,10,0.9495,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,3,30,30,1.0,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,0,0,0.3602,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,10,0,0.1157,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,10,1,0.2604,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,10,3,0.647,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,10,10,0.994,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,30,0,0.0052,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,30,3,0.121,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,30,10,0.9495,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,7,30,30,1.0,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,0,0,0.3602,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,10,0,0.1157,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,10,1,0.2604,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,10,3,0.647,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,10,10,0.994,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,30,0,0.0052,cobre,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,30,3,0.121,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,30,10,0.9495,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+favorable,10,30,30,1.0,triazol,cortes 7 % / 15 % (incidencia 3 / 10 / 20 %)
+desfavorable,3,0,0,0.0599,nada,proporción severa 0.1
+desfavorable,3,10,0,0.0183,nada,proporción severa 0.1
+desfavorable,3,10,1,0.0563,nada,proporción severa 0.1
+desfavorable,3,10,3,0.3295,nada,proporción severa 0.1
+desfavorable,3,10,10,0.9877,cobre,proporción severa 0.1
+desfavorable,3,30,0,0.0015,nada,proporción severa 0.1
+desfavorable,3,30,3,0.0491,nada,proporción severa 0.1
+desfavorable,3,30,10,0.939,cobre,proporción severa 0.1
+desfavorable,3,30,30,1.0,cobre,proporción severa 0.1
+desfavorable,7,0,0,0.0599,cobre,proporción severa 0.1
+desfavorable,7,10,0,0.0183,cobre,proporción severa 0.1
+desfavorable,7,10,1,0.0563,cobre,proporción severa 0.1
+desfavorable,7,10,3,0.3295,cobre,proporción severa 0.1
+desfavorable,7,10,10,0.9877,triazol,proporción severa 0.1
+desfavorable,7,30,0,0.0015,cobre,proporción severa 0.1
+desfavorable,7,30,3,0.0491,cobre,proporción severa 0.1
+desfavorable,7,30,10,0.939,triazol,proporción severa 0.1
+desfavorable,7,30,30,1.0,triazol,proporción severa 0.1
+desfavorable,10,0,0,0.0599,triazol,proporción severa 0.1
+desfavorable,10,10,0,0.0183,cobre,proporción severa 0.1
+desfavorable,10,10,1,0.0563,triazol,proporción severa 0.1
+desfavorable,10,10,3,0.3295,triazol,proporción severa 0.1
+desfavorable,10,10,10,0.9877,triazol,proporción severa 0.1
+desfavorable,10,30,0,0.0015,cobre,proporción severa 0.1
+desfavorable,10,30,3,0.0491,triazol,proporción severa 0.1
+desfavorable,10,30,10,0.939,triazol,proporción severa 0.1
+desfavorable,10,30,30,1.0,triazol,proporción severa 0.1
+neutro,3,0,0,0.171,nada,proporción severa 0.1
+neutro,3,10,0,0.0611,nada,proporción severa 0.1
+neutro,3,10,1,0.158,nada,proporción severa 0.1
+neutro,3,10,3,0.5395,cobre,proporción severa 0.1
+neutro,3,10,10,0.9924,cobre,proporción severa 0.1
+neutro,3,30,0,0.0057,nada,proporción severa 0.1
+neutro,3,30,3,0.1323,nada,proporción severa 0.1
+neutro,3,30,10,0.9618,cobre,proporción severa 0.1
+neutro,3,30,30,1.0,cobre,proporción severa 0.1
+neutro,7,0,0,0.171,cobre,proporción severa 0.1
+neutro,7,10,0,0.0611,cobre,proporción severa 0.1
+neutro,7,10,1,0.158,cobre,proporción severa 0.1
+neutro,7,10,3,0.5395,cobre,proporción severa 0.1
+neutro,7,10,10,0.9924,triazol,proporción severa 0.1
+neutro,7,30,0,0.0057,cobre,proporción severa 0.1
+neutro,7,30,3,0.1323,cobre,proporción severa 0.1
+neutro,7,30,10,0.9618,triazol,proporción severa 0.1
+neutro,7,30,30,1.0,triazol,proporción severa 0.1
+neutro,10,0,0,0.171,triazol,proporción severa 0.1
+neutro,10,10,0,0.0611,triazol,proporción severa 0.1
+neutro,10,10,1,0.158,triazol,proporción severa 0.1
+neutro,10,10,3,0.5395,triazol,proporción severa 0.1
+neutro,10,10,10,0.9924,triazol,proporción severa 0.1
+neutro,10,30,0,0.0057,cobre,proporción severa 0.1
+neutro,10,30,3,0.1323,triazol,proporción severa 0.1
+neutro,10,30,10,0.9618,triazol,proporción severa 0.1
+neutro,10,30,30,1.0,triazol,proporción severa 0.1
+favorable,3,0,0,0.3602,nada,proporción severa 0.1
+favorable,3,10,0,0.1629,nada,proporción severa 0.1
+favorable,3,10,1,0.3315,nada,proporción severa 0.1
+favorable,3,10,3,0.7098,cobre,proporción severa 0.1
+favorable,3,10,10,0.9956,cobre,proporción severa 0.1
+favorable,3,30,0,0.0194,nada,proporción severa 0.1
+favorable,3,30,3,0.2742,nada,proporción severa 0.1
+favorable,3,30,10,0.9776,cobre,proporción severa 0.1
+favorable,3,30,30,1.0,cobre,proporción severa 0.1
+favorable,7,0,0,0.3602,cobre,proporción severa 0.1
+favorable,7,10,0,0.1629,cobre,proporción severa 0.1
+favorable,7,10,1,0.3315,cobre,proporción severa 0.1
+favorable,7,10,3,0.7098,triazol,proporción severa 0.1
+favorable,7,10,10,0.9956,triazol,proporción severa 0.1
+favorable,7,30,0,0.0194,cobre,proporción severa 0.1
+favorable,7,30,3,0.2742,cobre,proporción severa 0.1
+favorable,7,30,10,0.9776,triazol,proporción severa 0.1
+favorable,7,30,30,1.0,triazol,proporción severa 0.1
+favorable,10,0,0,0.3602,triazol,proporción severa 0.1
+favorable,10,10,0,0.1629,triazol,proporción severa 0.1
+favorable,10,10,1,0.3315,triazol,proporción severa 0.1
+favorable,10,10,3,0.7098,triazol,proporción severa 0.1
+favorable,10,10,10,0.9956,triazol,proporción severa 0.1
+favorable,10,30,0,0.0194,triazol,proporción severa 0.1
+favorable,10,30,3,0.2742,triazol,proporción severa 0.1
+favorable,10,30,10,0.9776,triazol,proporción severa 0.1
+favorable,10,30,30,1.0,triazol,proporción severa 0.1
+desfavorable,3,0,0,0.0599,nada,proporción severa 0.5
+desfavorable,3,10,0,0.0176,nada,proporción severa 0.5
+desfavorable,3,10,1,0.0458,nada,proporción severa 0.5
+desfavorable,3,10,3,0.2345,nada,proporción severa 0.5
+desfavorable,3,10,10,0.9738,cobre,proporción severa 0.5
+desfavorable,3,30,0,0.0013,nada,proporción severa 0.5
+desfavorable,3,30,3,0.0266,nada,proporción severa 0.5
+desfavorable,3,30,10,0.8644,cobre,proporción severa 0.5
+desfavorable,3,30,30,1.0,cobre,proporción severa 0.5
+desfavorable,7,0,0,0.0599,cobre,proporción severa 0.5
+desfavorable,7,10,0,0.0176,cobre,proporción severa 0.5
+desfavorable,7,10,1,0.0458,cobre,proporción severa 0.5
+desfavorable,7,10,3,0.2345,cobre,proporción severa 0.5
+desfavorable,7,10,10,0.9738,triazol,proporción severa 0.5
+desfavorable,7,30,0,0.0013,cobre,proporción severa 0.5
+desfavorable,7,30,3,0.0266,cobre,proporción severa 0.5
+desfavorable,7,30,10,0.8644,triazol,proporción severa 0.5
+desfavorable,7,30,30,1.0,triazol,proporción severa 0.5
+desfavorable,10,0,0,0.0599,triazol,proporción severa 0.5
+desfavorable,10,10,0,0.0176,cobre,proporción severa 0.5
+desfavorable,10,10,1,0.0458,triazol,proporción severa 0.5
+desfavorable,10,10,3,0.2345,triazol,proporción severa 0.5
+desfavorable,10,10,10,0.9738,triazol,proporción severa 0.5
+desfavorable,10,30,0,0.0013,cobre,proporción severa 0.5
+desfavorable,10,30,3,0.0266,triazol,proporción severa 0.5
+desfavorable,10,30,10,0.8644,triazol,proporción severa 0.5
+desfavorable,10,30,30,1.0,triazol,proporción severa 0.5
+neutro,3,0,0,0.171,nada,proporción severa 0.5
+neutro,3,10,0,0.0588,nada,proporción severa 0.5
+neutro,3,10,1,0.1343,nada,proporción severa 0.5
+neutro,3,10,3,0.4442,cobre,proporción severa 0.5
+neutro,3,10,10,0.984,cobre,proporción severa 0.5
+neutro,3,30,0,0.005,nada,proporción severa 0.5
+neutro,3,30,3,0.0806,nada,proporción severa 0.5
+neutro,3,30,10,0.9166,cobre,proporción severa 0.5
+neutro,3,30,30,1.0,cobre,proporción severa 0.5
+neutro,7,0,0,0.171,cobre,proporción severa 0.5
+neutro,7,10,0,0.0588,cobre,proporción severa 0.5
+neutro,7,10,1,0.1343,cobre,proporción severa 0.5
+neutro,7,10,3,0.4442,cobre,proporción severa 0.5
+neutro,7,10,10,0.984,triazol,proporción severa 0.5
+neutro,7,30,0,0.005,cobre,proporción severa 0.5
+neutro,7,30,3,0.0806,cobre,proporción severa 0.5
+neutro,7,30,10,0.9166,triazol,proporción severa 0.5
+neutro,7,30,30,1.0,triazol,proporción severa 0.5
+neutro,10,0,0,0.171,triazol,proporción severa 0.5
+neutro,10,10,0,0.0588,triazol,proporción severa 0.5
+neutro,10,10,1,0.1343,triazol,proporción severa 0.5
+neutro,10,10,3,0.4442,triazol,proporción severa 0.5
+neutro,10,10,10,0.984,triazol,proporción severa 0.5
+neutro,10,30,0,0.005,cobre,proporción severa 0.5
+neutro,10,30,3,0.0806,triazol,proporción severa 0.5
+neutro,10,30,10,0.9166,triazol,proporción severa 0.5
+neutro,10,30,30,1.0,triazol,proporción severa 0.5
+favorable,3,0,0,0.3602,nada,proporción severa 0.5
+favorable,3,10,0,0.1577,nada,proporción severa 0.5
+favorable,3,10,1,0.2967,nada,proporción severa 0.5
+favorable,3,10,3,0.6402,cobre,proporción severa 0.5
+favorable,3,10,10,0.9907,cobre,proporción severa 0.5
+favorable,3,30,0,0.0172,nada,proporción severa 0.5
+favorable,3,30,3,0.1915,nada,proporción severa 0.5
+favorable,3,30,10,0.951,cobre,proporción severa 0.5
+favorable,3,30,30,1.0,cobre,proporción severa 0.5
+favorable,7,0,0,0.3602,cobre,proporción severa 0.5
+favorable,7,10,0,0.1577,cobre,proporción severa 0.5
+favorable,7,10,1,0.2967,cobre,proporción severa 0.5
+favorable,7,10,3,0.6402,cobre,proporción severa 0.5
+favorable,7,10,10,0.9907,triazol,proporción severa 0.5
+favorable,7,30,0,0.0172,cobre,proporción severa 0.5
+favorable,7,30,3,0.1915,cobre,proporción severa 0.5
+favorable,7,30,10,0.951,triazol,proporción severa 0.5
+favorable,7,30,30,1.0,triazol,proporción severa 0.5
+favorable,10,0,0,0.3602,triazol,proporción severa 0.5
+favorable,10,10,0,0.1577,triazol,proporción severa 0.5
+favorable,10,10,1,0.2967,triazol,proporción severa 0.5
+favorable,10,10,3,0.6402,triazol,proporción severa 0.5
+favorable,10,10,10,0.9907,triazol,proporción severa 0.5
+favorable,10,30,0,0.0172,triazol,proporción severa 0.5
+favorable,10,30,3,0.1915,triazol,proporción severa 0.5
+favorable,10,30,10,0.951,triazol,proporción severa 0.5
+favorable,10,30,30,1.0,triazol,proporción severa 0.5
+desfavorable,3,0,0,0.0599,nada,otra afección 0.05
+desfavorable,3,10,0,0.0177,nada,otra afección 0.05
+desfavorable,3,10,1,0.0531,nada,otra afección 0.05
+desfavorable,3,10,3,0.3097,nada,otra afección 0.05
+desfavorable,3,10,10,0.9862,cobre,otra afección 0.05
+desfavorable,3,30,0,0.0013,nada,otra afección 0.05
+desfavorable,3,30,3,0.0414,nada,otra afección 0.05
+desfavorable,3,30,10,0.9284,cobre,otra afección 0.05
+desfavorable,3,30,30,1.0,cobre,otra afección 0.05
+desfavorable,7,0,0,0.0599,cobre,otra afección 0.05
+desfavorable,7,10,0,0.0177,cobre,otra afección 0.05
+desfavorable,7,10,1,0.0531,cobre,otra afección 0.05
+desfavorable,7,10,3,0.3097,cobre,otra afección 0.05
+desfavorable,7,10,10,0.9862,triazol,otra afección 0.05
+desfavorable,7,30,0,0.0013,cobre,otra afección 0.05
+desfavorable,7,30,3,0.0414,cobre,otra afección 0.05
+desfavorable,7,30,10,0.9284,triazol,otra afección 0.05
+desfavorable,7,30,30,1.0,triazol,otra afección 0.05
+desfavorable,10,0,0,0.0599,triazol,otra afección 0.05
+desfavorable,10,10,0,0.0177,cobre,otra afección 0.05
+desfavorable,10,10,1,0.0531,triazol,otra afección 0.05
+desfavorable,10,10,3,0.3097,triazol,otra afección 0.05
+desfavorable,10,10,10,0.9862,triazol,otra afección 0.05
+desfavorable,10,30,0,0.0013,cobre,otra afección 0.05
+desfavorable,10,30,3,0.0414,triazol,otra afección 0.05
+desfavorable,10,30,10,0.9284,triazol,otra afección 0.05
+desfavorable,10,30,30,1.0,triazol,otra afección 0.05
+neutro,3,0,0,0.171,nada,otra afección 0.05
+neutro,3,10,0,0.059,nada,otra afección 0.05
+neutro,3,10,1,0.1508,nada,otra afección 0.05
+neutro,3,10,3,0.5208,cobre,otra afección 0.05
+neutro,3,10,10,0.9914,cobre,otra afección 0.05
+neutro,3,30,0,0.0051,nada,otra afección 0.05
+neutro,3,30,3,0.1152,nada,otra afección 0.05
+neutro,3,30,10,0.9552,cobre,otra afección 0.05
+neutro,3,30,30,1.0,cobre,otra afección 0.05
+neutro,7,0,0,0.171,cobre,otra afección 0.05
+neutro,7,10,0,0.059,cobre,otra afección 0.05
+neutro,7,10,1,0.1508,cobre,otra afección 0.05
+neutro,7,10,3,0.5208,cobre,otra afección 0.05
+neutro,7,10,10,0.9914,triazol,otra afección 0.05
+neutro,7,30,0,0.0051,cobre,otra afección 0.05
+neutro,7,30,3,0.1152,cobre,otra afección 0.05
+neutro,7,30,10,0.9552,triazol,otra afección 0.05
+neutro,7,30,30,1.0,triazol,otra afección 0.05
+neutro,10,0,0,0.171,triazol,otra afección 0.05
+neutro,10,10,0,0.059,triazol,otra afección 0.05
+neutro,10,10,1,0.1508,triazol,otra afección 0.05
+neutro,10,10,3,0.5208,triazol,otra afección 0.05
+neutro,10,10,10,0.9914,triazol,otra afección 0.05
+neutro,10,30,0,0.0051,cobre,otra afección 0.05
+neutro,10,30,3,0.1152,triazol,otra afección 0.05
+neutro,10,30,10,0.9552,triazol,otra afección 0.05
+neutro,10,30,30,1.0,triazol,otra afección 0.05
+favorable,3,0,0,0.3602,nada,otra afección 0.05
+favorable,3,10,0,0.1584,nada,otra afección 0.05
+favorable,3,10,1,0.3209,nada,otra afección 0.05
+favorable,3,10,3,0.6965,cobre,otra afección 0.05
+favorable,3,10,10,0.995,cobre,otra afección 0.05
+favorable,3,30,0,0.0175,nada,otra afección 0.05
+favorable,3,30,3,0.2477,nada,otra afección 0.05
+favorable,3,30,10,0.9737,cobre,otra afección 0.05
+favorable,3,30,30,1.0,cobre,otra afección 0.05
+favorable,7,0,0,0.3602,cobre,otra afección 0.05
+favorable,7,10,0,0.1584,cobre,otra afección 0.05
+favorable,7,10,1,0.3209,cobre,otra afección 0.05
+favorable,7,10,3,0.6965,triazol,otra afección 0.05
+favorable,7,10,10,0.995,triazol,otra afección 0.05
+favorable,7,30,0,0.0175,cobre,otra afección 0.05
+favorable,7,30,3,0.2477,cobre,otra afección 0.05
+favorable,7,30,10,0.9737,triazol,otra afección 0.05
+favorable,7,30,30,1.0,triazol,otra afección 0.05
+favorable,10,0,0,0.3602,triazol,otra afección 0.05
+favorable,10,10,0,0.1584,triazol,otra afección 0.05
+favorable,10,10,1,0.3209,triazol,otra afección 0.05
+favorable,10,10,3,0.6965,triazol,otra afección 0.05
+favorable,10,10,10,0.995,triazol,otra afección 0.05
+favorable,10,30,0,0.0175,triazol,otra afección 0.05
+favorable,10,30,3,0.2477,triazol,otra afección 0.05
+favorable,10,30,10,0.9737,triazol,otra afección 0.05
+favorable,10,30,30,1.0,triazol,otra afección 0.05
+desfavorable,3,0,0,0.0599,nada,otra afección 0.4
+desfavorable,3,10,0,0.0185,nada,otra afección 0.4
+desfavorable,3,10,1,0.0498,nada,otra afección 0.4
+desfavorable,3,10,3,0.2598,nada,otra afección 0.4
+desfavorable,3,10,10,0.9781,cobre,otra afección 0.4
+desfavorable,3,30,0,0.0016,nada,otra afección 0.4
+desfavorable,3,30,3,0.0343,nada,otra afección 0.4
+desfavorable,3,30,10,0.8935,cobre,otra afección 0.4
+desfavorable,3,30,30,1.0,cobre,otra afección 0.4
+desfavorable,7,0,0,0.0599,cobre,otra afección 0.4
+desfavorable,7,10,0,0.0185,cobre,otra afección 0.4
+desfavorable,7,10,1,0.0498,cobre,otra afección 0.4
+desfavorable,7,10,3,0.2598,cobre,otra afección 0.4
+desfavorable,7,10,10,0.9781,triazol,otra afección 0.4
+desfavorable,7,30,0,0.0016,cobre,otra afección 0.4
+desfavorable,7,30,3,0.0343,cobre,otra afección 0.4
+desfavorable,7,30,10,0.8935,triazol,otra afección 0.4
+desfavorable,7,30,30,1.0,triazol,otra afección 0.4
+desfavorable,10,0,0,0.0599,triazol,otra afección 0.4
+desfavorable,10,10,0,0.0185,cobre,otra afección 0.4
+desfavorable,10,10,1,0.0498,triazol,otra afección 0.4
+desfavorable,10,10,3,0.2598,triazol,otra afección 0.4
+desfavorable,10,10,10,0.9781,triazol,otra afección 0.4
+desfavorable,10,30,0,0.0016,cobre,otra afección 0.4
+desfavorable,10,30,3,0.0343,triazol,otra afección 0.4
+desfavorable,10,30,10,0.8935,triazol,otra afección 0.4
+desfavorable,10,30,30,1.0,triazol,otra afección 0.4
+neutro,3,0,0,0.171,nada,otra afección 0.4
+neutro,3,10,0,0.0617,nada,otra afección 0.4
+neutro,3,10,1,0.1438,nada,otra afección 0.4
+neutro,3,10,3,0.4725,cobre,otra afección 0.4
+neutro,3,10,10,0.9865,cobre,otra afección 0.4
+neutro,3,30,0,0.0059,nada,otra afección 0.4
+neutro,3,30,3,0.1,nada,otra afección 0.4
+neutro,3,30,10,0.9342,cobre,otra afección 0.4
+neutro,3,30,30,1.0,cobre,otra afección 0.4
+neutro,7,0,0,0.171,cobre,otra afección 0.4
+neutro,7,10,0,0.0617,cobre,otra afección 0.4
+neutro,7,10,1,0.1438,cobre,otra afección 0.4
+neutro,7,10,3,0.4725,cobre,otra afección 0.4
+neutro,7,10,10,0.9865,triazol,otra afección 0.4
+neutro,7,30,0,0.0059,cobre,otra afección 0.4
+neutro,7,30,3,0.1,cobre,otra afección 0.4
+neutro,7,30,10,0.9342,triazol,otra afección 0.4
+neutro,7,30,30,1.0,triazol,otra afección 0.4
+neutro,10,0,0,0.171,triazol,otra afección 0.4
+neutro,10,10,0,0.0617,triazol,otra afección 0.4
+neutro,10,10,1,0.1438,triazol,otra afección 0.4
+neutro,10,10,3,0.4725,triazol,otra afección 0.4
+neutro,10,10,10,0.9865,triazol,otra afección 0.4
+neutro,10,30,0,0.0059,cobre,otra afección 0.4
+neutro,10,30,3,0.1,triazol,otra afección 0.4
+neutro,10,30,10,0.9342,triazol,otra afección 0.4
+neutro,10,30,30,1.0,triazol,otra afección 0.4
+favorable,3,0,0,0.3602,nada,otra afección 0.4
+favorable,3,10,0,0.1643,nada,otra afección 0.4
+favorable,3,10,1,0.3116,nada,otra afección 0.4
+favorable,3,10,3,0.6623,cobre,otra afección 0.4
+favorable,3,10,10,0.9922,cobre,otra afección 0.4
+favorable,3,30,0,0.0201,nada,otra afección 0.4
+favorable,3,30,3,0.226,nada,otra afección 0.4
+favorable,3,30,10,0.9614,cobre,otra afección 0.4
+favorable,3,30,30,1.0,cobre,otra afección 0.4
+favorable,7,0,0,0.3602,cobre,otra afección 0.4
+favorable,7,10,0,0.1643,cobre,otra afección 0.4
+favorable,7,10,1,0.3116,cobre,otra afección 0.4
+favorable,7,10,3,0.6623,cobre,otra afección 0.4
+favorable,7,10,10,0.9922,triazol,otra afección 0.4
+favorable,7,30,0,0.0201,cobre,otra afección 0.4
+favorable,7,30,3,0.226,cobre,otra afección 0.4
+favorable,7,30,10,0.9614,triazol,otra afección 0.4
+favorable,7,30,30,1.0,triazol,otra afección 0.4
+favorable,10,0,0,0.3602,triazol,otra afección 0.4
+favorable,10,10,0,0.1643,triazol,otra afección 0.4
+favorable,10,10,1,0.3116,triazol,otra afección 0.4
+favorable,10,10,3,0.6623,triazol,otra afección 0.4
+favorable,10,10,10,0.9922,triazol,otra afección 0.4
+favorable,10,30,0,0.0201,triazol,otra afección 0.4
+favorable,10,30,3,0.226,triazol,otra afección 0.4
+favorable,10,30,10,0.9614,triazol,otra afección 0.4
+favorable,10,30,30,1.0,triazol,otra afección 0.4
+desfavorable,3,0,0,0.0308,nada,clima neutro: P(R≥medio) 0.25
+desfavorable,3,10,0,0.0087,nada,clima neutro: P(R≥medio) 0.25
+desfavorable,3,10,1,0.0265,nada,clima neutro: P(R≥medio) 0.25
+desfavorable,3,10,3,0.1921,nada,clima neutro: P(R≥medio) 0.25
+desfavorable,3,10,10,0.9839,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,3,30,0,0.0007,nada,clima neutro: P(R≥medio) 0.25
+desfavorable,3,30,3,0.0195,nada,clima neutro: P(R≥medio) 0.25
+desfavorable,3,30,10,0.9142,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,3,30,30,1.0,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,7,0,0,0.0308,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,7,10,0,0.0087,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,7,10,1,0.0265,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,7,10,3,0.1921,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,7,10,10,0.9839,triazol,clima neutro: P(R≥medio) 0.25
+desfavorable,7,30,0,0.0007,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,7,30,3,0.0195,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,7,30,10,0.9142,triazol,clima neutro: P(R≥medio) 0.25
+desfavorable,7,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.25
+desfavorable,10,0,0,0.0308,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,10,10,0,0.0087,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,10,10,1,0.0265,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,10,10,3,0.1921,triazol,clima neutro: P(R≥medio) 0.25
+desfavorable,10,10,10,0.9839,triazol,clima neutro: P(R≥medio) 0.25
+desfavorable,10,30,0,0.0007,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,10,30,3,0.0195,cobre,clima neutro: P(R≥medio) 0.25
+desfavorable,10,30,10,0.9142,triazol,clima neutro: P(R≥medio) 0.25
+desfavorable,10,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.25
+neutro,3,0,0,0.0955,nada,clima neutro: P(R≥medio) 0.25
+neutro,3,10,0,0.0297,nada,clima neutro: P(R≥medio) 0.25
+neutro,3,10,1,0.0821,nada,clima neutro: P(R≥medio) 0.25
+neutro,3,10,3,0.3889,nada,clima neutro: P(R≥medio) 0.25
+neutro,3,10,10,0.9883,cobre,clima neutro: P(R≥medio) 0.25
+neutro,3,30,0,0.0024,nada,clima neutro: P(R≥medio) 0.25
+neutro,3,30,3,0.0601,nada,clima neutro: P(R≥medio) 0.25
+neutro,3,30,10,0.9396,cobre,clima neutro: P(R≥medio) 0.25
+neutro,3,30,30,1.0,cobre,clima neutro: P(R≥medio) 0.25
+neutro,7,0,0,0.0955,cobre,clima neutro: P(R≥medio) 0.25
+neutro,7,10,0,0.0297,cobre,clima neutro: P(R≥medio) 0.25
+neutro,7,10,1,0.0821,cobre,clima neutro: P(R≥medio) 0.25
+neutro,7,10,3,0.3889,cobre,clima neutro: P(R≥medio) 0.25
+neutro,7,10,10,0.9883,triazol,clima neutro: P(R≥medio) 0.25
+neutro,7,30,0,0.0024,cobre,clima neutro: P(R≥medio) 0.25
+neutro,7,30,3,0.0601,cobre,clima neutro: P(R≥medio) 0.25
+neutro,7,30,10,0.9396,triazol,clima neutro: P(R≥medio) 0.25
+neutro,7,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,0,0,0.0955,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,10,0,0.0297,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,10,1,0.0821,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,10,3,0.3889,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,10,10,0.9883,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,30,0,0.0024,cobre,clima neutro: P(R≥medio) 0.25
+neutro,10,30,3,0.0601,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,30,10,0.9396,triazol,clima neutro: P(R≥medio) 0.25
+neutro,10,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.25
+favorable,3,0,0,0.2211,nada,clima neutro: P(R≥medio) 0.25
+favorable,3,10,0,0.0815,nada,clima neutro: P(R≥medio) 0.25
+favorable,3,10,1,0.1912,nada,clima neutro: P(R≥medio) 0.25
+favorable,3,10,3,0.5691,cobre,clima neutro: P(R≥medio) 0.25
+favorable,3,10,10,0.9918,cobre,clima neutro: P(R≥medio) 0.25
+favorable,3,30,0,0.0076,nada,clima neutro: P(R≥medio) 0.25
+favorable,3,30,3,0.1402,nada,clima neutro: P(R≥medio) 0.25
+favorable,3,30,10,0.9577,cobre,clima neutro: P(R≥medio) 0.25
+favorable,3,30,30,1.0,cobre,clima neutro: P(R≥medio) 0.25
+favorable,7,0,0,0.2211,cobre,clima neutro: P(R≥medio) 0.25
+favorable,7,10,0,0.0815,cobre,clima neutro: P(R≥medio) 0.25
+favorable,7,10,1,0.1912,cobre,clima neutro: P(R≥medio) 0.25
+favorable,7,10,3,0.5691,cobre,clima neutro: P(R≥medio) 0.25
+favorable,7,10,10,0.9918,triazol,clima neutro: P(R≥medio) 0.25
+favorable,7,30,0,0.0076,cobre,clima neutro: P(R≥medio) 0.25
+favorable,7,30,3,0.1402,cobre,clima neutro: P(R≥medio) 0.25
+favorable,7,30,10,0.9577,triazol,clima neutro: P(R≥medio) 0.25
+favorable,7,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,0,0,0.2211,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,10,0,0.0815,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,10,1,0.1912,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,10,3,0.5691,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,10,10,0.9918,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,30,0,0.0076,cobre,clima neutro: P(R≥medio) 0.25
+favorable,10,30,3,0.1402,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,30,10,0.9577,triazol,clima neutro: P(R≥medio) 0.25
+favorable,10,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.25
+desfavorable,3,0,0,0.1312,nada,clima neutro: P(R≥medio) 0.65
+desfavorable,3,10,0,0.0435,nada,clima neutro: P(R≥medio) 0.65
+desfavorable,3,10,1,0.1125,nada,clima neutro: P(R≥medio) 0.65
+desfavorable,3,10,3,0.4405,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,3,10,10,0.988,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,3,30,0,0.0037,nada,clima neutro: P(R≥medio) 0.65
+desfavorable,3,30,3,0.0816,nada,clima neutro: P(R≥medio) 0.65
+desfavorable,3,30,10,0.9389,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,3,30,30,1.0,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,7,0,0,0.1312,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,7,10,0,0.0435,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,7,10,1,0.1125,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,7,10,3,0.4405,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,7,10,10,0.988,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,7,30,0,0.0037,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,7,30,3,0.0816,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,7,30,10,0.9389,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,7,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,0,0,0.1312,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,10,0,0.0435,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,10,1,0.1125,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,10,3,0.4405,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,10,10,0.988,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,30,0,0.0037,cobre,clima neutro: P(R≥medio) 0.65
+desfavorable,10,30,3,0.0816,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,30,10,0.9389,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,10,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.65
+neutro,3,0,0,0.3181,nada,clima neutro: P(R≥medio) 0.65
+neutro,3,10,0,0.1323,nada,clima neutro: P(R≥medio) 0.65
+neutro,3,10,1,0.278,nada,clima neutro: P(R≥medio) 0.65
+neutro,3,10,3,0.6585,cobre,clima neutro: P(R≥medio) 0.65
+neutro,3,10,10,0.9937,cobre,clima neutro: P(R≥medio) 0.65
+neutro,3,30,0,0.0138,nada,clima neutro: P(R≥medio) 0.65
+neutro,3,30,3,0.2068,nada,clima neutro: P(R≥medio) 0.65
+neutro,3,30,10,0.9674,cobre,clima neutro: P(R≥medio) 0.65
+neutro,3,30,30,1.0,cobre,clima neutro: P(R≥medio) 0.65
+neutro,7,0,0,0.3181,cobre,clima neutro: P(R≥medio) 0.65
+neutro,7,10,0,0.1323,cobre,clima neutro: P(R≥medio) 0.65
+neutro,7,10,1,0.278,cobre,clima neutro: P(R≥medio) 0.65
+neutro,7,10,3,0.6585,cobre,clima neutro: P(R≥medio) 0.65
+neutro,7,10,10,0.9937,triazol,clima neutro: P(R≥medio) 0.65
+neutro,7,30,0,0.0138,cobre,clima neutro: P(R≥medio) 0.65
+neutro,7,30,3,0.2068,cobre,clima neutro: P(R≥medio) 0.65
+neutro,7,30,10,0.9674,triazol,clima neutro: P(R≥medio) 0.65
+neutro,7,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,0,0,0.3181,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,10,0,0.1323,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,10,1,0.278,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,10,3,0.6585,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,10,10,0.9937,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,30,0,0.0138,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,30,3,0.2068,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,30,10,0.9674,triazol,clima neutro: P(R≥medio) 0.65
+neutro,10,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.65
+favorable,3,0,0,0.5677,cobre,clima neutro: P(R≥medio) 0.65
+favorable,3,10,0,0.3177,nada,clima neutro: P(R≥medio) 0.65
+favorable,3,10,1,0.5162,cobre,clima neutro: P(R≥medio) 0.65
+favorable,3,10,3,0.8196,cobre,clima neutro: P(R≥medio) 0.65
+favorable,3,10,10,0.997,cobre,clima neutro: P(R≥medio) 0.65
+favorable,3,30,0,0.0469,nada,clima neutro: P(R≥medio) 0.65
+favorable,3,30,3,0.4119,nada,clima neutro: P(R≥medio) 0.65
+favorable,3,30,10,0.9841,cobre,clima neutro: P(R≥medio) 0.65
+favorable,3,30,30,1.0,cobre,clima neutro: P(R≥medio) 0.65
+favorable,7,0,0,0.5677,cobre,clima neutro: P(R≥medio) 0.65
+favorable,7,10,0,0.3177,cobre,clima neutro: P(R≥medio) 0.65
+favorable,7,10,1,0.5162,cobre,clima neutro: P(R≥medio) 0.65
+favorable,7,10,3,0.8196,triazol,clima neutro: P(R≥medio) 0.65
+favorable,7,10,10,0.997,triazol,clima neutro: P(R≥medio) 0.65
+favorable,7,30,0,0.0469,cobre,clima neutro: P(R≥medio) 0.65
+favorable,7,30,3,0.4119,cobre,clima neutro: P(R≥medio) 0.65
+favorable,7,30,10,0.9841,triazol,clima neutro: P(R≥medio) 0.65
+favorable,7,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,0,0,0.5677,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,10,0,0.3177,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,10,1,0.5162,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,10,3,0.8196,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,10,10,0.997,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,30,0,0.0469,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,30,3,0.4119,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,30,10,0.9841,triazol,clima neutro: P(R≥medio) 0.65
+favorable,10,30,30,1.0,triazol,clima neutro: P(R≥medio) 0.65
+desfavorable,3,0,0,0.0933,nada,pendiente del clima 0.25
+desfavorable,3,10,0,0.0296,nada,pendiente del clima 0.25
+desfavorable,3,10,1,0.0798,nada,pendiente del clima 0.25
+desfavorable,3,10,3,0.3616,nada,pendiente del clima 0.25
+desfavorable,3,10,10,0.9847,cobre,pendiente del clima 0.25
+desfavorable,3,30,0,0.0024,nada,pendiente del clima 0.25
+desfavorable,3,30,3,0.0577,nada,pendiente del clima 0.25
+desfavorable,3,30,10,0.9225,cobre,pendiente del clima 0.25
+desfavorable,3,30,30,1.0,cobre,pendiente del clima 0.25
+desfavorable,7,0,0,0.0933,cobre,pendiente del clima 0.25
+desfavorable,7,10,0,0.0296,cobre,pendiente del clima 0.25
+desfavorable,7,10,1,0.0798,cobre,pendiente del clima 0.25
+desfavorable,7,10,3,0.3616,cobre,pendiente del clima 0.25
+desfavorable,7,10,10,0.9847,triazol,pendiente del clima 0.25
+desfavorable,7,30,0,0.0024,cobre,pendiente del clima 0.25
+desfavorable,7,30,3,0.0577,cobre,pendiente del clima 0.25
+desfavorable,7,30,10,0.9225,triazol,pendiente del clima 0.25
+desfavorable,7,30,30,1.0,triazol,pendiente del clima 0.25
+desfavorable,10,0,0,0.0933,triazol,pendiente del clima 0.25
+desfavorable,10,10,0,0.0296,triazol,pendiente del clima 0.25
+desfavorable,10,10,1,0.0798,triazol,pendiente del clima 0.25
+desfavorable,10,10,3,0.3616,triazol,pendiente del clima 0.25
+desfavorable,10,10,10,0.9847,triazol,pendiente del clima 0.25
+desfavorable,10,30,0,0.0024,cobre,pendiente del clima 0.25
+desfavorable,10,30,3,0.0577,triazol,pendiente del clima 0.25
+desfavorable,10,30,10,0.9225,triazol,pendiente del clima 0.25
+desfavorable,10,30,30,1.0,triazol,pendiente del clima 0.25
+neutro,3,0,0,0.1555,nada,pendiente del clima 0.25
+neutro,3,10,0,0.054,nada,pendiente del clima 0.25
+neutro,3,10,1,0.1332,nada,pendiente del clima 0.25
+neutro,3,10,3,0.4674,cobre,pendiente del clima 0.25
+neutro,3,10,10,0.988,cobre,pendiente del clima 0.25
+neutro,3,30,0,0.0048,nada,pendiente del clima 0.25
+neutro,3,30,3,0.0961,nada,pendiente del clima 0.25
+neutro,3,30,10,0.9391,cobre,pendiente del clima 0.25
+neutro,3,30,30,1.0,cobre,pendiente del clima 0.25
+neutro,7,0,0,0.1555,cobre,pendiente del clima 0.25
+neutro,7,10,0,0.054,cobre,pendiente del clima 0.25
+neutro,7,10,1,0.1332,cobre,pendiente del clima 0.25
+neutro,7,10,3,0.4674,cobre,pendiente del clima 0.25
+neutro,7,10,10,0.988,triazol,pendiente del clima 0.25
+neutro,7,30,0,0.0048,cobre,pendiente del clima 0.25
+neutro,7,30,3,0.0961,cobre,pendiente del clima 0.25
+neutro,7,30,10,0.9391,triazol,pendiente del clima 0.25
+neutro,7,30,30,1.0,triazol,pendiente del clima 0.25
+neutro,10,0,0,0.1555,triazol,pendiente del clima 0.25
+neutro,10,10,0,0.054,triazol,pendiente del clima 0.25
+neutro,10,10,1,0.1332,triazol,pendiente del clima 0.25
+neutro,10,10,3,0.4674,triazol,pendiente del clima 0.25
+neutro,10,10,10,0.988,triazol,pendiente del clima 0.25
+neutro,10,30,0,0.0048,cobre,pendiente del clima 0.25
+neutro,10,30,3,0.0961,triazol,pendiente del clima 0.25
+neutro,10,30,10,0.9391,triazol,pendiente del clima 0.25
+neutro,10,30,30,1.0,triazol,pendiente del clima 0.25
+favorable,3,0,0,0.239,nada,pendiente del clima 0.25
+favorable,3,10,0,0.0928,nada,pendiente del clima 0.25
+favorable,3,10,1,0.206,nada,pendiente del clima 0.25
+favorable,3,10,3,0.5666,cobre,pendiente del clima 0.25
+favorable,3,10,10,0.9908,cobre,pendiente del clima 0.25
+favorable,3,30,0,0.0093,nada,pendiente del clima 0.25
+favorable,3,30,3,0.1495,nada,pendiente del clima 0.25
+favorable,3,30,10,0.9529,cobre,pendiente del clima 0.25
+favorable,3,30,30,1.0,cobre,pendiente del clima 0.25
+favorable,7,0,0,0.239,cobre,pendiente del clima 0.25
+favorable,7,10,0,0.0928,cobre,pendiente del clima 0.25
+favorable,7,10,1,0.206,cobre,pendiente del clima 0.25
+favorable,7,10,3,0.5666,cobre,pendiente del clima 0.25
+favorable,7,10,10,0.9908,triazol,pendiente del clima 0.25
+favorable,7,30,0,0.0093,cobre,pendiente del clima 0.25
+favorable,7,30,3,0.1495,cobre,pendiente del clima 0.25
+favorable,7,30,10,0.9529,triazol,pendiente del clima 0.25
+favorable,7,30,30,1.0,triazol,pendiente del clima 0.25
+favorable,10,0,0,0.239,triazol,pendiente del clima 0.25
+favorable,10,10,0,0.0928,triazol,pendiente del clima 0.25
+favorable,10,10,1,0.206,triazol,pendiente del clima 0.25
+favorable,10,10,3,0.5666,triazol,pendiente del clima 0.25
+favorable,10,10,10,0.9908,triazol,pendiente del clima 0.25
+favorable,10,30,0,0.0093,triazol,pendiente del clima 0.25
+favorable,10,30,3,0.1495,triazol,pendiente del clima 0.25
+favorable,10,30,10,0.9529,triazol,pendiente del clima 0.25
+favorable,10,30,30,1.0,triazol,pendiente del clima 0.25
+desfavorable,3,0,0,0.03,nada,pendiente del clima 1.0
+desfavorable,3,10,0,0.0085,nada,pendiente del clima 1.0
+desfavorable,3,10,1,0.0258,nada,pendiente del clima 1.0
+desfavorable,3,10,3,0.187,nada,pendiente del clima 1.0
+desfavorable,3,10,10,0.9828,cobre,pendiente del clima 1.0
+desfavorable,3,30,0,0.0006,nada,pendiente del clima 1.0
+desfavorable,3,30,3,0.019,nada,pendiente del clima 1.0
+desfavorable,3,30,10,0.9089,cobre,pendiente del clima 1.0
+desfavorable,3,30,30,1.0,cobre,pendiente del clima 1.0
+desfavorable,7,0,0,0.03,cobre,pendiente del clima 1.0
+desfavorable,7,10,0,0.0085,cobre,pendiente del clima 1.0
+desfavorable,7,10,1,0.0258,cobre,pendiente del clima 1.0
+desfavorable,7,10,3,0.187,cobre,pendiente del clima 1.0
+desfavorable,7,10,10,0.9828,triazol,pendiente del clima 1.0
+desfavorable,7,30,0,0.0006,cobre,pendiente del clima 1.0
+desfavorable,7,30,3,0.019,cobre,pendiente del clima 1.0
+desfavorable,7,30,10,0.9089,triazol,pendiente del clima 1.0
+desfavorable,7,30,30,1.0,triazol,pendiente del clima 1.0
+desfavorable,10,0,0,0.03,cobre,pendiente del clima 1.0
+desfavorable,10,10,0,0.0085,cobre,pendiente del clima 1.0
+desfavorable,10,10,1,0.0258,cobre,pendiente del clima 1.0
+desfavorable,10,10,3,0.187,triazol,pendiente del clima 1.0
+desfavorable,10,10,10,0.9828,triazol,pendiente del clima 1.0
+desfavorable,10,30,0,0.0006,cobre,pendiente del clima 1.0
+desfavorable,10,30,3,0.019,cobre,pendiente del clima 1.0
+desfavorable,10,30,10,0.9089,triazol,pendiente del clima 1.0
+desfavorable,10,30,30,1.0,triazol,pendiente del clima 1.0
+neutro,3,0,0,0.2192,nada,pendiente del clima 1.0
+neutro,3,10,0,0.0788,nada,pendiente del clima 1.0
+neutro,3,10,1,0.1903,nada,pendiente del clima 1.0
+neutro,3,10,3,0.5845,cobre,pendiente del clima 1.0
+neutro,3,10,10,0.9929,cobre,pendiente del clima 1.0
+neutro,3,30,0,0.0071,nada,pendiente del clima 1.0
+neutro,3,30,3,0.1407,nada,pendiente del clima 1.0
+neutro,3,30,10,0.9632,cobre,pendiente del clima 1.0
+neutro,3,30,30,1.0,cobre,pendiente del clima 1.0
+neutro,7,0,0,0.2192,cobre,pendiente del clima 1.0
+neutro,7,10,0,0.0788,cobre,pendiente del clima 1.0
+neutro,7,10,1,0.1903,cobre,pendiente del clima 1.0
+neutro,7,10,3,0.5845,cobre,pendiente del clima 1.0
+neutro,7,10,10,0.9929,triazol,pendiente del clima 1.0
+neutro,7,30,0,0.0071,cobre,pendiente del clima 1.0
+neutro,7,30,3,0.1407,cobre,pendiente del clima 1.0
+neutro,7,30,10,0.9632,triazol,pendiente del clima 1.0
+neutro,7,30,30,1.0,triazol,pendiente del clima 1.0
+neutro,10,0,0,0.2192,triazol,pendiente del clima 1.0
+neutro,10,10,0,0.0788,triazol,pendiente del clima 1.0
+neutro,10,10,1,0.1903,triazol,pendiente del clima 1.0
+neutro,10,10,3,0.5845,triazol,pendiente del clima 1.0
+neutro,10,10,10,0.9929,triazol,pendiente del clima 1.0
+neutro,10,30,0,0.0071,cobre,pendiente del clima 1.0
+neutro,10,30,3,0.1407,triazol,pendiente del clima 1.0
+neutro,10,30,10,0.9632,triazol,pendiente del clima 1.0
+neutro,10,30,30,1.0,triazol,pendiente del clima 1.0
+favorable,3,0,0,0.6175,cobre,pendiente del clima 1.0
+favorable,3,10,0,0.362,nada,pendiente del clima 1.0
+favorable,3,10,1,0.5678,cobre,pendiente del clima 1.0
+favorable,3,10,3,0.8503,cobre,pendiente del clima 1.0
+favorable,3,10,10,0.9976,cobre,pendiente del clima 1.0
+favorable,3,30,0,0.0557,nada,pendiente del clima 1.0
+favorable,3,30,3,0.4638,cobre,pendiente del clima 1.0
+favorable,3,30,10,0.9874,cobre,pendiente del clima 1.0
+favorable,3,30,30,1.0,cobre,pendiente del clima 1.0
+favorable,7,0,0,0.6175,cobre,pendiente del clima 1.0
+favorable,7,10,0,0.362,cobre,pendiente del clima 1.0
+favorable,7,10,1,0.5678,cobre,pendiente del clima 1.0
+favorable,7,10,3,0.8503,triazol,pendiente del clima 1.0
+favorable,7,10,10,0.9976,triazol,pendiente del clima 1.0
+favorable,7,30,0,0.0557,cobre,pendiente del clima 1.0
+favorable,7,30,3,0.4638,cobre,pendiente del clima 1.0
+favorable,7,30,10,0.9874,triazol,pendiente del clima 1.0
+favorable,7,30,30,1.0,triazol,pendiente del clima 1.0
+favorable,10,0,0,0.6175,triazol,pendiente del clima 1.0
+favorable,10,10,0,0.362,triazol,pendiente del clima 1.0
+favorable,10,10,1,0.5678,triazol,pendiente del clima 1.0
+favorable,10,10,3,0.8503,triazol,pendiente del clima 1.0
+favorable,10,10,10,0.9976,triazol,pendiente del clima 1.0
+favorable,10,30,0,0.0557,triazol,pendiente del clima 1.0
+favorable,10,30,3,0.4638,triazol,pendiente del clima 1.0
+favorable,10,30,10,0.9874,triazol,pendiente del clima 1.0
+favorable,10,30,30,1.0,triazol,pendiente del clima 1.0
+desfavorable,3,0,0,0.0599,nada,matriz de confusión solo BRACOL
+desfavorable,3,10,0,0.0169,nada,matriz de confusión solo BRACOL
+desfavorable,3,10,1,0.0442,nada,matriz de confusión solo BRACOL
+desfavorable,3,10,3,0.2275,nada,matriz de confusión solo BRACOL
+desfavorable,3,10,10,0.9731,cobre,matriz de confusión solo BRACOL
+desfavorable,3,30,0,0.0012,nada,matriz de confusión solo BRACOL
+desfavorable,3,30,3,0.0238,nada,matriz de confusión solo BRACOL
+desfavorable,3,30,10,0.8543,cobre,matriz de confusión solo BRACOL
+desfavorable,3,30,30,1.0,cobre,matriz de confusión solo BRACOL
+desfavorable,7,0,0,0.0599,cobre,matriz de confusión solo BRACOL
+desfavorable,7,10,0,0.0169,cobre,matriz de confusión solo BRACOL
+desfavorable,7,10,1,0.0442,cobre,matriz de confusión solo BRACOL
+desfavorable,7,10,3,0.2275,cobre,matriz de confusión solo BRACOL
+desfavorable,7,10,10,0.9731,triazol,matriz de confusión solo BRACOL
+desfavorable,7,30,0,0.0012,cobre,matriz de confusión solo BRACOL
+desfavorable,7,30,3,0.0238,cobre,matriz de confusión solo BRACOL
+desfavorable,7,30,10,0.8543,triazol,matriz de confusión solo BRACOL
+desfavorable,7,30,30,1.0,triazol,matriz de confusión solo BRACOL
+desfavorable,10,0,0,0.0599,triazol,matriz de confusión solo BRACOL
+desfavorable,10,10,0,0.0169,cobre,matriz de confusión solo BRACOL
+desfavorable,10,10,1,0.0442,triazol,matriz de confusión solo BRACOL
+desfavorable,10,10,3,0.2275,triazol,matriz de confusión solo BRACOL
+desfavorable,10,10,10,0.9731,triazol,matriz de confusión solo BRACOL
+desfavorable,10,30,0,0.0012,cobre,matriz de confusión solo BRACOL
+desfavorable,10,30,3,0.0238,triazol,matriz de confusión solo BRACOL
+desfavorable,10,30,10,0.8543,triazol,matriz de confusión solo BRACOL
+desfavorable,10,30,30,1.0,triazol,matriz de confusión solo BRACOL
+neutro,3,0,0,0.171,nada,matriz de confusión solo BRACOL
+neutro,3,10,0,0.0568,nada,matriz de confusión solo BRACOL
+neutro,3,10,1,0.1302,nada,matriz de confusión solo BRACOL
+neutro,3,10,3,0.4358,cobre,matriz de confusión solo BRACOL
+neutro,3,10,10,0.9836,cobre,matriz de confusión solo BRACOL
+neutro,3,30,0,0.0045,nada,matriz de confusión solo BRACOL
+neutro,3,30,3,0.0731,nada,matriz de confusión solo BRACOL
+neutro,3,30,10,0.9103,cobre,matriz de confusión solo BRACOL
+neutro,3,30,30,1.0,cobre,matriz de confusión solo BRACOL
+neutro,7,0,0,0.171,cobre,matriz de confusión solo BRACOL
+neutro,7,10,0,0.0568,cobre,matriz de confusión solo BRACOL
+neutro,7,10,1,0.1302,cobre,matriz de confusión solo BRACOL
+neutro,7,10,3,0.4358,cobre,matriz de confusión solo BRACOL
+neutro,7,10,10,0.9836,triazol,matriz de confusión solo BRACOL
+neutro,7,30,0,0.0045,cobre,matriz de confusión solo BRACOL
+neutro,7,30,3,0.0731,cobre,matriz de confusión solo BRACOL
+neutro,7,30,10,0.9103,triazol,matriz de confusión solo BRACOL
+neutro,7,30,30,1.0,triazol,matriz de confusión solo BRACOL
+neutro,10,0,0,0.171,triazol,matriz de confusión solo BRACOL
+neutro,10,10,0,0.0568,triazol,matriz de confusión solo BRACOL
+neutro,10,10,1,0.1302,triazol,matriz de confusión solo BRACOL
+neutro,10,10,3,0.4358,triazol,matriz de confusión solo BRACOL
+neutro,10,10,10,0.9836,triazol,matriz de confusión solo BRACOL
+neutro,10,30,0,0.0045,cobre,matriz de confusión solo BRACOL
+neutro,10,30,3,0.0731,triazol,matriz de confusión solo BRACOL
+neutro,10,30,10,0.9103,triazol,matriz de confusión solo BRACOL
+neutro,10,30,30,1.0,triazol,matriz de confusión solo BRACOL
+favorable,3,0,0,0.3602,nada,matriz de confusión solo BRACOL
+favorable,3,10,0,0.1534,nada,matriz de confusión solo BRACOL
+favorable,3,10,1,0.29,nada,matriz de confusión solo BRACOL
+favorable,3,10,3,0.6332,cobre,matriz de confusión solo BRACOL
+favorable,3,10,10,0.9905,cobre,matriz de confusión solo BRACOL
+favorable,3,30,0,0.0155,nada,matriz de confusión solo BRACOL
+favorable,3,30,3,0.177,nada,matriz de confusión solo BRACOL
+favorable,3,30,10,0.9473,cobre,matriz de confusión solo BRACOL
+favorable,3,30,30,1.0,cobre,matriz de confusión solo BRACOL
+favorable,7,0,0,0.3602,cobre,matriz de confusión solo BRACOL
+favorable,7,10,0,0.1534,cobre,matriz de confusión solo BRACOL
+favorable,7,10,1,0.29,cobre,matriz de confusión solo BRACOL
+favorable,7,10,3,0.6332,cobre,matriz de confusión solo BRACOL
+favorable,7,10,10,0.9905,triazol,matriz de confusión solo BRACOL
+favorable,7,30,0,0.0155,cobre,matriz de confusión solo BRACOL
+favorable,7,30,3,0.177,cobre,matriz de confusión solo BRACOL
+favorable,7,30,10,0.9473,triazol,matriz de confusión solo BRACOL
+favorable,7,30,30,1.0,triazol,matriz de confusión solo BRACOL
+favorable,10,0,0,0.3602,triazol,matriz de confusión solo BRACOL
+favorable,10,10,0,0.1534,triazol,matriz de confusión solo BRACOL
+favorable,10,10,1,0.29,triazol,matriz de confusión solo BRACOL
+favorable,10,10,3,0.6332,triazol,matriz de confusión solo BRACOL
+favorable,10,10,10,0.9905,triazol,matriz de confusión solo BRACOL
+favorable,10,30,0,0.0155,triazol,matriz de confusión solo BRACOL
+favorable,10,30,3,0.177,triazol,matriz de confusión solo BRACOL
+favorable,10,30,10,0.9473,triazol,matriz de confusión solo BRACOL
+favorable,10,30,30,1.0,triazol,matriz de confusión solo BRACOL
+desfavorable,3,0,0,0.0599,nada,matriz de confusión solo RoCoLe
+desfavorable,3,10,0,0.0196,nada,matriz de confusión solo RoCoLe
+desfavorable,3,10,1,0.0409,nada,matriz de confusión solo RoCoLe
+desfavorable,3,10,3,0.1541,nada,matriz de confusión solo RoCoLe
+desfavorable,3,10,10,0.9217,cobre,matriz de confusión solo RoCoLe
+desfavorable,3,30,0,0.0019,nada,matriz de confusión solo RoCoLe
+desfavorable,3,30,3,0.0187,nada,matriz de confusión solo RoCoLe
+desfavorable,3,30,10,0.6704,cobre,matriz de confusión solo RoCoLe
+desfavorable,3,30,30,1.0,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,0,0,0.0599,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,10,0,0.0196,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,10,1,0.0409,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,10,3,0.1541,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,10,10,0.9217,triazol,matriz de confusión solo RoCoLe
+desfavorable,7,30,0,0.0019,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,30,3,0.0187,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,30,10,0.6704,cobre,matriz de confusión solo RoCoLe
+desfavorable,7,30,30,1.0,triazol,matriz de confusión solo RoCoLe
+desfavorable,10,0,0,0.0599,triazol,matriz de confusión solo RoCoLe
+desfavorable,10,10,0,0.0196,cobre,matriz de confusión solo RoCoLe
+desfavorable,10,10,1,0.0409,triazol,matriz de confusión solo RoCoLe
+desfavorable,10,10,3,0.1541,triazol,matriz de confusión solo RoCoLe
+desfavorable,10,10,10,0.9217,triazol,matriz de confusión solo RoCoLe
+desfavorable,10,30,0,0.0019,cobre,matriz de confusión solo RoCoLe
+desfavorable,10,30,3,0.0187,cobre,matriz de confusión solo RoCoLe
+desfavorable,10,30,10,0.6704,triazol,matriz de confusión solo RoCoLe
+desfavorable,10,30,30,1.0,triazol,matriz de confusión solo RoCoLe
+neutro,3,0,0,0.171,nada,matriz de confusión solo RoCoLe
+neutro,3,10,0,0.065,nada,matriz de confusión solo RoCoLe
+neutro,3,10,1,0.1229,nada,matriz de confusión solo RoCoLe
+neutro,3,10,3,0.3419,nada,matriz de confusión solo RoCoLe
+neutro,3,10,10,0.9546,cobre,matriz de confusión solo RoCoLe
+neutro,3,30,0,0.0071,nada,matriz de confusión solo RoCoLe
+neutro,3,30,3,0.0604,nada,matriz de confusión solo RoCoLe
+neutro,3,30,10,0.8032,cobre,matriz de confusión solo RoCoLe
+neutro,3,30,30,1.0,cobre,matriz de confusión solo RoCoLe
+neutro,7,0,0,0.171,cobre,matriz de confusión solo RoCoLe
+neutro,7,10,0,0.065,cobre,matriz de confusión solo RoCoLe
+neutro,7,10,1,0.1229,cobre,matriz de confusión solo RoCoLe
+neutro,7,10,3,0.3419,cobre,matriz de confusión solo RoCoLe
+neutro,7,10,10,0.9546,triazol,matriz de confusión solo RoCoLe
+neutro,7,30,0,0.0071,cobre,matriz de confusión solo RoCoLe
+neutro,7,30,3,0.0604,cobre,matriz de confusión solo RoCoLe
+neutro,7,30,10,0.8032,triazol,matriz de confusión solo RoCoLe
+neutro,7,30,30,1.0,triazol,matriz de confusión solo RoCoLe
+neutro,10,0,0,0.171,triazol,matriz de confusión solo RoCoLe
+neutro,10,10,0,0.065,triazol,matriz de confusión solo RoCoLe
+neutro,10,10,1,0.1229,triazol,matriz de confusión solo RoCoLe
+neutro,10,10,3,0.3419,triazol,matriz de confusión solo RoCoLe
+neutro,10,10,10,0.9546,triazol,matriz de confusión solo RoCoLe
+neutro,10,30,0,0.0071,cobre,matriz de confusión solo RoCoLe
+neutro,10,30,3,0.0604,triazol,matriz de confusión solo RoCoLe
+neutro,10,30,10,0.8032,triazol,matriz de confusión solo RoCoLe
+neutro,10,30,30,1.0,triazol,matriz de confusión solo RoCoLe
+favorable,3,0,0,0.3602,nada,matriz de confusión solo RoCoLe
+favorable,3,10,0,0.1716,nada,matriz de confusión solo RoCoLe
+favorable,3,10,1,0.2801,nada,matriz de confusión solo RoCoLe
+favorable,3,10,3,0.5546,cobre,matriz de confusión solo RoCoLe
+favorable,3,10,10,0.9741,cobre,matriz de confusión solo RoCoLe
+favorable,3,30,0,0.0237,nada,matriz de confusión solo RoCoLe
+favorable,3,30,3,0.156,nada,matriz de confusión solo RoCoLe
+favorable,3,30,10,0.8854,cobre,matriz de confusión solo RoCoLe
+favorable,3,30,30,1.0,cobre,matriz de confusión solo RoCoLe
+favorable,7,0,0,0.3602,cobre,matriz de confusión solo RoCoLe
+favorable,7,10,0,0.1716,cobre,matriz de confusión solo RoCoLe
+favorable,7,10,1,0.2801,cobre,matriz de confusión solo RoCoLe
+favorable,7,10,3,0.5546,cobre,matriz de confusión solo RoCoLe
+favorable,7,10,10,0.9741,triazol,matriz de confusión solo RoCoLe
+favorable,7,30,0,0.0237,cobre,matriz de confusión solo RoCoLe
+favorable,7,30,3,0.156,cobre,matriz de confusión solo RoCoLe
+favorable,7,30,10,0.8854,triazol,matriz de confusión solo RoCoLe
+favorable,7,30,30,1.0,triazol,matriz de confusión solo RoCoLe
+favorable,10,0,0,0.3602,triazol,matriz de confusión solo RoCoLe
+favorable,10,10,0,0.1716,triazol,matriz de confusión solo RoCoLe
+favorable,10,10,1,0.2801,triazol,matriz de confusión solo RoCoLe
+favorable,10,10,3,0.5546,triazol,matriz de confusión solo RoCoLe
+favorable,10,10,10,0.9741,triazol,matriz de confusión solo RoCoLe
+favorable,10,30,0,0.0237,triazol,matriz de confusión solo RoCoLe
+favorable,10,30,3,0.156,triazol,matriz de confusión solo RoCoLe
+favorable,10,30,10,0.8854,triazol,matriz de confusión solo RoCoLe
+favorable,10,30,30,1.0,triazol,matriz de confusión solo RoCoLe
+desfavorable,3,0,0,0.0599,nada,peso por hoja 0.5
+desfavorable,3,10,0,0.0331,nada,peso por hoja 0.5
+desfavorable,3,10,1,0.0555,nada,peso por hoja 0.5
+desfavorable,3,10,3,0.1424,nada,peso por hoja 0.5
+desfavorable,3,10,10,0.7785,cobre,peso por hoja 0.5
+desfavorable,3,30,0,0.0096,nada,peso por hoja 0.5
+desfavorable,3,30,3,0.0475,nada,peso por hoja 0.5
+desfavorable,3,30,10,0.5691,cobre,peso por hoja 0.5
+desfavorable,3,30,30,0.9987,cobre,peso por hoja 0.5
+desfavorable,7,0,0,0.0599,cobre,peso por hoja 0.5
+desfavorable,7,10,0,0.0331,cobre,peso por hoja 0.5
+desfavorable,7,10,1,0.0555,cobre,peso por hoja 0.5
+desfavorable,7,10,3,0.1424,cobre,peso por hoja 0.5
+desfavorable,7,10,10,0.7785,triazol,peso por hoja 0.5
+desfavorable,7,30,0,0.0096,cobre,peso por hoja 0.5
+desfavorable,7,30,3,0.0475,cobre,peso por hoja 0.5
+desfavorable,7,30,10,0.5691,cobre,peso por hoja 0.5
+desfavorable,7,30,30,0.9987,triazol,peso por hoja 0.5
+desfavorable,10,0,0,0.0599,triazol,peso por hoja 0.5
+desfavorable,10,10,0,0.0331,triazol,peso por hoja 0.5
+desfavorable,10,10,1,0.0555,triazol,peso por hoja 0.5
+desfavorable,10,10,3,0.1424,triazol,peso por hoja 0.5
+desfavorable,10,10,10,0.7785,triazol,peso por hoja 0.5
+desfavorable,10,30,0,0.0096,cobre,peso por hoja 0.5
+desfavorable,10,30,3,0.0475,triazol,peso por hoja 0.5
+desfavorable,10,30,10,0.5691,triazol,peso por hoja 0.5
+desfavorable,10,30,30,0.9987,triazol,peso por hoja 0.5
+neutro,3,0,0,0.171,nada,peso por hoja 0.5
+neutro,3,10,0,0.1034,nada,peso por hoja 0.5
+neutro,3,10,1,0.1586,nada,peso por hoja 0.5
+neutro,3,10,3,0.3221,nada,peso por hoja 0.5
+neutro,3,10,10,0.8696,cobre,peso por hoja 0.5
+neutro,3,30,0,0.0336,nada,peso por hoja 0.5
+neutro,3,30,3,0.1359,nada,peso por hoja 0.5
+neutro,3,30,10,0.7302,cobre,peso por hoja 0.5
+neutro,3,30,30,0.9992,cobre,peso por hoja 0.5
+neutro,7,0,0,0.171,cobre,peso por hoja 0.5
+neutro,7,10,0,0.1034,cobre,peso por hoja 0.5
+neutro,7,10,1,0.1586,cobre,peso por hoja 0.5
+neutro,7,10,3,0.3221,cobre,peso por hoja 0.5
+neutro,7,10,10,0.8696,triazol,peso por hoja 0.5
+neutro,7,30,0,0.0336,cobre,peso por hoja 0.5
+neutro,7,30,3,0.1359,cobre,peso por hoja 0.5
+neutro,7,30,10,0.7302,triazol,peso por hoja 0.5
+neutro,7,30,30,0.9992,triazol,peso por hoja 0.5
+neutro,10,0,0,0.171,triazol,peso por hoja 0.5
+neutro,10,10,0,0.1034,triazol,peso por hoja 0.5
+neutro,10,10,1,0.1586,triazol,peso por hoja 0.5
+neutro,10,10,3,0.3221,triazol,peso por hoja 0.5
+neutro,10,10,10,0.8696,triazol,peso por hoja 0.5
+neutro,10,30,0,0.0336,triazol,peso por hoja 0.5
+neutro,10,30,3,0.1359,triazol,peso por hoja 0.5
+neutro,10,30,10,0.7302,triazol,peso por hoja 0.5
+neutro,10,30,30,0.9992,triazol,peso por hoja 0.5
+favorable,3,0,0,0.3602,nada,peso por hoja 0.5
+favorable,3,10,0,0.2482,nada,peso por hoja 0.5
+favorable,3,10,1,0.3376,nada,peso por hoja 0.5
+favorable,3,10,3,0.5332,cobre,peso por hoja 0.5
+favorable,3,10,10,0.9248,cobre,peso por hoja 0.5
+favorable,3,30,0,0.0981,nada,peso por hoja 0.5
+favorable,3,30,3,0.2944,nada,peso por hoja 0.5
+favorable,3,30,10,0.8381,cobre,peso por hoja 0.5
+favorable,3,30,30,0.9995,cobre,peso por hoja 0.5
+favorable,7,0,0,0.3602,cobre,peso por hoja 0.5
+favorable,7,10,0,0.2482,cobre,peso por hoja 0.5
+favorable,7,10,1,0.3376,cobre,peso por hoja 0.5
+favorable,7,10,3,0.5332,cobre,peso por hoja 0.5
+favorable,7,10,10,0.9248,triazol,peso por hoja 0.5
+favorable,7,30,0,0.0981,cobre,peso por hoja 0.5
+favorable,7,30,3,0.2944,cobre,peso por hoja 0.5
+favorable,7,30,10,0.8381,triazol,peso por hoja 0.5
+favorable,7,30,30,0.9995,triazol,peso por hoja 0.5
+favorable,10,0,0,0.3602,triazol,peso por hoja 0.5
+favorable,10,10,0,0.2482,triazol,peso por hoja 0.5
+favorable,10,10,1,0.3376,triazol,peso por hoja 0.5
+favorable,10,10,3,0.5332,triazol,peso por hoja 0.5
+favorable,10,10,10,0.9248,triazol,peso por hoja 0.5
+favorable,10,30,0,0.0981,triazol,peso por hoja 0.5
+favorable,10,30,3,0.2944,triazol,peso por hoja 0.5
+favorable,10,30,10,0.8381,triazol,peso por hoja 0.5
+favorable,10,30,30,0.9995,triazol,peso por hoja 0.5
+desfavorable,3,0,0,0.0599,nada,peso por hoja 0.25
+desfavorable,3,10,0,0.0447,nada,peso por hoja 0.25
+desfavorable,3,10,1,0.0576,nada,peso por hoja 0.25
+desfavorable,3,10,3,0.094,nada,peso por hoja 0.25
+desfavorable,3,10,10,0.367,nada,peso por hoja 0.25
+desfavorable,3,30,0,0.0244,nada,peso por hoja 0.25
+desfavorable,3,30,3,0.0534,nada,peso por hoja 0.25
+desfavorable,3,30,10,0.2489,nada,peso por hoja 0.25
+desfavorable,3,30,30,0.9388,cobre,peso por hoja 0.25
+desfavorable,7,0,0,0.0599,cobre,peso por hoja 0.25
+desfavorable,7,10,0,0.0447,cobre,peso por hoja 0.25
+desfavorable,7,10,1,0.0576,cobre,peso por hoja 0.25
+desfavorable,7,10,3,0.094,cobre,peso por hoja 0.25
+desfavorable,7,10,10,0.367,cobre,peso por hoja 0.25
+desfavorable,7,30,0,0.0244,cobre,peso por hoja 0.25
+desfavorable,7,30,3,0.0534,cobre,peso por hoja 0.25
+desfavorable,7,30,10,0.2489,cobre,peso por hoja 0.25
+desfavorable,7,30,30,0.9388,triazol,peso por hoja 0.25
+desfavorable,10,0,0,0.0599,triazol,peso por hoja 0.25
+desfavorable,10,10,0,0.0447,triazol,peso por hoja 0.25
+desfavorable,10,10,1,0.0576,triazol,peso por hoja 0.25
+desfavorable,10,10,3,0.094,triazol,peso por hoja 0.25
+desfavorable,10,10,10,0.367,triazol,peso por hoja 0.25
+desfavorable,10,30,0,0.0244,cobre,peso por hoja 0.25
+desfavorable,10,30,3,0.0534,triazol,peso por hoja 0.25
+desfavorable,10,30,10,0.2489,triazol,peso por hoja 0.25
+desfavorable,10,30,30,0.9388,triazol,peso por hoja 0.25
+neutro,3,0,0,0.171,nada,peso por hoja 0.25
+neutro,3,10,0,0.1338,nada,peso por hoja 0.25
+neutro,3,10,1,0.1647,nada,peso por hoja 0.25
+neutro,3,10,3,0.2406,nada,peso por hoja 0.25
+neutro,3,10,10,0.5859,cobre,peso por hoja 0.25
+neutro,3,30,0,0.0791,nada,peso por hoja 0.25
+neutro,3,30,3,0.1527,nada,peso por hoja 0.25
+neutro,3,30,10,0.4609,cobre,peso por hoja 0.25
+neutro,3,30,30,0.9629,cobre,peso por hoja 0.25
+neutro,7,0,0,0.171,cobre,peso por hoja 0.25
+neutro,7,10,0,0.1338,cobre,peso por hoja 0.25
+neutro,7,10,1,0.1647,cobre,peso por hoja 0.25
+neutro,7,10,3,0.2406,cobre,peso por hoja 0.25
+neutro,7,10,10,0.5859,cobre,peso por hoja 0.25
+neutro,7,30,0,0.0791,cobre,peso por hoja 0.25
+neutro,7,30,3,0.1527,cobre,peso por hoja 0.25
+neutro,7,30,10,0.4609,cobre,peso por hoja 0.25
+neutro,7,30,30,0.9629,triazol,peso por hoja 0.25
+neutro,10,0,0,0.171,triazol,peso por hoja 0.25
+neutro,10,10,0,0.1338,triazol,peso por hoja 0.25
+neutro,10,10,1,0.1647,triazol,peso por hoja 0.25
+neutro,10,10,3,0.2406,triazol,peso por hoja 0.25
+neutro,10,10,10,0.5859,triazol,peso por hoja 0.25
+neutro,10,30,0,0.0791,triazol,peso por hoja 0.25
+neutro,10,30,3,0.1527,triazol,peso por hoja 0.25
+neutro,10,30,10,0.4609,triazol,peso por hoja 0.25
+neutro,10,30,30,0.9629,triazol,peso por hoja 0.25
+favorable,3,0,0,0.3602,nada,peso por hoja 0.25
+favorable,3,10,0,0.3016,nada,peso por hoja 0.25
+favorable,3,10,1,0.3488,nada,peso por hoja 0.25
+favorable,3,10,3,0.4479,cobre,peso por hoja 0.25
+favorable,3,10,10,0.7502,cobre,peso por hoja 0.25
+favorable,3,30,0,0.201,nada,peso por hoja 0.25
+favorable,3,30,3,0.3265,nada,peso por hoja 0.25
+favorable,3,30,10,0.6537,cobre,peso por hoja 0.25
+favorable,3,30,30,0.9785,cobre,peso por hoja 0.25
+favorable,7,0,0,0.3602,cobre,peso por hoja 0.25
+favorable,7,10,0,0.3016,cobre,peso por hoja 0.25
+favorable,7,10,1,0.3488,cobre,peso por hoja 0.25
+favorable,7,10,3,0.4479,cobre,peso por hoja 0.25
+favorable,7,10,10,0.7502,triazol,peso por hoja 0.25
+favorable,7,30,0,0.201,cobre,peso por hoja 0.25
+favorable,7,30,3,0.3265,cobre,peso por hoja 0.25
+favorable,7,30,10,0.6537,cobre,peso por hoja 0.25
+favorable,7,30,30,0.9785,triazol,peso por hoja 0.25
+favorable,10,0,0,0.3602,triazol,peso por hoja 0.25
+favorable,10,10,0,0.3016,triazol,peso por hoja 0.25
+favorable,10,10,1,0.3488,triazol,peso por hoja 0.25
+favorable,10,10,3,0.4479,triazol,peso por hoja 0.25
+favorable,10,10,10,0.7502,triazol,peso por hoja 0.25
+favorable,10,30,0,0.201,triazol,peso por hoja 0.25
+favorable,10,30,3,0.3265,triazol,peso por hoja 0.25
+favorable,10,30,10,0.6537,triazol,peso por hoja 0.25
+favorable,10,30,30,0.9785,triazol,peso por hoja 0.25

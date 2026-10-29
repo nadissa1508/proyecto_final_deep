@@ -1,0 +1,16 @@
+variacion,casos,accion_cambia,cambio_medio_p_alto,cambio_max_p_alto
+base,81,0.0,0.0,0.0
+cortes 3 % / 8 % (incidencia 1 / 5 / 12 %),81,0.0,0.0169,0.0915
+cortes 7 % / 15 % (incidencia 3 / 10 / 20 %),81,0.0247,0.021,0.1142
+proporción severa 0.1,81,0.0,0.0106,0.0438
+proporción severa 0.5,81,0.0123,0.0142,0.0542
+otra afección 0.05,81,0.0,0.0051,0.0239
+otra afección 0.4,81,0.0123,0.0058,0.026
+clima neutro: P(R≥medio) 0.25,81,0.0741,0.0403,0.1391
+clima neutro: P(R≥medio) 0.65,81,0.0617,0.0727,0.2075
+pendiente del clima 0.25,81,0.0247,0.0294,0.1211
+pendiente del clima 1.0,81,0.0741,0.0596,0.2573
+matriz de confusión solo BRACOL,81,0.0123,0.0176,0.0626
+matriz de confusión solo RoCoLe,81,0.0494,0.0459,0.2435
+peso por hoja 0.5,81,0.0617,0.0724,0.3448
+peso por hoja 0.25,81,0.1358,0.1579,0.665
