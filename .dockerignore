@@ -15,3 +15,14 @@ GUIDE.md
 README.md
 skills-lock.json
 requirements.txt
+# Datos y artefactos pesados: no entran al contexto de construcción
+data/raw/rocole
+data/raw/bracol
+data/raw/power
+data/raw/anacafe
+data/raw/openmeteo/_cache
+models
+experiments/**
+!experiments/vision/confusion_hoja.json
+frontend/node_modules
+frontend/dist

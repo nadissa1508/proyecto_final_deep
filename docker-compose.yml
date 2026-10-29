@@ -4,6 +4,9 @@ services:
     container_name: coffeemind-backend
     ports:
       - "8000:8000"
+    volumes:
+      # pesos y tablas de evidencia (no versionados): se generan con los scripts de entrenamiento o se descargan del release
+      - ./models:/app/models:ro
     restart: unless-stopped
 
   frontend:
