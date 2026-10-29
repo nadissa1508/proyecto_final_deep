@@ -1,0 +1,31 @@
+# Parámetros de la integración (Fase 4). Todo lo que NO sale de datos medidos es un SUPUESTO DE DISEÑO y está marcado así;
+# el análisis de sensibilidad (`src/fusion/sensitivity.py`) los mueve y reporta cuánto cambia la decisión.
+
+horizons: [7, 14]                  # ventanas de pronóstico que alimentan la red (días)
+decision_horizon: 14               # ventana que usa la decisión (el MDP avanza por meses)
+
+# Niveles de roya de la parcela R por incidencia (fracción de hojas con roya). SUPUESTO: cortes de Cenicafé (docs/decision_umbral_roya.md).
+rust_bands:
+  cuts: [0.05, 0.10]
+  representative_incidence: [0.02, 0.07, 0.15]   # SUPUESTO: incidencia típica dentro de cada banda
+
+# Mezcla de las hojas fotografiadas dado R. SUPUESTOS (no hay datos de campo de esta mezcla).
+leaf_mix:
+  severe_share: 0.30               # de las hojas con roya, fracción con > 5 % del área afectada
+  other_share: 0.20                # de las hojas sin roya, fracción con otra afección (minador, cercospora...)
+
+# P(R | T, H, P): modelo ordinal con z = (índice T + índice H + índice P) - 3, índices 0/1/2 = bajo/medio/alto respecto de lo
+# habitual en la finca y la época. SUPUESTOS ancla: ANACAFE reporta una incidencia nacional media de 4.85 % (mayo 2022) con regiones
+# de 1.45 % a 8.35 %, o sea que con clima neutro cerca de la mitad de las fincas estaría bajo el 5 %.
+climate_risk:
+  neutral_at_least_medium: 0.45    # P(R >= medio) con clima neutro
+  neutral_high: 0.15               # P(R = alto) con clima neutro
+  slope: 0.5                       # cuánto cambia el logit por punto de z
+
+# Observación de la CNN: P(O | L) viene de la matriz de confusión medida en test (experiments/vision/confusion_hoja.json).
+confusion:
+  source: pooled                   # bracol | rocole | pooled (suma de ambos tests)
+  alpha: 1.0                       # suavizado de Laplace por celda
+leaf_weight: 1.0                   # exponente de cada hoja (1 = independencia exacta; < 1 baja el peso de hojas no independientes)
+
+min_leaves: 10                     # mínimo recomendado de hojas por parcela (docs/decision_umbral_roya.md)
