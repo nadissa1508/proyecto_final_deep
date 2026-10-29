@@ -5,6 +5,7 @@ Carga al startup (lifespan):
 - CPTs del subset coffee de `crop_recommendation.csv` para la red bayesiana.
 - Champion (Gaussian Naive Bayes desde cero) entrenado sobre el mismo split del notebook 04.
 - Política óptima MDP por Value Iteration.
+- Visión, pronóstico y fusión (Deep Learning): si faltan pesos o artefactos, sus endpoints responden 503 y el resto sigue.
 
 CORS habilitado para el dev server del frontend en `http://localhost:5173`.
 """
@@ -18,7 +19,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.api.routers import bayesian, csp, mdp, ml
+from src.api.routers import bayesian, csp, decision, forecast, mdp, ml, vision
 from src.api.state import load_all
 
 
@@ -41,6 +42,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
+    allow_origin_regex=os.environ.get("COFFEEMIND_CORS_REGEX"),   # p. ej. r"http://192\.168\.\d+\.\d+:5173" para probar desde el celular
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
@@ -49,6 +51,9 @@ app.include_router(csp.router)
 app.include_router(bayesian.router)
 app.include_router(ml.router)
 app.include_router(mdp.router)
+app.include_router(vision.router)
+app.include_router(forecast.router)
+app.include_router(decision.router)
 
 
 @app.get("/health", tags=["meta"])

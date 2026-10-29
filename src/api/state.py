@@ -31,6 +31,13 @@ class AppState:
     ml_scaler: Optional[MinMaxScaler] = None
     ml_classes: List[str] = field(default_factory=list)
     mdp_solution: Optional[VISolution] = None
+    # Módulos de Deep Learning: si faltan pesos o artefactos, el campo queda en None y el router responde 503 con `*_error`.
+    vision: Optional[object] = None
+    vision_error: str = ""
+    forecaster: Optional[object] = None
+    forecast_error: str = ""
+    fusion: Optional[object] = None
+    fusion_error: str = ""
 
 
 _state: AppState = AppState()
@@ -66,4 +73,24 @@ def load_all(data_dir: Path) -> AppState:
     T_mdp, R_mdp = build_environment()
     _state.mdp_solution = value_iteration(T_mdp, R_mdp, gamma=0.95, tol=1e-3)
 
+    _load_deep_learning(_state)
     return _state
+
+
+def _load_deep_learning(state: AppState) -> None:
+    """Carga visión, pronóstico y fusión; un fallo en uno no tumba la API ni a los demás."""
+    try:
+        from src.vision.infer import LeafClassifier
+        state.vision, state.vision_error = LeafClassifier(device="cpu"), ""
+    except Exception as exc:                                    # faltan pesos, artefacto o dependencias
+        state.vision, state.vision_error = None, f"{exc.__class__.__name__}: {exc}"
+    try:
+        from src.forecast.infer import WeatherForecaster
+        state.forecaster, state.forecast_error = WeatherForecaster(), ""
+    except Exception as exc:
+        state.forecaster, state.forecast_error = None, f"{exc.__class__.__name__}: {exc}"
+    try:
+        from src.fusion.pipeline import FusionEngine
+        state.fusion, state.fusion_error = FusionEngine(), ""
+    except Exception as exc:
+        state.fusion, state.fusion_error = None, f"{exc.__class__.__name__}: {exc}"
