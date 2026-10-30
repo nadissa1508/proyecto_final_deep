@@ -115,12 +115,34 @@ En fotos de campo la roya severa es la clase más débil: 9 de 36 hojas se confu
 
 `python -m src.vision.check_infer` pasa las imágenes de test por `infer.py` con el artefacto real: F1 macro de 0.956 en BRACOL (referencia 0.949) y 0.787 en RoCoLe (referencia 0.787); la diferencia de 0.006 se debe a usar float32 en vez de precisión mixta.
 
+## Fotos no concluyentes (`python -m src.vision.abstention`)
+
+El clasificador siempre responde una de las 4 clases, también ante una foto que no es una hoja. Se agregó una regla de **abstención** que marca una
+foto como «no concluyente» (`usable = False` con su `reason` en `infer.py`) y la API no la cuenta como observación en la decisión. La regla se fijó con la
+validación, antes de mirar el test: `min_confidence` es el percentil 10 de la confianza del ensamble en la validación conjunta (0.577) y `min_pixel_std`
+es la mitad del menor contraste (desviación de gris) visto en validación y test (10.8 de 255). El 10 % es un parámetro de diseño. Resultados en
+`experiments/vision/abstention.json`:
+
+| Corte (percentil de validación) | Test BRACOL: cobertura / exactitud de lo conservado | Test RoCoLe: cobertura / exactitud de lo conservado |
+|---|---|---|
+| ninguno | 1.00 / 0.962 | 1.00 / 0.849 |
+| 5 % (0.498) | 0.983 / 0.975 | 0.862 / 0.888 |
+| **10 % (0.577, el usado)** | **0.958 / 0.983** | **0.803 / 0.914** |
+| 20 % (0.694) | 0.891 / 0.986 | 0.716 / 0.936 |
+
+- **Costo:** en fotos de campo (RoCoLe) la regla descarta ≈ 20 % de las hojas válidas; en BRACOL, ≈ 4 %. Lo que se conserva es más exacto (0.849 → 0.914 en RoCoLe).
+- **Imágenes sintéticas que no son hojas** (ruido, verde y gris uniformes, tablero, degradado, manchas de color): las 6 quedan marcadas (confianza 0.28–0.51;
+  las tres uniformes o de ruido también por poco contraste). Con 24 hojas reales del test, 23 se aceptan.
+- **Lo que no demuestra:** no hay fotos reales de otras cosas (dedos, suelo, otras plantas) con las que medir un detector de «no es una hoja»; la regla solo descarta lo dudoso.
+  Una foto de una hoja de otra planta podría salir con confianza alta. Sigue pendiente probar con fotos reales de productores.
+- Volver a correr `python -m src.vision.finalize` reescribe el artefacto y borra estos dos valores: hay que repetir `python -m src.vision.abstention --write`.
+
 ## Limitaciones conocidas
 
 - Cuatro semillas por configuración (media ± desviación en la segunda tanda); el candidato final es un ensamble de 8 modelos, no una sola corrida.
 - La clase `otra afección` significa cosas distintas en cada dataset (ácaro rojo en RoCoLe; minador, phoma y cercospora en BRACOL): el modelo solo-RoCoLe tiene recall 0.00 de `otra` en BRACOL.
 - La calibración por temperatura no demostró mejorar el error de calibración del test (ver arriba); las probabilidades del ensamble son razonables pero no están garantizadas como calibradas.
 - Grad-CAM pasa la aleatorización de pesos y no mira el fondo, pero no localiza pústulas individuales (resolución 8×8) y un mapa centrado explica gran parte de su ventaja: no se presenta como diagnóstico.
-- El clasificador no distingue "esto no es una hoja": una imagen verde generada se clasifica como roya severa con baja confianza (35 %).
+- El clasificador no detecta "esto no es una hoja" de forma general: la regla de abstención (sección anterior) descarta lo dudoso y las imágenes sintéticas probadas, pero no se midió con fotos reales de otras cosas.
 - Los tests son pequeños (239 y 218 imágenes) y de una sola partición; las fotos de los productores serán otro dominio (cámara, luz, fondo), así que estos números son una cota optimista.
 - Pendiente: validar el mapa de atención contra las máscaras de lesión de BRACOL y probar con fotos reales de productores.

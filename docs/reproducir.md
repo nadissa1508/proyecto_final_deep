@@ -12,7 +12,7 @@ pip install -r requirements.txt -r requirements-dl.txt
 pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
 ```
 
-En PowerShell defina antes `$env:PYTHONPATH = "."`. Pruebas: `pytest tests/` (47; no necesitan pesos ni internet).
+En PowerShell defina antes `$env:PYTHONPATH = "."`. Pruebas: `pytest tests/` (65; no necesitan pesos ni internet) y, en `frontend/`, `npm test` (20, vitest).
 
 ## 1. Datos
 
@@ -43,6 +43,7 @@ python -m src.vision.summarize                 # media ± desviación entre semi
 python -m src.vision.finalize                  # calibración, selección por validación y exportación de models/vision/artifact.json
 python -m src.vision.validate_explanations     # Grad-CAM: aleatorización, deletion/insertion, fondo (reanudable; usa la GPU)
 python -m src.vision.check_infer               # infer.py reproduce la evaluación
+python -m src.vision.abstention --write        # regla de «foto no concluyente» (repetir tras cada finalize)
 ```
 
 Otras configuraciones de la ablación: `configs/vision_*.yaml`. Una corrida de ResNet-18 tarda de 2 a 10 minutos según el freno térmico.
@@ -92,3 +93,13 @@ docker compose up --build                      # backend en :8000, frontend en :
 ```
 
 Desde el celular: `docs/uso_celular.md`.
+
+## 6. Pesos, figuras y revisión antes de publicar
+
+```bash
+python -m src.common.weights pack              # dist/coffeemind_weights.zip (solo lo que usan los artefactos) y models/weights_manifest.json
+python -m src.common.weights download --url <URL del zip del release>   # en un clon limpio; o --zip <archivo local>
+python -m src.common.weights verify            # compara con el manifiesto (SHA-256)
+python -m src.common.figures                   # regenera las figuras del informe en docs/figures/
+python -m src.common.publish_check             # archivos que no deben subirse, secretos, rutas locales, archivos obligatorios
+```

@@ -40,8 +40,8 @@ Conectarle el pronóstico tal cual no habría cambiado ninguna decisión, así q
   heredados siguen respondiendo).
 - Frontend: subida desde archivo (arrastrar y soltar o botón) con reducción a 1024 px, corrección de orientación y aviso de HEIC; botón de
   cámara del celular (`capture="environment"`); tarjetas de pronóstico y de decisión; mapa de atención por foto. Probado a mano con el
-  backend real. **No** se probó la cámara en un celular real ni la red local.
-- Pruebas automáticas: 47 en total en el repositorio, ninguna falla (las de integración usan módulos sintéticos para no depender de pesos).
+  backend real. **No** se probó la cámara en un celular real ni la red local. Las pruebas del frontend cubren la preparación de fotos (HEIC, reducción), la subida y el selector, no el aspecto.
+- Pruebas automáticas: 65 de Python y 20 del frontend (vitest), ninguna falla (las de integración usan módulos sintéticos para no depender de pesos).
 
 ## 3. Sensibilidad de la decisión a los supuestos
 
@@ -99,8 +99,9 @@ El control de 4 (`C0`) se añadió a propósito tras ver que `C` salía negativo
 - El mundo simulado comparte el índice `z` con la red (con otra intensidad); mide valor *dentro de ese mundo*.
 - Las hojas se tratan como independientes dado R; el exponente por hoja (`leaf_weight = 1`) es el valor más optimista.
 - QMDP valora la información solo después de actuar: no sirve para decidir si conviene fotografiar más hojas.
-- Las fotos de productores serán otro dominio; el clasificador no distingue "esto no es una hoja" (una imagen verde generada responde
-  "roya severa" con 35 % de confianza).
+- Las fotos de productores serán otro dominio. El clasificador no detecta "esto no es una hoja" de forma general: las fotos con poca confianza
+  o sin contraste se marcan «no concluyentes» y no entran a la decisión (`docs/resultados_vision.md`), pero eso no se midió con fotos reales de otras cosas.
+  La simulación de esta fase **no** modela esa abstención: supone que todas las hojas fotografiadas se usan.
 - En operación, los primeros 5–8 días de la ventana de 14 siempre están rellenados por persistencia; no se probó usar solo los días 8–14.
 - Con una incidencia real por región y mes (ANACAFE / CEDICAFE) se podría medir el vínculo clima–roya y calibrar la CPT; es la mejora
   con más valor esperado.
