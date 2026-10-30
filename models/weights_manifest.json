@@ -1,0 +1,76 @@
+{
+  "files": {
+    "vision/artifact.json": {
+      "sha256": "322005333075fc447cb8574e88b92587ee5f4e50c142f4d2a7c3813c2d4c56b2",
+      "bytes": 1555
+    },
+    "vision/resnet18_dlr_both.pt": {
+      "sha256": "87799e1aad9063c093896a3d95c9e9cece60b1d5f8b9ec6bb64c07ba5775b67c",
+      "bytes": 44794346
+    },
+    "vision/resnet18_dlr_both_s1.pt": {
+      "sha256": "2430019ac086ff506edf0c15d68e9834aeb7ab2e641dfa57e6b5e9d05b012c0c",
+      "bytes": 44794724
+    },
+    "vision/resnet18_dlr_both_s2.pt": {
+      "sha256": "fbcb89de09b893d4b75b40bc477e76637b5217b167ab6099700d5c15738fd843",
+      "bytes": 44794724
+    },
+    "vision/resnet18_dlr_both_s3.pt": {
+      "sha256": "a079571698e64d637df5d2ea1d79260bb11f43f16f1fa0aa26d249ff5ee01ffc",
+      "bytes": 44794724
+    },
+    "vision/efficientnet_b0_dlr_both.pt": {
+      "sha256": "7ace6b239310be5bf04d5224ee90878c955ecb80a588c7eee2cff6769ad6a5f6",
+      "bytes": 16355150
+    },
+    "vision/efficientnet_b0_dlr_both_s1.pt": {
+      "sha256": "48563fd38fe3a34873fd8360f3ca1445d6788624b7190a4980fb2122c2d0896c",
+      "bytes": 16356242
+    },
+    "vision/efficientnet_b0_dlr_both_s2.pt": {
+      "sha256": "35cfe55ea55f21b22318accb199a53a927daee3d141c205d134439ebed5c6898",
+      "bytes": 16356242
+    },
+    "vision/efficientnet_b0_dlr_both_s3.pt": {
+      "sha256": "5c20e9bdbd379acd5b1f49dfb25ddb0c507e4c112122a03126f0659a07ff4837",
+      "bytes": 16356242
+    },
+    "forecast/artifact.json": {
+      "sha256": "e4c24c337c3a9d98656e77cf9c504104cb0fad2ab65817f945e9578d2169dc2f",
+      "bytes": 11508
+    },
+    "forecast/forecast_gru.pt": {
+      "sha256": "fc7a8f40bd5db57d8a10a70c1042aaf52f80f9d5659a3422e6b992526a18f46f",
+      "bytes": 637049
+    },
+    "forecast/forecast_gru_s1.pt": {
+      "sha256": "87e4c3a2922f5a20a7d9ac7de709275777b389831ed0d0af66eafe291af1a0e7",
+      "bytes": 637076
+    },
+    "forecast/forecast_gru_s2.pt": {
+      "sha256": "5b78cb64908a876595323009496fd1fa6354171a1032830cb4d7ba9e239ef6a9",
+      "bytes": 637076
+    },
+    "forecast/forecast_gru_s3.pt": {
+      "sha256": "a110c62ed1efda5089501db3487238d5bf60579714fb501b163a689c727c716b",
+      "bytes": 637076
+    },
+    "forecast/ft/forecast_gru_fthead.pt": {
+      "sha256": "3712c2d7d8222c9e4ad7f347205d82b22ef3acc03bad0159936312ccb0ecbc42",
+      "bytes": 637112
+    },
+    "forecast/ft/forecast_gru_fthead_s1.pt": {
+      "sha256": "43a4f5bfed1a4be6445721bcbcf7114fcaff5f909db27c36b7501c8f332c3e95",
+      "bytes": 637203
+    },
+    "forecast/ft/forecast_gru_fthead_s2.pt": {
+      "sha256": "38aaeb1fb6deadbe2c561334fa7893875c84e409db1990f5e73793dfc17bd07f",
+      "bytes": 637203
+    },
+    "forecast/ft/forecast_gru_fthead_s3.pt": {
+      "sha256": "1dc20bc5853245122267b7bc4fff6b9ed6f5ddb0a38d6f28ed9fc08941b4b9d7",
+      "bytes": 637203
+    }
+  }
+}
