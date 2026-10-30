@@ -36,6 +36,16 @@ class FakeClassifier:
                                heatmap_png_base64="AAAA" if with_heatmap else None) for _ in images]
 
 
+class DoubtfulClassifier(FakeClassifier):
+    """La segunda foto es no concluyente: el resto se comporta igual que FakeClassifier."""
+
+    def predict(self, images, with_heatmap=False):
+        out = super().predict(images, with_heatmap)
+        if len(out) > 1:
+            out[1].usable, out[1].reason = False, "confianza baja (30%)"
+        return out
+
+
 class FakeForecaster:
     def predict(self, history, region, as_of=None):
         n = 14
@@ -129,3 +139,15 @@ def test_decision_validates_inputs(client):
 
 def test_legacy_endpoints_are_untouched(client):
     assert client.get("/health").json() == {"status": "ok"}
+
+
+def test_doubtful_photos_are_reported_and_not_used_in_the_decision(client):
+    api_state.get_state().vision = DoubtfulClassifier()
+    files = [("files", ("buena.png", png(), "image/png")), ("files", ("dudosa.png", png((5, 5, 5)), "image/png"))]
+    vision = client.post("/api/vision/predict", files=files).json()
+    assert [h["concluyente"] for h in vision["hojas"]] == [True, False]
+    assert "confianza baja" in vision["hojas"][1]["motivo"]
+
+    body = client.post("/api/decision", data={"region": "coban", "source": "local"}, files=files).json()
+    assert body["hojas_descartadas"] == 1 and len(body["hojas"]) == 1
+    assert any("dudosa.png" in n and "no ser concluyentes" in n for n in body["notas"])

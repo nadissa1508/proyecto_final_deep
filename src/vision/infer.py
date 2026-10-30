@@ -14,11 +14,17 @@ Formato del artefacto:
         {"name": "resnet18_dlr_both", "arch": "resnet18", "weights": "resnet18_dlr_both.pt",
          "temperature": 1.37}
       ],
-      "confusion": "confusion_hoja.json"        # opcional: P(O | L) medida en test
+      "confusion": "confusion_hoja.json",       # opcional: P(O | L) medida en test
+      "min_confidence": 0.58,                   # opcional: bajo este valor la foto se marca «no concluyente»
+      "min_pixel_std": 10.8                     # opcional: bajo este contraste (gris, 0-255) también
     }
 
 `weights` es relativo a `models/vision/` (o absoluto). Con varios modelos se promedian sus
 probabilidades **calibradas** (ensamble) y `agree` indica si todos coinciden en la clase.
+
+`min_confidence` y `min_pixel_std` los escribe `python -m src.vision.abstention --write` (ver su docstring): una foto con poca
+confianza o sin contraste se devuelve con `usable=False` y un `reason`, y quien decide no debe contarla como observación. No es un
+detector general de «esto no es una hoja»: solo descarta lo dudoso.
 
 Si el artefacto o los pesos no existen se lanza `ModelNotAvailable`, y la API debe responder 503
 con un mensaje claro en vez de caerse.
@@ -56,6 +62,8 @@ class LeafPrediction:
     per_model: Dict[str, List[float]]
     agree: bool
     heatmap_png_base64: Optional[str] = field(default=None, repr=False)
+    usable: bool = True
+    reason: Optional[str] = None
 
 
 class LeafClassifier:
@@ -84,6 +92,8 @@ class LeafClassifier:
             self.temperatures.append(float(entry.get("temperature", 1.0)))
         if not self.models:
             raise ModelNotAvailable("El artefacto no lista ningún modelo")
+        self.min_confidence: Optional[float] = spec.get("min_confidence")
+        self.min_pixel_std: Optional[float] = spec.get("min_pixel_std")
         self._transform = eval_transform(self.img_size)
 
     def _prepare(self, images: Sequence[Image.Image]) -> torch.Tensor:
@@ -93,6 +103,20 @@ class LeafClassifier:
     @torch.no_grad()
     def _calibrated_probs(self, x: torch.Tensor) -> List[torch.Tensor]:
         return [torch.softmax(m(x).double() / t, dim=1).cpu() for m, t in zip(self.models, self.temperatures)]
+
+    @staticmethod
+    def _pixel_std(image: Image.Image) -> float:
+        gray = ImageOps.exif_transpose(image).convert("L").resize((64, 64))
+        return float(np.asarray(gray, dtype=np.float64).std())
+
+    def _usability(self, image: Image.Image, confidence: float) -> Optional[str]:
+        """Motivo por el que la foto no es concluyente, o None si se puede usar."""
+        reasons = []
+        if self.min_confidence is not None and confidence < self.min_confidence:
+            reasons.append(f"confianza baja ({confidence:.0%})")
+        if self.min_pixel_std is not None and self._pixel_std(image) < self.min_pixel_std:
+            reasons.append("poco contraste")
+        return " y ".join(reasons) or None
 
     def predict(self, images: Sequence[Image.Image], with_heatmap: bool = False) -> List[LeafPrediction]:
         x = self._prepare(images)
@@ -106,12 +130,13 @@ class LeafClassifier:
                 with GradCAM(self.models[0], target_layer(self.models[0], self.archs[0])) as g:
                     cam, _, _ = g(x[i:i + 1], torch.tensor([label], device=self.device))
                 heatmap = overlay_png_base64(denormalize(x[i]), cam[0].cpu().numpy())
+            reason = self._usability(images[i], float(ensemble[i, label]))
             predictions.append(LeafPrediction(
                 label=label, label_name=self.classes[label], confidence=float(ensemble[i, label]),
                 probs=[float(p) for p in ensemble[i]],
                 per_model={n: [float(p) for p in probs[i]] for n, probs in zip(self.names, per_model)},
                 agree=len({int(probs[i].argmax()) for probs in per_model}) == 1,
-                heatmap_png_base64=heatmap))
+                heatmap_png_base64=heatmap, usable=reason is None, reason=reason))
         return predictions
 
     def predict_one(self, image: Image.Image, with_heatmap: bool = False) -> LeafPrediction:

@@ -1,0 +1,195 @@
+{
+  "regla": {
+    "min_confidence": 0.5769,
+    "min_pixel_std": 10.761,
+    "cuantil_validacion": 0.1,
+    "desv_gris_minima_en_datos": 21.522
+  },
+  "cobertura_y_exactitud": [
+    {
+      "cuantil_val": 0.0,
+      "corte": 0.3095,
+      "conjunto": "val",
+      "n": 456,
+      "cobertura": 1.0,
+      "exactitud_total": 0.9035,
+      "exactitud_conservadas": 0.9035
+    },
+    {
+      "cuantil_val": 0.0,
+      "corte": 0.3095,
+      "conjunto": "test_bracol",
+      "n": 239,
+      "cobertura": 1.0,
+      "exactitud_total": 0.9623,
+      "exactitud_conservadas": 0.9623
+    },
+    {
+      "cuantil_val": 0.0,
+      "corte": 0.3095,
+      "conjunto": "test_rocole",
+      "n": 218,
+      "cobertura": 1.0,
+      "exactitud_total": 0.8486,
+      "exactitud_conservadas": 0.8486
+    },
+    {
+      "cuantil_val": 0.05,
+      "corte": 0.4978,
+      "conjunto": "val",
+      "n": 456,
+      "cobertura": 0.9496,
+      "exactitud_total": 0.9035,
+      "exactitud_conservadas": 0.9284
+    },
+    {
+      "cuantil_val": 0.05,
+      "corte": 0.4978,
+      "conjunto": "test_bracol",
+      "n": 239,
+      "cobertura": 0.9833,
+      "exactitud_total": 0.9623,
+      "exactitud_conservadas": 0.9745
+    },
+    {
+      "cuantil_val": 0.05,
+      "corte": 0.4978,
+      "conjunto": "test_rocole",
+      "n": 218,
+      "cobertura": 0.8624,
+      "exactitud_total": 0.8486,
+      "exactitud_conservadas": 0.8883
+    },
+    {
+      "cuantil_val": 0.1,
+      "corte": 0.5769,
+      "conjunto": "val",
+      "n": 456,
+      "cobertura": 0.8991,
+      "exactitud_total": 0.9035,
+      "exactitud_conservadas": 0.9439
+    },
+    {
+      "cuantil_val": 0.1,
+      "corte": 0.5769,
+      "conjunto": "test_bracol",
+      "n": 239,
+      "cobertura": 0.9582,
+      "exactitud_total": 0.9623,
+      "exactitud_conservadas": 0.9825
+    },
+    {
+      "cuantil_val": 0.1,
+      "corte": 0.5769,
+      "conjunto": "test_rocole",
+      "n": 218,
+      "cobertura": 0.8028,
+      "exactitud_total": 0.8486,
+      "exactitud_conservadas": 0.9143
+    },
+    {
+      "cuantil_val": 0.2,
+      "corte": 0.6936,
+      "conjunto": "val",
+      "n": 456,
+      "cobertura": 0.8004,
+      "exactitud_total": 0.9035,
+      "exactitud_conservadas": 0.9589
+    },
+    {
+      "cuantil_val": 0.2,
+      "corte": 0.6936,
+      "conjunto": "test_bracol",
+      "n": 239,
+      "cobertura": 0.8912,
+      "exactitud_total": 0.9623,
+      "exactitud_conservadas": 0.9859
+    },
+    {
+      "cuantil_val": 0.2,
+      "corte": 0.6936,
+      "conjunto": "test_rocole",
+      "n": 218,
+      "cobertura": 0.7156,
+      "exactitud_total": 0.8486,
+      "exactitud_conservadas": 0.9359
+    },
+    {
+      "cuantil_val": 0.3,
+      "corte": 0.8143,
+      "conjunto": "val",
+      "n": 456,
+      "cobertura": 0.6996,
+      "exactitud_total": 0.9035,
+      "exactitud_conservadas": 0.9812
+    },
+    {
+      "cuantil_val": 0.3,
+      "corte": 0.8143,
+      "conjunto": "test_bracol",
+      "n": 239,
+      "cobertura": 0.795,
+      "exactitud_total": 0.9623,
+      "exactitud_conservadas": 1.0
+    },
+    {
+      "cuantil_val": 0.3,
+      "corte": 0.8143,
+      "conjunto": "test_rocole",
+      "n": 218,
+      "cobertura": 0.5826,
+      "exactitud_total": 0.8486,
+      "exactitud_conservadas": 0.9606
+    }
+  ],
+  "sinteticas": [
+    {
+      "imagen": "ruido",
+      "clase": "sana",
+      "confianza": 0.366,
+      "desv_gris": 10.0,
+      "descartada": true,
+      "motivo": "confianza baja + poco contraste"
+    },
+    {
+      "imagen": "verde uniforme",
+      "clase": "sana",
+      "confianza": 0.321,
+      "desv_gris": 0.0,
+      "descartada": true,
+      "motivo": "confianza baja + poco contraste"
+    },
+    {
+      "imagen": "gris uniforme",
+      "clase": "roya_severa",
+      "confianza": 0.442,
+      "desv_gris": 0.0,
+      "descartada": true,
+      "motivo": "confianza baja + poco contraste"
+    },
+    {
+      "imagen": "tablero",
+      "clase": "sana",
+      "confianza": 0.511,
+      "desv_gris": 110.3,
+      "descartada": true,
+      "motivo": "confianza baja"
+    },
+    {
+      "imagen": "degradado",
+      "clase": "sana",
+      "confianza": 0.304,
+      "desv_gris": 73.9,
+      "descartada": true,
+      "motivo": "confianza baja"
+    },
+    {
+      "imagen": "manchas de color",
+      "clase": "roya_severa",
+      "confianza": 0.281,
+      "desv_gris": 47.8,
+      "descartada": true,
+      "motivo": "confianza baja"
+    }
+  ]
+}

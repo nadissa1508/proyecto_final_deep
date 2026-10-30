@@ -52,6 +52,7 @@ class DecisionResponse(BaseModel):
     creencia_solo_clima: Dict[str, float]
     creencia: Dict[str, float]
     hojas: List[str]
+    hojas_descartadas: int = 0
     incidencia: Optional[IncidenceOut] = None
     clima: ClimateOut
     notas: List[str]
@@ -77,10 +78,18 @@ async def decide(region: str = Form(...), files: List[UploadFile] = File(default
         raise HTTPException(503, f"Módulo de visión no disponible: {state.vision_error}")
 
     leaves = []
+    discarded: List[str] = []
     if files:
         images = await read_images(files)
-        leaves = [leaf_from_prediction(p) for p in state.vision.predict(images)]
+        for upload, prediction in zip(files, state.vision.predict(images)):
+            if getattr(prediction, "usable", True):
+                leaves.append(leaf_from_prediction(prediction))
+            else:
+                discarded.append(f"{upload.filename or 'foto'}: {prediction.reason}")
     history, _, notes = load_history(region, source)
+    if discarded:
+        notes.append(f"{len(discarded)} de {len(files)} fotos no se usaron por no ser concluyentes ({'; '.join(discarded[:5])}"
+                     f"{'…' if len(discarded) > 5 else ''}). Tome la foto de una hoja completa, con buena luz y sin movimiento.")
     forecast = state.forecaster.predict(history, region, as_of=date.today())
     if forecast.stale_days > 30:
         raise HTTPException(422, f"La historia termina el {forecast.last_observed}, {forecast.stale_days} días antes de hoy")
@@ -99,6 +108,7 @@ async def decide(region: str = Form(...), files: List[UploadFile] = File(default
         region=region, accion=decision.action_name, valor_esperado_por_accion=decision.expected_value,
         creencia_solo_clima=_dist(decision.belief.climate_only), creencia=_dist(decision.belief.posterior),
         hojas=[["sana", "roya_leve", "roya_severa", "otra_afeccion"][leaf.label] for leaf in leaves],
+        hojas_descartadas=len(discarded),
         incidencia=None if inc is None else IncidenceOut(
             hojas=inc.n_leaves, hojas_con_roya=inc.n_rust_predicted, aparente=inc.apparent, corregida=inc.corrected,
             intervalo_95=[inc.low, inc.high], sensibilidad=inc.sensitivity, especificidad=inc.specificity),
