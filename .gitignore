@@ -39,3 +39,10 @@ experiments/*.log
 
 # Material del curso (PDFs del profesor): no se publica
 contenido del curso/
+
+# Archivos comprimidos de datos o pesos y paquetes generados (los pesos van en un release; ver src/common/weights.py)
+*.zip
+dist/
+
+# Notas privadas para el informe (no se publican)
+NOTAS_INFORME.md
