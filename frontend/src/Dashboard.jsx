@@ -7,6 +7,9 @@ import CSPCard from './components/CSPCard'
 import BayesianCard from './components/BayesianCard'
 import MLCard from './components/MLCard'
 import MDPCard from './components/MDPCard'
+import ForecastCard from './components/ForecastCard'
+import RustDecisionCard from './components/RustDecisionCard'
+import { REGIONS, guessRegion, saveRegion } from './regions'
 
 const EMPTY = {
   id: '', nombre: 'Nueva parcela', region: '',
@@ -22,6 +25,7 @@ export default function Dashboard({ onBackToLanding }) {
   const [backendStatus, setBackendStatus] = useState('checking')
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [delConfirm, setDelConfirm] = useState(null)
+  const [weatherRegion, setWeatherRegion] = useState(null)
 
   useEffect(() => { saveParcelas(parcelas) }, [parcelas])
 
@@ -33,6 +37,10 @@ export default function Dashboard({ onBackToLanding }) {
     () => parcelas.find((p) => p.id === selectedId) || parcelas[0],
     [parcelas, selectedId],
   )
+
+  useEffect(() => { if (selected) setWeatherRegion(guessRegion(selected)) }, [selected?.id])
+
+  const changeRegion = (key) => { setWeatherRegion(key); saveRegion(selected.id, key) }
 
   useEffect(() => {
     document.title = selected ? `${selected.nombre} — CoffeeMind GT` : 'CoffeeMind GT'
@@ -160,11 +168,20 @@ export default function Dashboard({ onBackToLanding }) {
                 </div>
               </div>
 
+              <div className="field region-select">
+                <label htmlFor="weather-region">Estación de referencia para el pronóstico</label>
+                <select id="weather-region" value={weatherRegion || ''} onChange={(e) => changeRegion(e.target.value)}>
+                  {REGIONS.map((r) => <option key={r.key} value={r.key}>{r.label}</option>)}
+                </select>
+              </div>
+
               <div className="modules-grid">
                 <CSPCard parcela={selected} />
                 <BayesianCard parcela={selected} />
                 <MLCard parcela={selected} />
                 <MDPCard parcela={selected} />
+                {weatherRegion && <ForecastCard regionKey={weatherRegion} />}
+                {weatherRegion && <RustDecisionCard parcela={selected} regionKey={weatherRegion} />}
               </div>
             </>
           )}
