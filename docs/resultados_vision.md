@@ -1,4 +1,4 @@
-# Resultados de visión (Fase 2, primera ablación)
+# Resultados de visión (Fase 2)
 
 Fuente de verdad: `experiments/vision/<fecha>_<nombre>/results.json` y `metrics.csv`. Configuración en `configs/vision_*.yaml`.
 Todas las corridas: 256×256 px, AdamW, 15 épocas máximo con early stopping (paciencia 5), pesos de clase inversos a la frecuencia, semilla 42, **una sola corrida por configuración**.
@@ -52,7 +52,7 @@ Media ± desviación entre semillas (42, 1, 2, 3); se regenera con `python -m sr
 - **Detección de roya en fotos de campo:** EfficientNet-B0 detecta más (0.887 frente a 0.783) con algo menos de especificidad (0.896 frente a 0.929) y mucha menos variabilidad entre semillas.
 - **La cifra de 0.71 de sensibilidad citada arriba venía de una sola semilla** (la 42); con 4 semillas ResNet-18 promedia 0.783 con una desviación de 0.088, es decir, esa corrida estaba en el extremo bajo. Con una sola semilla no se debe reportar esa cifra.
 - Una semilla de EfficientNet-B0 (la 3) fue un valor atípico: mejor época 3 y F1 0.877 en BRACOL.
-- La selección del modelo no se hace con estos tests (son la evaluación final): pendiente decidir con validación y con las pruebas de Grad-CAM.
+- La selección del modelo no se hace con estos tests (son la evaluación final): se decide con la validación (ver «Selección final» más abajo).
 
 ## Selección final, calibración y Grad-CAM (cierre de la Fase 2)
 
@@ -117,7 +117,10 @@ En fotos de campo la roya severa es la clase más débil: 9 de 36 hojas se confu
 
 ## Limitaciones conocidas
 
-- Una semilla por configuración; falta repetir con 3 y reportar media ± desviación.
+- Cuatro semillas por configuración (media ± desviación en la segunda tanda); el candidato final es un ensamble de 8 modelos, no una sola corrida.
 - La clase `otra afección` significa cosas distintas en cada dataset (ácaro rojo en RoCoLe; minador, phoma y cercospora en BRACOL): el modelo solo-RoCoLe tiene recall 0.00 de `otra` en BRACOL.
-- Las probabilidades aún no están calibradas, y falta validar con Grad-CAM que el modelo mira las lesiones y no el fondo.
-- Las fotos de los productores serán otro dominio (cámara, luz, fondo): estos números son una cota optimista.
+- La calibración por temperatura no demostró mejorar el error de calibración del test (ver arriba); las probabilidades del ensamble son razonables pero no están garantizadas como calibradas.
+- Grad-CAM pasa la aleatorización de pesos y no mira el fondo, pero no localiza pústulas individuales (resolución 8×8) y un mapa centrado explica gran parte de su ventaja: no se presenta como diagnóstico.
+- El clasificador no distingue "esto no es una hoja": una imagen verde generada se clasifica como roya severa con baja confianza (35 %).
+- Los tests son pequeños (239 y 218 imágenes) y de una sola partición; las fotos de los productores serán otro dominio (cámara, luz, fondo), así que estos números son una cota optimista.
+- Pendiente: validar el mapa de atención contra las máscaras de lesión de BRACOL y probar con fotos reales de productores.
