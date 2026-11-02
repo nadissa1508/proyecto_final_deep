@@ -1,0 +1,23 @@
+{
+  "nombre": "forecast_gru_val_fix1_s3",
+  "configuracion": {
+    "name": "forecast_gru_val_fix1_s3",
+    "model": "gru",
+    "hidden": 128,
+    "layers": 2,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "batch_size": 256,
+    "epochs": 30,
+    "patience": 6,
+    "amp": true,
+    "seed": 3,
+    "val_fix": 1
+  },
+  "parametros": 158506,
+  "mejor_epoca": 2,
+  "loss_val": 0.23112227022647858,
+  "segundos": 30.6,
+  "loss_train_baja": true
+}

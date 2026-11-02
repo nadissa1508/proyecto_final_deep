@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { decide, visionPredict } from '../api'
 import { IconCalendar } from '../icons'
 import LeafUploader, { MIN_RECOMMENDED } from './LeafUploader'
@@ -28,30 +28,59 @@ function Bars({ data }) {
 
 const pct = (x) => `${(x * 100).toFixed(0)}%`
 
+const ALERT_TITLE = { alerta: 'Alerta de roya', sospecha: 'Posible roya', vigilancia: 'Vigilancia', seguimiento: 'Seguimiento normal' }
+const ALERT_CHIP = { alerta: 'chip--warn', sospecha: 'chip--warn', vigilancia: 'chip--warn', seguimiento: 'chip--ok' }
+const RUST_TEXT = { detectada: 'detectada', sospecha: 'sospecha (1 hoja)', no_detectada: 'no detectada', sin_fotos: 'sin fotos' }
+
 export default function RustDecisionCard({ parcela, regionKey }) {
   const [items, setItems] = useState([])
   const [state, setState] = useState({ loading: false, data: null, error: null })
   const [maps, setMaps] = useState({ loading: false, data: null, error: null })
+  // Cada consulta lleva un número de versión: si cambia la parcela, la región o las fotos mientras espera, su respuesta tardía se ignora
+  const requestVersion = useRef(0)
+  const mapVersion = useRef(0)
 
-  // otra parcela o región: el resultado anterior ya no corresponde
+  // otra parcela: las fotos de la anterior no le corresponden
   useEffect(() => {
+    setItems((previous) => {
+      previous.forEach((item) => URL.revokeObjectURL(item.url))
+      return []
+    })
+  }, [parcela.id])
+
+  // otra parcela, región, altitud o sombra: el resultado anterior ya no corresponde
+  useEffect(() => {
+    requestVersion.current += 1
+    mapVersion.current += 1
     setState({ loading: false, data: null, error: null })
     setMaps({ loading: false, data: null, error: null })
-  }, [parcela.id, regionKey])
+  }, [parcela.id, parcela.altitud, parcela.sombra, regionKey])
+
+  // otras fotos: la decisión y los mapas anteriores ya no corresponden
+  const updateItems = (next) => {
+    requestVersion.current += 1
+    mapVersion.current += 1
+    setItems(next)
+    setState({ loading: false, data: null, error: null })
+    setMaps({ loading: false, data: null, error: null })
+  }
 
   const showMaps = () => {
+    const version = ++mapVersion.current
     setMaps({ loading: true, data: null, error: null })
     visionPredict(items.map((x) => x.file), { heatmap: true })
-      .then((data) => setMaps({ loading: false, data, error: null }))
-      .catch((err) => setMaps({ loading: false, data: null, error: err.message }))
+      .then((data) => { if (version === mapVersion.current) setMaps({ loading: false, data, error: null }) })
+      .catch((err) => { if (version === mapVersion.current) setMaps({ loading: false, data: null, error: err.message }) })
   }
 
   const run = () => {
+    const version = ++requestVersion.current
+    mapVersion.current += 1
     setMaps({ loading: false, data: null, error: null })
     setState({ loading: true, data: null, error: null })
     decide({ region: regionKey, files: items.map((x) => x.file), altitud: parcela.altitud, sombra: parcela.sombra })
-      .then((data) => setState({ loading: false, data, error: null }))
-      .catch((err) => setState({ loading: false, data: null, error: err.message }))
+      .then((data) => { if (version === requestVersion.current) setState({ loading: false, data, error: null }) })
+      .catch((err) => { if (version === requestVersion.current) setState({ loading: false, data: null, error: err.message }) })
   }
 
   const d = state.data
@@ -67,7 +96,7 @@ export default function RustDecisionCard({ parcela, regionKey }) {
         <div className="card__icon card__icon--coral" style={{ marginBottom: 0 }}><IconCalendar /></div>
       </div>
 
-      <LeafUploader items={items} onChange={setItems} disabled={state.loading} />
+      <LeafUploader items={items} onChange={updateItems} disabled={state.loading} />
 
       <div>
         <button type="button" className="btn btn--primary" onClick={run} disabled={state.loading}>
@@ -83,6 +112,20 @@ export default function RustDecisionCard({ parcela, regionKey }) {
             <div className="kpi__label">Acción recomendada este mes</div>
             <div className="module-card__hero">{ACTION_TEXT[d.accion] || d.accion}</div>
           </div>
+
+          {d.alarma && (
+            <div>
+              <div className="kpi__label">Alerta de roya y riesgo climático</div>
+              <span className={`chip ${ALERT_CHIP[d.alarma.nivel] || ''}`}>{ALERT_TITLE[d.alarma.nivel] || d.alarma.nivel}</span>
+              <div className="small" style={{ marginTop: '0.4rem' }}>{d.alarma.mensaje}</div>
+              <div className="muted small">
+                Roya en las fotos: <strong>{RUST_TEXT[d.alarma.roya] || d.alarma.roya}</strong> · Riesgo climático:{' '}
+                <strong>{d.alarma.riesgo_climatico}</strong>{d.alarma.poco_confiable ? ' (orientativo)' : ''}
+              </div>
+              <div className="muted small">{d.alarma.razones.join(' · ')}.</div>
+              {d.alarma.discrepancia_mdp && <div className="error small">{d.alarma.discrepancia_mdp}</div>}
+            </div>
+          )}
 
           <div>
             <div className="kpi__label" style={{ marginBottom: '0.5rem' }}>Nivel de roya de la parcela, solo con el clima</div>

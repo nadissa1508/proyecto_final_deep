@@ -118,6 +118,16 @@ def test_forecast_endpoint(client):
     assert client.get("/api/forecast/coban?source=otra").status_code == 422
 
 
+def test_forecast_reports_invalid_history_or_query_as_422(client, monkeypatch):
+    def invalid(*args, **kwargs):
+        raise ValueError("as_of es anterior al último día de la historia")
+
+    monkeypatch.setattr(api_state.get_state().forecaster, "predict", invalid)
+    response = client.get("/api/forecast/coban?source=local&as_of=2020-01-01")
+    assert response.status_code == 422
+    assert "as_of" in response.json()["detail"]
+
+
 def test_decision_with_and_without_photos(client):
     without = client.post("/api/decision", data={"region": "coban"}).json()
     assert without["incidencia"] is None and without["accion"] in without["valor_esperado_por_accion"]
@@ -151,3 +161,41 @@ def test_doubtful_photos_are_reported_and_not_used_in_the_decision(client):
     body = client.post("/api/decision", data={"region": "coban", "source": "local"}, files=files).json()
     assert body["hojas_descartadas"] == 1 and len(body["hojas"]) == 1
     assert any("dudosa.png" in n and "no ser concluyentes" in n for n in body["notas"])
+
+
+def test_decision_includes_the_rust_alert_and_the_climate_risk(client):
+    from dataclasses import replace
+
+    state = api_state.get_state()
+    state.fusion.favorability = replace(state.fusion.favorability, season_months=tuple(range(1, 13)))  # no depender del mes de hoy
+    two = [("files", ("a.png", png(), "image/png")), ("files", ("b.png", png(), "image/png"))]   # FakeClassifier: roya leve
+    alarm = client.post("/api/decision", data={"region": "coban", "source": "local"}, files=two).json()["alarma"]
+    assert (alarm["nivel"], alarm["roya"], alarm["riesgo_climatico"]) == ("alerta", "detectada", "alto")
+    assert alarm["hojas_con_roya"] == 2 and alarm["dias_favorables"] == alarm["ventana_dias"] and alarm["mensaje"]
+    one = client.post("/api/decision", data={"region": "coban", "source": "local"}, files=two[:1]).json()["alarma"]
+    assert one["nivel"] == "sospecha"             # una sola hoja con roya no basta para una alerta
+
+
+def test_rust_alert_survives_an_unfavorable_climate_and_flags_the_mdp(client, monkeypatch):
+    from src.fusion import pipeline
+
+    state = api_state.get_state()
+    two = [("files", ("a.png", png(), "image/png")), ("files", ("b.png", png(), "image/png"))]
+    original = pipeline.FusionEngine.decide
+
+    def decide_nothing(self, *args, **kwargs):                # el MDP no recomienda aplicar
+        d = original(self, *args, **kwargs)
+        d.action_name = "nada"
+        return d
+
+    monkeypatch.setattr(pipeline.FusionEngine, "decide", decide_nothing)
+    state.fusion.favorability = replace_cfg(state.fusion.favorability, humidity_min=99.0)   # ningún día favorable
+    alarm = client.post("/api/decision", data={"region": "coban", "source": "local"}, files=two).json()["alarma"]
+    assert alarm["nivel"] == "alerta" and alarm["riesgo_climatico"] in ("bajo", "moderado")
+    assert alarm["discrepancia_mdp"] and "no recomienda aplicar" in alarm["discrepancia_mdp"]
+
+
+def replace_cfg(cfg, **changes):
+    from dataclasses import replace
+
+    return replace(cfg, **changes)

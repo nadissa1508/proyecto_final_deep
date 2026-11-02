@@ -29,3 +29,19 @@ confusion:
 leaf_weight: 1.0                   # exponente de cada hoja (1 = independencia exacta; < 1 baja el peso de hojas no independientes)
 
 min_leaves: 10                     # mínimo recomendado de hojas por parcela (docs/decision_umbral_roya.md)
+
+# Alerta de roya y riesgo climático (docs/decision_umbral_roya.md §11): la roya detectada en las fotos siempre da una alerta; los días favorables
+# pronosticados y la época de lluvias solo fijan el riesgo climático (la urgencia del mensaje). La acción la sigue decidiendo el MDP.
+# Día favorable = temperatura media dentro del rango del perfil Y humedad relativa media mayor al mínimo. CEDICAFE/ANACAFE (Pérez, 2022) dan
+# 21–25 °C y humedad > 85 %; la hoja mojada y la oscuridad que también menciona NO se modelan (ERA5 no las mide).
+# SUPUESTOS DE DISEÑO (no hay datos de incidencia para calibrarlos): el perfil `altura`, los mínimos de días y de hojas y la época.
+favorability:
+  humidity_min: 85                 # % (CEDICAFE)
+  profile: altura                  # literal | altura
+  profiles:
+    literal: [21.0, 25.0]          # CEDICAFE tal cual; en estas fincas casi nunca se cumple (0–2 % de los días, salvo Atitlán)
+    altura: [18.0, 25.0]           # SUPUESTO: baja el mínimo a 18 °C porque las fincas de altura promedian 17.7–21.4 °C
+  window_days: 7                   # días pronosticados que se miran
+  min_favorable_days: 2            # alarma si al menos tantos de esos días son favorables
+  season_months: [5, 6, 7, 8, 9, 10]   # época de lluvias (la misma que usa el MDP heredado)
+  min_rust_leaves: 2               # hojas con roya predicha para considerar «roya detectada» (1 sola puede ser un falso positivo)

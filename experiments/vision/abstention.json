@@ -1,9 +1,9 @@
 {
   "regla": {
     "min_confidence": 0.5769,
-    "min_pixel_std": 10.761,
+    "min_pixel_std": 13.021,
     "cuantil_validacion": 0.1,
-    "desv_gris_minima_en_datos": 21.522
+    "desv_gris_minima_en_validacion": 26.042
   },
   "cobertura_y_exactitud": [
     {

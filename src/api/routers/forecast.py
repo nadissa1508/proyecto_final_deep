@@ -55,7 +55,10 @@ def forecast(region: str, source: str = Query("live", pattern="^(live|local)$"),
     if region not in load_regions():
         raise HTTPException(404, f"Región desconocida: {region}. Disponibles: {', '.join(load_regions())}")
     history, origin, notes = load_history(region, source)
-    result = forecaster.predict(history, region, as_of=as_of or date.today())
+    try:  # historia inválida o as_of anterior a la historia: error del pedido (422), no del servidor (500)
+        result = forecaster.predict(history, region, as_of=as_of or date.today())
+    except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
     if result.stale_days > 30:
         raise HTTPException(422, f"La historia termina el {result.last_observed}, {result.stale_days} días antes de la consulta")
     return ForecastResponse(

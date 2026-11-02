@@ -29,6 +29,9 @@ def test_split_temporal_sin_fuga_y_normalizacion_solo_con_train():
         last_out = pd.DatetimeIndex(out[name]["dates"]) + pd.Timedelta(days=h)
         lo, hi = bounds[name]
         assert (last_out >= lo).all() and (last_out <= hi).all()
+    # toda la salida de validación (del día 1 al 14) cae dentro de validación
+    first_val = pd.DatetimeIndex(out["val"]["dates"]) + pd.Timedelta(days=1)
+    assert (first_val >= bounds["val"][0]).all()
     # la salida de val empieza después del último día de train, la de test después del de val
     assert pd.DatetimeIndex(out["val"]["dates"]).min() + pd.Timedelta(days=1) > bounds["train"][1] - pd.Timedelta(days=h)
     # estadísticas de la normalización calculadas solo con train: media de train ≈ 0, la de test no

@@ -13,6 +13,7 @@ import numpy as np
 from src.fusion.config import load_config
 from src.fusion.contracts import Belief, ClimateEvidence, Decision, LeafObservation
 from src.fusion.evidence import EVIDENCE_PATH, EvidenceTable, climate_evidence, window_from_values
+from src.fusion.favorability import FavorabilityConfig, PreventiveAlert, preventive_alert
 from src.fusion.network_ext import ExtendedModel
 from src.fusion.qmdp import qmdp, solve_parcel
 from src.mdp.environment import ACTION_NAMES, ParcelaProfile
@@ -28,6 +29,7 @@ class FusionEngine:
         self.cfg = cfg or load_config()
         self.model = ExtendedModel.build(self.cfg)
         self.table = table or EvidenceTable.load(EVIDENCE_PATH)
+        self.favorability = FavorabilityConfig.from_config(self.cfg)
         self._q: Dict[Tuple, np.ndarray] = {}
 
     def q_values(self, profile: Optional[ParcelaProfile] = None) -> np.ndarray:
@@ -42,6 +44,13 @@ class FusionEngine:
                                     month=int(forecast.days[0][5:7]), stale_days=forecast.stale_days,
                                     degraded=forecast.degraded)
         return climate_evidence(window, self.table)
+
+    def alert(self, forecast, leaves: Sequence[LeafObservation] = ()) -> PreventiveAlert:
+        """Alerta de roya (solo de las fotos) y riesgo climático (días favorables pronosticados y época); ver decision_umbral_roya.md §11."""
+        window = self.favorability.window_days
+        return preventive_alert(forecast.values["temperature_2m_mean"], forecast.values["relative_humidity_2m_mean"],
+                                month=int(forecast.days[0][5:7]), leaf_labels=[leaf.label for leaf in leaves], cfg=self.favorability,
+                                unreliable=any(forecast.degraded[:window]))
 
     def decide(self, month: int, climate: Optional[ClimateEvidence], leaves: Sequence[LeafObservation] = (),
                profile: Optional[ParcelaProfile] = None) -> Decision:

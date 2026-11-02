@@ -8,8 +8,8 @@ Regla fijada **antes** de ver el test y con datos de validación únicamente:
 
 - `min_confidence`: percentil 10 de la confianza del ensamble (probabilidad calibrada máxima) en la validación conjunta; es decir, se
   descartaría ≈ 10 % de las hojas válidas. El 10 % es un parámetro de diseño; la tabla muestra otros cortes para que se vea el costo.
-- `min_pixel_std`: la mitad de la desviación estándar de gris más baja vista en las imágenes de validación y test (corte conservador: solo
-  atrapa imágenes prácticamente constantes).
+- `min_pixel_std`: la mitad de la desviación estándar de gris más baja vista en las imágenes de **validación** (corte conservador: solo
+  atrapa imágenes prácticamente constantes). Una versión anterior usaba también el test (hallazgo de la auditoría); se corrigió.
 
 Se reporta en test (BRACOL y RoCoLe) la cobertura y la exactitud de lo que se conserva, y qué pasa con imágenes sintéticas que no son hojas
 (ruido, color uniforme, tablero, degradado, manchas). Con `--write` se agregan ambos valores a `models/vision/artifact.json` (volver a correr
@@ -96,10 +96,9 @@ def main() -> None:
     tau = float(np.quantile(conf["val"], QUANTILE))
 
     stds = []
-    for split, frame in frames.items():
-        for path in LeafDataset(frame, eval_transform(256)).paths:
-            with Image.open(path) as im:
-                stds.append(pixel_std(im))
+    for path in LeafDataset(frames["val"], eval_transform(256)).paths:  # solo validación: el test no fija la regla
+        with Image.open(path) as im:
+            stds.append(pixel_std(im))
     min_std = round(0.5 * float(min(stds)), 3)
 
     rows = []
@@ -123,7 +122,7 @@ def main() -> None:
                       "descartada": bool(reasons), "motivo": " + ".join(reasons)})
 
     report = {"regla": {"min_confidence": round(tau, 4), "min_pixel_std": min_std, "cuantil_validacion": QUANTILE,
-                        "desv_gris_minima_en_datos": round(float(min(stds)), 3)},
+                        "desv_gris_minima_en_validacion": round(float(min(stds)), 3)},
               "cobertura_y_exactitud": json.loads(table.round(4).to_json(orient="records")), "sinteticas": synth}
     out = EXPERIMENTS_DIR / "vision" / "abstention.json"
     out.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")

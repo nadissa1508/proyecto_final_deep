@@ -98,8 +98,9 @@ def make_windows(features: np.ndarray, targets: np.ndarray, input_days: int,
 def split_windows(region: str, cfg: dict | None = None) -> Dict[str, object]:
     """Ventanas de train/val/test de una región, con normalización ajustada solo en train.
 
-    Una ventana pertenece al conjunto en el que cae el **último día de su salida**: así la
-    salida de val/test nunca toca días de train y la de train nunca toca val/test. La entrada
+    Una ventana pertenece al conjunto en el que cae el **último día de su salida**, y en validación además el **primero**: así la
+    salida de validación cae entera en validación y la de train nunca toca val/test. En test la evaluación filtra cada horizonte por la
+    fecha del día objetivo. La entrada
     de val/test sí puede usar días anteriores (la historia ya es conocida al pronosticar).
     """
     cfg = cfg or load_config()
@@ -110,10 +111,15 @@ def split_windows(region: str, cfg: dict | None = None) -> Dict[str, object]:
     target_cols = [frame.columns.get_loc(t) for t in cfg["targets"]]
     x, y, t_index = make_windows(scaled.to_numpy(), scaled.to_numpy()[:, target_cols],
                                  cfg["input_days"], cfg["max_horizon"])
+    first_out_day = frame.index[t_index + 1]
     last_out_day = frame.index[t_index + cfg["max_horizon"]]
     out: Dict[str, object] = {}
     for name, (lo, hi) in bounds.items():
         mask = (last_out_day >= lo) & (last_out_day <= hi)
+        if name == "val":
+            # Toda la salida de validación debe caer en validación (antes 13 ventanas por región tocaban días de train; hallazgo
+            # de la auditoría). Train ya cumple por construcción y en test la evaluación filtra cada horizonte por la fecha del día objetivo.
+            mask &= first_out_day >= lo
         out[name] = {"x": x[mask], "y": y[mask], "t_index": t_index[mask],
                      "dates": frame.index[t_index[mask]]}
     out["normalizer"] = norm

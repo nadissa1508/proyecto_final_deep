@@ -45,6 +45,21 @@ class ClimateOut(BaseModel):
     poco_confiable: bool
 
 
+class AlertOut(BaseModel):
+    nivel: str = Field(..., description="seguimiento | vigilancia | sospecha | alerta")
+    roya: str = Field(..., description="detectada | sospecha | no_detectada | sin_fotos (solo de las fotos)")
+    riesgo_climatico: str = Field(..., description="alto | moderado | bajo (pronóstico y época)")
+    mensaje: str
+    discrepancia_mdp: Optional[str] = None
+    dias_favorables: int
+    ventana_dias: int
+    hojas_con_roya: int
+    hojas: int
+    epoca_de_lluvias: bool
+    poco_confiable: bool
+    razones: List[str]
+
+
 class DecisionResponse(BaseModel):
     region: str
     accion: str
@@ -53,6 +68,7 @@ class DecisionResponse(BaseModel):
     creencia: Dict[str, float]
     hojas: List[str]
     hojas_descartadas: int = 0
+    alarma: Optional[AlertOut] = None
     incidencia: Optional[IncidenceOut] = None
     clima: ClimateOut
     notas: List[str]
@@ -102,6 +118,11 @@ async def decide(region: str = Form(...), files: List[UploadFile] = File(default
         notes.append("Humedad típica de la parcela estimada con la humedad de los últimos 90 días.")
     climate = state.fusion.climate(forecast)
     decision = state.fusion.decide(climate.window.month, climate, leaves, profile)
+    alert = state.fusion.alert(forecast, leaves)
+    discrepancy = None
+    if alert.rust == "detectada" and decision.action_name == "nada":
+        discrepancy = ("Hay roya detectada, pero el MDP no recomienda aplicar este mes (por el costo, la época y el nivel estimado). "
+                       "No lo tome como un descarte: evalúe la parcela con un técnico.")
     w = climate.window
     inc = decision.belief.incidence
     return DecisionResponse(
@@ -109,6 +130,10 @@ async def decide(region: str = Form(...), files: List[UploadFile] = File(default
         creencia_solo_clima=_dist(decision.belief.climate_only), creencia=_dist(decision.belief.posterior),
         hojas=[["sana", "roya_leve", "roya_severa", "otra_afeccion"][leaf.label] for leaf in leaves],
         hojas_descartadas=len(discarded),
+        alarma=AlertOut(nivel=alert.level, roya=alert.rust, riesgo_climatico=alert.risk, mensaje=alert.message,
+                        discrepancia_mdp=discrepancy, dias_favorables=alert.favorable_days, ventana_dias=alert.window_days,
+                        hojas_con_roya=alert.rust_leaves, hojas=alert.n_leaves, epoca_de_lluvias=alert.in_season,
+                        poco_confiable=alert.unreliable, razones=alert.reasons),
         incidencia=None if inc is None else IncidenceOut(
             hojas=inc.n_leaves, hojas_con_roya=inc.n_rust_predicted, aparente=inc.apparent, corregida=inc.corrected,
             intervalo_95=[inc.low, inc.high], sensibilidad=inc.sensitivity, especificidad=inc.specificity),

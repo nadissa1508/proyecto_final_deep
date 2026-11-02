@@ -20,6 +20,8 @@ from src.forecast.data import all_windows, load_config, load_region
 from src.forecast.infer import WeatherForecaster
 from src.forecast.train import predict, to_physical
 
+TOLERANCE = 1e-4   # °C, puntos o mm/día: infer.py y la evaluación hacen las mismas cuentas, solo se toleran redondeos
+
 
 def main() -> None:
     fc = load_config()
@@ -47,6 +49,8 @@ def main() -> None:
         stale = forecaster.predict(history.iloc[:-5], region, as_of=history.index[-1].date())
         assert stale.stale_days == 5 and stale.degraded[0] and not stale.degraded[-1], "marca de retraso incorrecta"
     print(f"diferencia máxima entre infer.py y el camino de evaluación: {worst:.2e}")
+    if worst > TOLERANCE:  # antes solo se imprimía (hallazgo de la auditoría): ahora una divergencia hace fallar la verificación
+        raise SystemExit(f"infer.py se aparta del camino de evaluación en {worst:.2e} (tolerancia {TOLERANCE:g})")
     print(pd.DataFrame(errors).groupby("variable")["mae"].mean().round(3).to_string())
     print("retraso: marcas degraded correctas en las 6 regiones")
 

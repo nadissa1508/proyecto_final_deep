@@ -1,0 +1,13 @@
+variable,horizonte,mean_base,mean_val_corregida,std_base,std_val_corregida,cambio_pct
+precipitation_sum,1,3.7773,3.7773,0.0151,0.0151,0.0
+precipitation_sum,3,4.2386,4.2386,0.0133,0.0133,0.0
+precipitation_sum,7,4.3139,4.3139,0.0091,0.0091,0.0
+precipitation_sum,14,4.3716,4.3716,0.03,0.03,0.0
+relative_humidity_2m_mean,1,3.6073,3.6073,0.0187,0.0187,0.0
+relative_humidity_2m_mean,3,4.8085,4.8085,0.0131,0.0131,0.0
+relative_humidity_2m_mean,7,5.142,5.142,0.0263,0.0263,0.0
+relative_humidity_2m_mean,14,5.3378,5.3378,0.0237,0.0237,0.0
+temperature_2m_mean,1,0.5174,0.5174,0.0142,0.0142,0.0
+temperature_2m_mean,3,0.7715,0.7715,0.0082,0.0082,0.0
+temperature_2m_mean,7,0.8435,0.8435,0.0102,0.0102,0.0
+temperature_2m_mean,14,0.8874,0.8874,0.0105,0.0105,0.0

@@ -1,7 +1,7 @@
 {
   "files": {
     "vision/artifact.json": {
-      "sha256": "322005333075fc447cb8574e88b92587ee5f4e50c142f4d2a7c3813c2d4c56b2",
+      "sha256": "c80fa17a77cdf8e72a33eeef7873d1acc62a7b65ed0892322c64ec5aac220842",
       "bytes": 1555
     },
     "vision/resnet18_dlr_both.pt": {
