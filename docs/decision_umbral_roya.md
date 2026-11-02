@@ -31,7 +31,7 @@ Nuestras clases de imagen usan un 5 % que **coincide en número, pero no en conc
 
 
 | Djuikem y Arino (2025), arXiv:2504.01055 | Modelo matemático: los productores suelen actuar solo cuando ven síntomas; un umbral **bajo** es mejor y uno alto desperdicia la oportunidad de control; con pocas esporas y R₀ bajo la infección puede extinguirse sola | Apoya actuar temprano | Media (teórico, no calibrado a Guatemala) |
-| OIC (2013), ED 2157/13 | Epidemia 2012/13: 2.7 millones de sacos perdidos, unos US$500 millones, 70 % del área afectada en Guatemala | Contexto del problema | Alta | https://arxiv.org/pdf/2504.01055
+| OIC (2013), ED 2157/13 | Epidemia 2012/13: 2.7 millones de sacos perdidos, unos US$500 millones, 70 % del área afectada en Guatemala | Contexto del problema | Alta | https://www.ico.org/documents/cy2012-13/ed-2157e-report-clr.pdf
 
 **Fuentes descartadas:**
 - El texto que se pegó como "manual de CATIE 2015" es el *Manual de producción y manejo de aves de patio* (Manual técnico n.º 128): trata de gallinas, no de roya.
@@ -54,7 +54,7 @@ El modelo tiene dos niveles, porque una foto describe una hoja y la decisión es
 
 - **R** (nivel de roya de la parcela, 3 valores) se define por la incidencia real *p*: **bajo** *p* < 5 %, **medio** 5 % ≤ *p* < 10 %, **alto** *p* ≥ 10 %. Los cortes de 5 % y 10 % vienen de Cenicafé y son **parámetros del diseño**, no umbrales oficiales de Guatemala.
 - **Hoja fotografiada:** su estado real *L* es `sana`, `roya` u `otra afección`. La probabilidad de que una hoja tenga roya dado *R* es la incidencia representativa de la banda (por ejemplo 2 %, 7 % y 15 %). Es un supuesto que se documenta y se prueba en el análisis de sensibilidad.
-- **Clasificador:** lo que devuelve la CNN, *O*, depende del estado real: *P(O | L)* es la **matriz de confusión medida en el test de BRACOL**. Así sus errores se tienen en cuenta.
+- **Clasificador:** lo que devuelve la CNN, *O*, depende del estado real: *P(O | L)* es la **matriz de confusión medida en el test** (en producción, la suma de BRACOL y RoCoLe: `confusion.source: pooled`). Así sus errores se tienen en cuenta.
 - **Nodo de la red bayesiana:** *P(O | R) = Σ_L P(O | L) · P(L | R)*. Cada hoja es una observación, con el supuesto (aproximado) de independencia dado *R*. La red ya condiciona *R* con temperatura, humedad y lluvia, así que **el clima entra solo**.
 - **Salidas:**
   1. la creencia *b(R)*;
@@ -102,10 +102,24 @@ Conclusión: con las 10 a 30 fotos que razonablemente toma un productor **no se 
 
 ## 10. Referencias
 
-- Pérez, N. (2022, junio). *Prevención y control de la roya del cafeto* [presentación]. CEDICAFE, ANACAFE. **[completar enlace o nombre del archivo]**
+- Pérez, N. (2022, junio). *Prevención y control de la roya del cafeto* [presentación]. CEDICAFE, ANACAFE. https://www.anacafe.org/uploads/file/4d9dbb854bf940159d4489c200dc44da/Prevencion-Roya-Cafeto-2022.pdf
 - Cenicafé/FNC. (2026). Estado fitosanitario y nutricional, primer trimestre. https://www.agronegocios.co/comentarios/profesor-yarumo-401609/estado-fitosanitario-y-nutricional-primer-trimestre-2026-4346374
 - Cenicafé. Infografía de control de la roya. https://publicaciones.cenicafe.org/index.php/infografias/article/download/2860/2780/2469
 - Djuikem, C., y Arino, J. (2025). *Threshold-based impulsive biocontrol for coffee leaf rust*. arXiv:2504.01055.
 - International Coffee Organization. (2013). *Report on the outbreak of coffee leaf rust in Central America and Action Plan to combat the pest* (ED 2157/13).
 - Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association*, 22(158), 209–212.
 - Rogan, W. J., y Gladen, B. (1978). Estimating prevalence from the results of a screening test. *American Journal of Epidemiology*, 107(1), 71–76.
+
+## 11. Revisión de la regla C (2026-11-01)
+
+Al implementar la alarma tal como estaba escrita (roya + clima favorable + época) apareció un defecto: una detección de roya con clima poco favorable
+quedaba como «vigilancia», es decir, el pronóstico podía restarle peso a lo que las fotos muestran. Tras una revisión con criterio agronómico se separan
+tres preguntas que la regla original mezclaba:
+
+1. **Detectar:** ¿hay roya en las hojas fotografiadas? Lo responden solo las fotos, y una detección siempre genera una **alerta** (con ≥ 2 hojas; con 1 hoja, «sospecha»).
+2. **Evaluar el riesgo:** ¿qué tan favorables serán los próximos días? Lo responden el pronóstico y la época, y solo cambian la **urgencia** del mensaje.
+3. **Intervenir:** ¿conviene aplicar ahora? Lo sigue decidiendo el **MDP** con la creencia; cuando no coincide con una detección, el sistema lo avisa en vez de esconderlo.
+
+Se conservan las decisiones 2, 3 y 4 de la sección 1. La decisión 1 cambia: la alerta ya no exige clima favorable. Una detección no es una orden de aplicar
+fungicida: la aplicación concreta depende del muestreo, del calendario preventivo, del producto, de la variedad, de la fenología y de la cercanía de la cosecha,
+que este sistema **no** modela (no hay datos). Detalle e implementación en `docs/resultados_fusion.md` §6.

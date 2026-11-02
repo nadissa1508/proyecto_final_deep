@@ -42,7 +42,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
-    allow_origin_regex=os.environ.get("COFFEEMIND_CORS_REGEX"),   # p. ej. r"http://192\.168\.\d+\.\d+:5173" para probar desde el celular
+    allow_origin_regex=os.environ.get("COFFEEMIND_CORS_REGEX"),   # p. ej. r"http://192\.168\.\d+\.\d+:5173" para abrir la app desde otro equipo de la red local
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )

@@ -67,9 +67,21 @@ Las curvas confirman sobreajuste: la pérdida de entrenamiento baja en cada épo
 
 **Conclusión:** bajar el learning rate retrasa el sobreajuste (la mejor época pasa de 2 a 8) pero **el piso de la pérdida de validación casi no se mueve** (0.225–0.233, una mejora de ~2 %, comparable a la variación entre semillas del modelo base: 0.225–0.231). El techo lo marca la información disponible en una ventana de ERA5, no la regularización. Por eso no se reentrenaron las 12 corridas con otra configuración y se mantiene la base. Si se repitiera, la configuración sugerida es lr 3e-4.
 
+## Ventanas de validación que cruzaban a train (hallazgo de la auditoría)
+
+La auditoría encontró que 13 de las 1,096 ventanas de validación por región tenían sus primeros días objetivo en diciembre de 2017, es decir,
+en el periodo de entrenamiento: una ventana se asignaba a validación solo por su último día. Afectaba únicamente a la validación, que decide la
+época de parada; en test la evaluación ya filtraba cada horizonte por la fecha del día objetivo. Se corrigió `split_windows` (ahora toda la
+salida de validación cae en validación: 1,083 ventanas por región) y se reentrenó el GRU con las mismas 4 semillas bajo otro nombre, sin tocar los
+pesos en uso (`experiments/forecast/val_fix/`, comparación en `experiments/forecast/val_fix_comparacion.csv`).
+
+**Resultado: no cambia nada.** Las cuatro semillas eligen la misma época que antes (2, 2, 3 y 2), así que los modelos son idénticos y el MAE de test
+es exactamente el mismo en las 12 combinaciones variable × horizonte (0.0 %). La pérdida de validación sube apenas ≈ 0.001 al quitar esas ventanas.
+Por eso se conservan los modelos y todas las cifras de este documento; la corrección queda en el código para cualquier entrenamiento futuro.
+
 ## Limitaciones
 
-- **La verdad es ERA5, no el clima medido.** ERA5 sobreestima o subestima la lluvia de las estaciones entre 15 % y 60 %. Un modelo que aprende de ERA5 aprende también sus errores. La evaluación contra las estaciones de ANACAFE y el afinado con ellas siguen pendientes.
+- **La verdad es ERA5, no el clima medido.** ERA5 sobreestima o subestima la lluvia de las estaciones entre 15 % y 60 %. Un modelo que aprende de ERA5 aprende también sus errores. La evaluación contra las estaciones de ANACAFE y el afinado con ellas están en las secciones siguientes (esta lista es de la primera ablación).
 - **Mejor época 2 en casi todas las corridas** (sobreajuste confirmado en las curvas). El barrido de arriba lo retrasa pero no mejora el resultado. No se probaron otras ventanas de entrada ni arquitecturas más pequeñas.
 - **Un periodo de test (2021–2026) con ~2,100 ventanas por región**, muy autocorrelacionadas: el número efectivo de muestras independientes es mucho menor.
 - **No se comparó contra el pronóstico numérico de Open-Meteo** de forma justa: contra ERA5 no es un techo limpio (ver `data/README.md`).
@@ -155,7 +167,9 @@ valores equivalentes; resultados completos en `experiments/forecast/loso_eval.cs
 3. **Temperatura: el afinado empeora** (solo mejora en 2 de 6 regiones). Es razonable: el sesgo de temperatura depende de la altitud y cada estación tiene la suya, así que el sesgo promedio de otras fincas no sirve. Para una finca nueva se usa el modelo preentrenado, que a 7–14 días queda ligeramente por debajo de la climatología y del pronóstico numérico.
 4. **La corrección de sesgo con las otras estaciones no ayuda**: empeora la lluvia (p. ej. 7.66 frente a 6.49 a 7 días) y no mejora la temperatura. Con el sesgo de la propia estación (referencia, no disponible en una finca nueva) la humedad llega a 5.30 a 7 días: **tener estación propia vale más que cualquier ajuste con las ajenas**.
 
-Con esto el artefacto (`src/forecast/export.py`) usa el modelo afinado para lluvia y humedad y el preentrenado para temperatura; la elección sale de este cuadro, no de una decisión a mano. Limitaciones: seguimos con un solo periodo de test de ~16 meses y solo 6 fincas, todas dentro de las regiones cafetaleras de ANACAFE.
+Con esto el artefacto (`src/forecast/export.py`) usa el modelo afinado para lluvia y humedad y el preentrenado para temperatura; la elección sale de este cuadro, no de una decisión a mano. **Matiz de la auditoría:** este cuadro se mide sobre el periodo de test de las
+estaciones, así que para el sistema híbrido funciona como un **conjunto de selección**; el híbrido final no tiene una evaluación independiente
+posterior (haría falta más tiempo de estaciones). Limitaciones: seguimos con un solo periodo de test de ~16 meses y solo 6 fincas, todas dentro de las regiones cafetaleras de ANACAFE.
 
 ## Retraso de ERA5 en operación (`src/forecast/latency.py`)
 

@@ -60,7 +60,9 @@ Código: `python -m src.vision.finalize` (calibra, compara candidatos, exporta) 
 
 ### Candidatos y regla de selección
 
-Regla fijada antes de ver el test: **menor NLL calibrado en la validación conjunta** (BRACOL + RoCoLe). A cada miembro se le ajusta una temperatura sobre esa validación; la probabilidad del candidato es el promedio de sus miembros calibrados.
+Regla fijada antes de ver el test: **menor NLL calibrado en la validación conjunta** (BRACOL + RoCoLe). **Matiz de la auditoría:** el test sí
+se miró en decisiones anteriores (estrategia de ajuste, entrenar con ambos conjuntos), así que debe tratarse como un **test de desarrollo**
+reutilizado, no como una evaluación externa intacta; una evaluación independiente requiere imágenes nuevas. A cada miembro se le ajusta una temperatura sobre esa validación; la probabilidad del candidato es el promedio de sus miembros calibrados.
 
 | Candidato | Miembros | NLL val (calibrado) | F1 val | F1 test BRACOL | F1 test RoCoLe |
 |---|---|---|---|---|---|
@@ -113,14 +115,16 @@ En fotos de campo la roya severa es la clase más débil: 9 de 36 hojas se confu
 
 ### Verificación de punta a punta
 
-`python -m src.vision.check_infer` pasa las imágenes de test por `infer.py` con el artefacto real: F1 macro de 0.956 en BRACOL (referencia 0.949) y 0.787 en RoCoLe (referencia 0.787); la diferencia de 0.006 se debe a usar float32 en vez de precisión mixta.
+`python -m src.vision.check_infer` pasa las imágenes de test por `infer.py` con el artefacto real: F1 macro de 0.956 en BRACOL (referencia 0.949) y 0.787 en RoCoLe (referencia 0.787); la diferencia de 0.006 probablemente se debe a usar float32 en vez de precisión mixta, pero es una **hipótesis**: no se aisló comparando los logits
+con y sin precisión mixta.
 
 ## Fotos no concluyentes (`python -m src.vision.abstention`)
 
 El clasificador siempre responde una de las 4 clases, también ante una foto que no es una hoja. Se agregó una regla de **abstención** que marca una
 foto como «no concluyente» (`usable = False` con su `reason` en `infer.py`) y la API no la cuenta como observación en la decisión. La regla se fijó con la
 validación, antes de mirar el test: `min_confidence` es el percentil 10 de la confianza del ensamble en la validación conjunta (0.577) y `min_pixel_std`
-es la mitad del menor contraste (desviación de gris) visto en validación y test (10.8 de 255). El 10 % es un parámetro de diseño. Resultados en
+es la mitad del menor contraste (desviación de gris) visto en la **validación** (13.0 de 255). Una primera versión usó también el test (10.8); la
+auditoría lo detectó y se corrigió. En ambos casos el corte queda por debajo del menor contraste de las hojas de test, así que la cobertura en test no cambia. El 10 % es un parámetro de diseño. Resultados en
 `experiments/vision/abstention.json`:
 
 | Corte (percentil de validación) | Test BRACOL: cobertura / exactitud de lo conservado | Test RoCoLe: cobertura / exactitud de lo conservado |

@@ -4,12 +4,11 @@ import { MAX_FILES, prepareImage } from '../imageUtils'
 export const MIN_RECOMMENDED = 10
 
 /**
- * Subida de hojas: desde archivo (botón o arrastrar y soltar) y desde la cámara del celular.
+ * Subida de hojas desde archivo (botón o arrastrar y soltar). La captura con la cámara del celular queda como trabajo futuro.
  * Es controlado: `items` es la lista de { id, file, url } ya reducidas a ~1024 px.
  */
 export default function LeafUploader({ items, onChange, disabled }) {
   const fileInput = useRef(null)
-  const cameraInput = useRef(null)
   const [over, setOver] = useState(false)
   const [errors, setErrors] = useState([])
   const [busy, setBusy] = useState(false)
@@ -71,14 +70,8 @@ export default function LeafUploader({ items, onChange, disabled }) {
                   onClick={() => fileInput.current?.click()}>
             Elegir archivos
           </button>
-          <button type="button" className="btn btn--secondary btn--sm" disabled={disabled || busy}
-                  onClick={() => cameraInput.current?.click()}>
-            Tomar foto
-          </button>
         </div>
         <input ref={fileInput} type="file" accept="image/jpeg,image/png,image/webp" multiple hidden
-               onChange={(e) => { add(e.target.files); reset(e) }} />
-        <input ref={cameraInput} type="file" accept="image/*" capture="environment" hidden
                onChange={(e) => { add(e.target.files); reset(e) }} />
         <ul className="dropzone__guide">
           <li>Una hoja completa por foto, por el <strong>envés</strong> (ahí salen las pústulas).</li>

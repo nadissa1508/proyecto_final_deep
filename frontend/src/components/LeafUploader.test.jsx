@@ -7,13 +7,12 @@ afterEach(() => cleanup())
 const items = (n) => Array.from({ length: n }, (_, i) => ({ id: `id${i}`, file: new File(['x'], `h${i}.jpg`), url: `blob:${i}` }))
 
 describe('LeafUploader', () => {
-  it('ofrece elegir archivos y tomar foto con la cámara trasera', () => {
+  it('ofrece elegir archivos (sin botón de cámara)', () => {
     const { container } = render(<LeafUploader items={[]} onChange={() => {}} />)
     expect(screen.getByText('Elegir archivos')).toBeTruthy()
-    expect(screen.getByText('Tomar foto')).toBeTruthy()
-    const camera = container.querySelector('input[capture]')
-    expect(camera.getAttribute('capture')).toBe('environment')
-    const picker = container.querySelector('input[type=file]:not([capture])')
+    expect(screen.queryByText('Tomar foto')).toBeNull()
+    expect(container.querySelector('input[capture]')).toBeNull()
+    const picker = container.querySelector('input[type=file]')
     expect(picker.getAttribute('accept')).toBe('image/jpeg,image/png,image/webp')
     expect(picker.multiple).toBe(true)
   })
@@ -33,7 +32,7 @@ describe('LeafUploader', () => {
   it('rechaza un archivo HEIC con el mensaje para el usuario y no agrega nada nuevo', async () => {
     const onChange = vi.fn()
     const { container } = render(<LeafUploader items={[]} onChange={onChange} />)
-    const picker = container.querySelector('input[type=file]:not([capture])')
+    const picker = container.querySelector('input[type=file]')
     const heic = new File(['x'], 'IMG_9.heic', { type: 'image/heic' })
     fireEvent.change(picker, { target: { files: [heic] } })
     await waitFor(() => expect(screen.getByText(/formato HEIC no soportado/)).toBeTruthy())

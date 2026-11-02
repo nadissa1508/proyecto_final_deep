@@ -12,7 +12,7 @@ pip install -r requirements.txt -r requirements-dl.txt
 pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
 ```
 
-En PowerShell defina antes `$env:PYTHONPATH = "."`. Pruebas: `pytest tests/` (65; no necesitan pesos ni internet) y, en `frontend/`, `npm test` (20, vitest).
+En PowerShell defina antes `$env:PYTHONPATH = "."`. Pruebas: `pytest tests/` (78; no necesitan pesos ni internet) y, en `frontend/`, `npm test` (21, vitest).
 
 ## 1. Datos
 
@@ -75,6 +75,7 @@ python -m src.fusion.simulate --reps 120 --stale 0 --sensitivity
 python -m src.fusion.simulate --reps 150 --stale 0 --slopes 0.1 0.25 0.5 --gammas 0.0 0.15 0.3 0.6
 python -m src.fusion.sensitivity
 python -m src.fusion.diagnose_climate
+python -m src.fusion.evaluate_favorability     # alarma preventiva: el pronóstico frente al evento «días favorables»
 ```
 
 Supuestos en `configs/fusion.yaml`; resultados en `docs/resultados_fusion.md` y `notebooks/10_integracion.ipynb`.
@@ -92,7 +93,6 @@ Docker (PyTorch solo CPU; los pesos y `models/fusion/` se montan como volumen, n
 docker compose up --build                      # backend en :8000, frontend en :5173
 ```
 
-Desde el celular: `docs/uso_celular.md`.
 
 ## 6. Pesos, figuras y revisión antes de publicar
 

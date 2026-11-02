@@ -1,4 +1,4 @@
-"""Lectura y validación de imágenes subidas por el usuario (archivo o cámara del celular).
+"""Lectura y validación de imágenes subidas por el usuario (archivos JPEG, PNG o WebP).
 
 Se valida el tipo, el tamaño y que el archivo sea de verdad una imagen, y se reduce a `MAX_SIDE` px antes de pasarla a los
 modelos para limitar la memoria. El navegador ya reduce y corrige la orientación; aquí se vuelve a hacer por seguridad.

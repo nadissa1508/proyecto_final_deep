@@ -1,13 +1,19 @@
 # CoffeeMind GT + Deep Learning
 
-**Curso:** CC3092 Deep Learning, Universidad del Valle de Guatemala, 2026 · **Autores:** [EQUIPO: nombres] · **Video:** [EQUIPO: enlace]
+## Universidad del Valle de Guatemala
+## Departamento de Computación
+
+**Curso:** CC3092 Deep Learning
+
+**Integrantes:** Cristian Túnchez (231359), Javier Linares (231135), Dulce Ambrosio (231143), Daniel Chet (231177), Nadissa Vela (23764)
+ 
 
 Extensión con Deep Learning de **CoffeeMind GT**, el sistema de apoyo a decisiones para caficultores guatemaltecos del proyecto de Inteligencia Artificial (la parte heredada está documentada al final de este archivo). Dos modelos nuevos alimentan la red bayesiana y el MDP que ya existían:
 
 1. **Visión:** una CNN (ensamble de 4 ResNet-18 y 4 EfficientNet-B0 con transfer learning, calibrada y con Grad-CAM validado) que clasifica una foto de hoja en *sana · roya leve · roya severa · otra afección*. Entrenada con RoCoLe y BRACOL.
 2. **Pronóstico:** modelos GRU, LSTM y Transformer que pronostican 14 días de temperatura, humedad y lluvia de seis fincas cafetaleras a partir de 90 días de ERA5, afinados con estaciones de ANACAFE.
 
-La **decisión** (qué hacer este mes ante la roya) se calcula con una red bayesiana extendida (una observación por hoja fotografiada más evidencia climática) y la aproximación QMDP sobre el MDP heredado. Se usa desde una API (FastAPI) y una aplicación web (React) que acepta fotos desde archivo o desde la cámara del celular.
+La **decisión** (qué hacer este mes ante la roya) se calcula con una red bayesiana extendida (una observación por hoja fotografiada más evidencia climática) y la aproximación QMDP sobre el MDP heredado. Además, una **alerta de roya** que depende solo de las fotos, con un **riesgo climático** aparte (días favorables pronosticados y época) que cambia su urgencia; la acción la sigue decidiendo el MDP y, si no coincide con la detección, se avisa. Se usa desde una API (FastAPI) y una aplicación web (React) que acepta fotos desde archivo.
 
 ## Resultados principales
 
@@ -16,8 +22,8 @@ Todas las cifras salen de `experiments/` y se explican, con sus limitaciones, en
 | Módulo | Resultado | Detalle |
 |---|---|---|
 | Visión | F1 macro **0.949** en BRACOL y **0.787** en RoCoLe (fotos de campo); sensibilidad de roya 1.00 / 0.88. Un modelo entrenado en un solo conjunto cae por debajo del azar en el otro. | [docs/resultados_vision.md](docs/resultados_vision.md) |
-| Pronóstico | Frente al mejor de cuatro baselines: +6 a +8 % a 3 días en temperatura y humedad, ≈ +10 % en lluvia a 1 día; sin ganancia en humedad y lluvia a 14 días. Afinar con estaciones mejora lluvia (11–16 %) y humedad (9–22 %) incluso en una finca no vista, pero **empeora la temperatura**. | [docs/resultados_forecast.md](docs/resultados_forecast.md) |
-| Integración | En un mundo simulado con supuestos declarados, **las fotos aportan valor a la decisión y el pronóstico no** (ni siquiera uno perfecto). No son mediciones de campo: no existen datos de incidencia de roya emparejados con clima. | [docs/resultados_fusion.md](docs/resultados_fusion.md) |
+| Pronóstico | Supera al mejor de cuatro baselines a corto plazo: +6 a +8 % a 3 días en temperatura y humedad y ≈ +10 % en lluvia a 1 día; a 14 días la ganancia es casi nula. Afinado con estaciones de ANACAFE, mejora la lluvia (11–16 %) y la humedad (9–22 %) incluso en una finca que el modelo no vio; para temperatura se usa el modelo sin afinar, porque afinarlo la empeora. | [docs/resultados_forecast.md](docs/resultados_forecast.md) |
+| Integración | En un mundo simulado con supuestos declarados, **las fotos aportan valor a la decisión** (+9 USD/ha con 10 hojas, +45 con 30). La evidencia climática todavía no, ni con un pronóstico perfecto: sin datos reales de incidencia de roya emparejados con clima no se puede calibrar ese vínculo. Es un resultado de simulación, no una medición de campo. | [docs/resultados_fusion.md](docs/resultados_fusion.md) |
 
 La decisión de diseño sobre la alarma de roya (preventiva, sin umbral fijo de incidencia) está en [docs/decision_umbral_roya.md](docs/decision_umbral_roya.md).
 
@@ -70,7 +76,7 @@ Con Docker (PyTorch solo CPU; los pesos se montan como volumen):
 docker compose up --build
 ```
 
-Dashboard en <http://localhost:5173> y API en <http://localhost:8000/docs>. Si faltan los pesos, los endpoints nuevos responden 503 con el motivo y los heredados siguen funcionando. Uso desde un celular: [docs/uso_celular.md](docs/uso_celular.md).
+Dashboard en <http://localhost:5173> y API en <http://localhost:8000/docs>. Si faltan los pesos, los endpoints nuevos responden 503 con el motivo y los heredados siguen funcionando. 
 
 ## Reproducir los experimentos
 
@@ -115,12 +121,7 @@ Las imágenes y el clima descargado van en `data/raw/<fuente>/` y no se versiona
 
 - No existen datos públicos de incidencia de roya emparejados con clima: el vínculo clima–roya de la red es un **supuesto de diseño** sometido a análisis de sensibilidad, y los resultados de integración son de un mundo simulado.
 - Los tests de visión son pequeños (239 y 218 imágenes) y las fotos de los productores serán otro dominio; el clasificador no distingue "esto no es una hoja".
-- El pronóstico se entrenó con ERA5 y se validó con 6 estaciones durante 16 a 28 meses; en operación, los primeros 5–8 días de la ventana de entrada están rellenados por persistencia, por lo que los horizontes menores a 7 días se marcan como poco confiables.
-- La cámara del celular y el acceso por red local no se probaron en un dispositivo real; el frontend no tiene pruebas automáticas.
-
-## Licencia
-
-Código: [EQUIPO: elegir licencia y agregar el archivo `LICENSE`]. El material del curso no se publica.
+- El pronóstico se entrenó con ERA5 y se validó con 6 estaciones durante 16 a 28 meses; en operación, los últimos 5–8 días de la historia de entrada se completan por persistencia (retraso de ERA5), por lo que los horizontes menores a 7 días se marcan como poco confiables.
 
 ---
 
