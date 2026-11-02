@@ -42,7 +42,7 @@ la distribución de fincas, así que las anclas `P(R ≥ medio)` y `P(R = alto)`
   heredados siguen respondiendo).
 - Frontend: subida desde archivo (arrastrar y soltar o botón) con reducción a 1024 px, corrección de orientación y aviso de HEIC; tarjetas de pronóstico y de decisión; mapa de atención por foto. Probado a mano con el
   backend real. La captura con la cámara del celular no se incluyó (no se pudo probar en un dispositivo real) y queda como trabajo futuro. Las pruebas del frontend cubren la preparación de fotos (HEIC, reducción), la subida y el selector, no el aspecto.
-- Pruebas automáticas: 78 de Python y 21 del frontend (vitest), ninguna falla (las de integración usan módulos sintéticos para no depender de pesos).
+- Pruebas automáticas: 81 de Python y 24 del frontend (vitest), ninguna falla (las de integración usan módulos sintéticos para no depender de pesos).
 
 ## 3. Sensibilidad de la decisión a los supuestos
 
@@ -132,6 +132,11 @@ El control de 4 (`C0`) se añadió a propósito tras ver que `C` salía negativo
 - **Perfil `literal`** (21–25 °C) casi nunca se cumple en estas fincas (0–2 % de los días, salvo Atitlán: 11.7 %). **Perfil `altura`** (18–25 °C): **supuesto de diseño nuestro**, porque las fincas promedian 17.7–21.4 °C. Los mínimos de 2 días y 2 hojas y la época también son supuestos (`configs/fusion.yaml`).
 - **Cuando el MDP y la detección no coinciden** (roya detectada y el MDP dice «nada») la respuesta lo avisa en `discrepancia_mdp`. Auditoría: con clima desfavorable, el MDP cambia un fungicida por «nada» en **5 de 48** combinaciones mes × hojas con roya (febrero a abril con 3 de 10 hojas; mayo con 1 de 10 y con 3 de 30). No se sobrescribe al MDP: no hay datos que justifiquen otra regla.
 - Prueba de punta a punta con los modelos reales y datos locales de ERA5 (noviembre): Atitlán con 15 fotos de demostración → alerta, riesgo moderado (7 de 7 días favorables, fuera de la época); Fraijanes con las mismas fotos → alerta, riesgo bajo (0 días favorables); Fraijanes con 5 hojas sanas → seguimiento. El MDP recomienda triazol en los tres casos (en noviembre lo hace incluso sin roya): la alerta y el MDP responden preguntas distintas.
+- **Consulta histórica (uso académico).** `GET /api/forecast` y `POST /api/decision` aceptan `as_of` (campo «Fecha de consulta» de la tarjeta de pronóstico, que la decisión usa también): corta la historia descargada
+  en esa fecha y pronostica desde ella con los datos completos, sin el retraso de ERA5 (por eso el riesgo no sale como orientativo). Sirve para ver
+  la alerta en la época de lluvias aunque hoy no lo sea; no es un pronóstico de hoy. Con los modelos reales y las 13 fotos de demostración sin
+  `clase3`, consulta del 18-sep-2025: Atitlán → alerta, riesgo **alto** (7 de 7 días); Atitlán sin fotos → vigilancia, riesgo alto; Fraijanes →
+  alerta, riesgo bajo (0 de 7 días: a 1,713 m la temperatura queda bajo 18 °C). Atitlán dio riesgo alto en todas las semanas de mayo a octubre de 2025.
 
 ### ¿Acierta el pronóstico el evento «días favorables»? (`python -m src.fusion.evaluate_favorability`)
 

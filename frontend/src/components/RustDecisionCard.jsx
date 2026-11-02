@@ -32,7 +32,8 @@ const ALERT_TITLE = { alerta: 'Alerta de roya', sospecha: 'Posible roya', vigila
 const ALERT_CHIP = { alerta: 'chip--warn', sospecha: 'chip--warn', vigilancia: 'chip--warn', seguimiento: 'chip--ok' }
 const RUST_TEXT = { detectada: 'detectada', sospecha: 'sospecha (1 hoja)', no_detectada: 'no detectada', sin_fotos: 'sin fotos' }
 
-export default function RustDecisionCard({ parcela, regionKey }) {
+// asOf viene de la tarjeta de pronóstico: vacía = hoy; con fecha = consulta histórica (uso académico)
+export default function RustDecisionCard({ parcela, regionKey, asOf = '' }) {
   const [items, setItems] = useState([])
   const [state, setState] = useState({ loading: false, data: null, error: null })
   const [maps, setMaps] = useState({ loading: false, data: null, error: null })
@@ -48,13 +49,13 @@ export default function RustDecisionCard({ parcela, regionKey }) {
     })
   }, [parcela.id])
 
-  // otra parcela, región, altitud o sombra: el resultado anterior ya no corresponde
+  // otra parcela, región, altitud, sombra o fecha de consulta: el resultado anterior ya no corresponde
   useEffect(() => {
     requestVersion.current += 1
     mapVersion.current += 1
     setState({ loading: false, data: null, error: null })
     setMaps({ loading: false, data: null, error: null })
-  }, [parcela.id, parcela.altitud, parcela.sombra, regionKey])
+  }, [parcela.id, parcela.altitud, parcela.sombra, regionKey, asOf])
 
   // otras fotos: la decisión y los mapas anteriores ya no corresponden
   const updateItems = (next) => {
@@ -78,7 +79,7 @@ export default function RustDecisionCard({ parcela, regionKey }) {
     mapVersion.current += 1
     setMaps({ loading: false, data: null, error: null })
     setState({ loading: true, data: null, error: null })
-    decide({ region: regionKey, files: items.map((x) => x.file), altitud: parcela.altitud, sombra: parcela.sombra })
+    decide({ region: regionKey, files: items.map((x) => x.file), altitud: parcela.altitud, sombra: parcela.sombra, asOf: asOf || undefined })
       .then((data) => { if (version === requestVersion.current) setState({ loading: false, data, error: null }) })
       .catch((err) => { if (version === requestVersion.current) setState({ loading: false, data: null, error: err.message }) })
   }
@@ -98,6 +99,8 @@ export default function RustDecisionCard({ parcela, regionKey }) {
 
       <LeafUploader items={items} onChange={updateItems} disabled={state.loading} />
 
+      {asOf && <div className="muted small">Consulta histórica desde el {asOf} (fecha elegida en la tarjeta de pronóstico).</div>}
+
       <div>
         <button type="button" className="btn btn--primary" onClick={run} disabled={state.loading}>
           {state.loading ? 'Analizando…' : items.length ? `Analizar ${items.length} ${items.length === 1 ? 'hoja' : 'hojas'}` : 'Decidir solo con el clima'}
@@ -108,6 +111,9 @@ export default function RustDecisionCard({ parcela, regionKey }) {
 
       {d && (
         <>
+          {d.consulta_historica && (
+            <span className="chip chip--warn">Consulta histórica desde el {d.fecha_consulta}</span>
+          )}
           <div>
             <div className="kpi__label">Acción recomendada este mes</div>
             <div className="module-card__hero">{ACTION_TEXT[d.accion] || d.accion}</div>

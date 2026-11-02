@@ -33,7 +33,8 @@ export const mdpPolicy = (parcela) =>
 export const health = () => request('/health')
 
 // Deep Learning (Fase 4)
-export const forecastGet = (region, source = 'live') => request(`/api/forecast/${region}?source=${source}`)
+export const forecastGet = (region, source = 'live', asOf) =>     // asOf: consulta histórica (uso académico)
+  request(`/api/forecast/${region}?source=${source}${asOf ? `&as_of=${asOf}` : ''}`)
 
 export function visionPredict(files, { heatmap = false } = {}) {
   const form = new FormData()
@@ -41,13 +42,14 @@ export function visionPredict(files, { heatmap = false } = {}) {
   return request(`/api/vision/predict?heatmap=${heatmap}`, { method: 'POST', form })
 }
 
-export function decide({ region, files = [], altitud, sombra, humedadTipica, source = 'live' }) {
+export function decide({ region, files = [], altitud, sombra, humedadTipica, asOf, source = 'live' }) {
   const form = new FormData()
   form.append('region', region)
   form.append('source', source)
   if (altitud != null) form.append('altitud', String(altitud))
   if (sombra != null) form.append('sombra', String(sombra))
   if (humedadTipica != null) form.append('humedad_tipica', String(humedadTipica))
+  if (asOf) form.append('as_of', asOf)            // consulta histórica (uso académico)
   files.forEach((f) => form.append('files', f, f.name))
   return request('/api/decision', { method: 'POST', form })
 }

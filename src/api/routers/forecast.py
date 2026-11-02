@@ -3,12 +3,18 @@
 `GET /api/forecast/{region}`. La historia reciente viene de Open-Meteo (ERA5, que llega con unos 5–8 días de retraso); los días que
 faltan se rellenan por persistencia y los horizontes menores a `min_horizon_with_gap` se marcan como poco confiables. Con
 `source=local` se usa el CSV descargado (útil sin internet); si la consulta en vivo falla, se cae a local y se avisa.
+
+Con `as_of` (opcional, uso académico) es una **consulta histórica**: se corta la historia descargada en esa fecha y se pronostica desde ella
+con los datos completos hasta ese día, sin el retraso de ERA5 de la operación. `history_as_of` lo resuelve igual para este endpoint y el de
+decisión.
 """
 
 from __future__ import annotations
 
 from datetime import date
-from typing import Dict, List
+from typing import Dict, List, Optional
+
+import pandas as pd
 
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
@@ -46,15 +52,33 @@ def load_history(region: str, source: str):
     return load_region(region), "archivo local", []
 
 
+def history_as_of(region: str, source: str, as_of: Optional[date]):
+    """Como `load_history`, pero con `as_of` devuelve la historia descargada hasta esa fecha (consulta histórica).
+
+    La historia en vivo solo trae los últimos 120 días, así que una consulta histórica usa siempre la descargada.
+    """
+    if as_of is None:
+        return load_history(region, source)
+    if as_of > date.today():
+        raise HTTPException(422, "La fecha de consulta no puede ser posterior a hoy: la consulta histórica solo usa datos ya observados")
+    history, origin, notes = load_history(region, "local")
+    history = history[history.index <= pd.Timestamp(as_of)]
+    if history.empty:
+        raise HTTPException(422, f"No hay historia de {region} antes del {as_of.isoformat()}")
+    notes.append(f"Consulta histórica: se usó la historia hasta el {as_of.isoformat()} y se pronosticó desde ese día, sin el retraso "
+                 "de ERA5 de la operación. Sirve para ver cómo responde el sistema en esa época; no es un pronóstico de hoy.")
+    return history, origin, notes
+
+
 @router.get("/{region}", response_model=ForecastResponse)
 def forecast(region: str, source: str = Query("live", pattern="^(live|local)$"),
-             as_of: date | None = Query(None, description="fecha de consulta; por defecto hoy")):
+             as_of: date | None = Query(None, description="fecha de consulta histórica; por defecto hoy")):
     forecaster = get_state().forecaster
     if forecaster is None:
         raise HTTPException(503, f"Módulo de pronóstico no disponible: {get_state().forecast_error}")
     if region not in load_regions():
         raise HTTPException(404, f"Región desconocida: {region}. Disponibles: {', '.join(load_regions())}")
-    history, origin, notes = load_history(region, source)
+    history, origin, notes = history_as_of(region, source, as_of)
     try:  # historia inválida o as_of anterior a la historia: error del pedido (422), no del servidor (500)
         result = forecaster.predict(history, region, as_of=as_of or date.today())
     except ValueError as exc:

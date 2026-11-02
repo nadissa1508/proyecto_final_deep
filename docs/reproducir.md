@@ -12,7 +12,7 @@ pip install -r requirements.txt -r requirements-dl.txt
 pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
 ```
 
-En PowerShell defina antes `$env:PYTHONPATH = "."`. Pruebas: `pytest tests/` (78; no necesitan pesos ni internet) y, en `frontend/`, `npm test` (21, vitest).
+En PowerShell defina antes `$env:PYTHONPATH = "."`. Pruebas: `pytest tests/` (81; no necesitan pesos ni internet) y, en `frontend/`, `npm test` (24, vitest).
 
 ## 1. Datos
 

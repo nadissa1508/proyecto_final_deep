@@ -78,7 +78,6 @@ def client(monkeypatch):
     history = pd.DataFrame({"relative_humidity_2m_mean": np.full(100, 85.0)},
                            index=pd.date_range(end=pd.Timestamp(date.today()) - pd.Timedelta(days=6), periods=100, freq="D"))
     monkeypatch.setattr("src.api.routers.forecast.load_history", lambda region, source: (history, "prueba", []))
-    monkeypatch.setattr("src.api.routers.decision.load_history", lambda region, source: (history, "prueba", []))
     yield TestClient(app)
     state.vision, state.forecaster, state.fusion = saved
 
@@ -123,7 +122,7 @@ def test_forecast_reports_invalid_history_or_query_as_422(client, monkeypatch):
         raise ValueError("as_of es anterior al último día de la historia")
 
     monkeypatch.setattr(api_state.get_state().forecaster, "predict", invalid)
-    response = client.get("/api/forecast/coban?source=local&as_of=2020-01-01")
+    response = client.get("/api/forecast/coban?source=local")
     assert response.status_code == 422
     assert "as_of" in response.json()["detail"]
 
@@ -199,3 +198,31 @@ def replace_cfg(cfg, **changes):
     from dataclasses import replace
 
     return replace(cfg, **changes)
+
+
+def test_forecast_historical_query_uses_the_history_up_to_as_of(client):
+    as_of = (pd.Timestamp(date.today()) - pd.Timedelta(days=30)).date()
+    body = client.get(f"/api/forecast/coban?as_of={as_of.isoformat()}").json()
+    assert body["fecha_consulta"] == as_of.isoformat() and body["ultimo_dia_observado"] == as_of.isoformat()
+    assert body["dias_de_retraso"] == 0 and body["dias"][0] == (pd.Timestamp(as_of) + pd.Timedelta(days=1)).date().isoformat()
+    assert any("Consulta histórica" in n for n in body["notas"])
+    future = (pd.Timestamp(date.today()) + pd.Timedelta(days=1)).date().isoformat()
+    assert client.get(f"/api/forecast/coban?as_of={future}").status_code == 422
+    assert client.get("/api/forecast/coban?as_of=1990-01-01").status_code == 422
+
+
+def test_decision_historical_query_uses_the_history_up_to_as_of(client):
+    as_of = (pd.Timestamp(date.today()) - pd.Timedelta(days=30)).date()
+    body = client.post("/api/decision", data={"region": "coban", "as_of": as_of.isoformat()}).json()
+    assert body["consulta_historica"] and body["fecha_consulta"] == as_of.isoformat()
+    assert body["clima"]["mes"] == (pd.Timestamp(as_of) + pd.Timedelta(days=1)).month
+    assert any("Consulta histórica" in n for n in body["notas"])
+    today = client.post("/api/decision", data={"region": "coban"}).json()
+    assert not today["consulta_historica"] and today["fecha_consulta"] == date.today().isoformat()
+
+
+def test_decision_historical_query_rejects_future_or_uncovered_dates(client):
+    future = (pd.Timestamp(date.today()) + pd.Timedelta(days=1)).date().isoformat()
+    assert client.post("/api/decision", data={"region": "coban", "as_of": future}).status_code == 422
+    assert client.post("/api/decision", data={"region": "coban", "as_of": "1990-01-01"}).status_code == 422
+    assert client.post("/api/decision", data={"region": "coban", "as_of": "no-es-fecha"}).status_code == 422

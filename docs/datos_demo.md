@@ -38,6 +38,13 @@ Fotos en `data/processed/demo_hojas/` (no se versionan: vienen en `data.zip`). E
 | Foto que no sirve | Una imagen de un solo color | Foto no concluyente, descartada de la decisión |
 | Pocas hojas | 2 fotos | Aviso de que no alcanzan y solo el intervalo de incidencia |
 
+### Riesgo climático alto (consulta histórica)
+
+Fuera de mayo–octubre el riesgo climático nunca sale «alto», porque esa condición exige la época de lluvias. Para mostrarlo, escribir una fecha
+pasada en «Fecha de consulta (opcional, histórica)» de la tarjeta de pronóstico, por ejemplo **2025-09-18**, con Finca Atitlán. Con las 13 fotos sin
+`clase3` sale «Alerta de roya» con riesgo **alto** (7 de 7 días favorables); sin fotos, o con solo hojas sanas, sale «Vigilancia». Con Finca Fraijanes
+y la misma fecha el riesgo es bajo. En el video decir que es una **consulta histórica**, no el pronóstico de hoy (la tarjeta lo marca con un aviso).
+
 Comparar la misma tanda de fotos en dos estaciones muestra la separación entre detección y riesgo: la roya detectada es la misma, pero el riesgo
 climático cambia. Con datos locales de noviembre de 2026, Atitlán dio riesgo «moderado» y Fraijanes «bajo» con las mismas fotos.
 

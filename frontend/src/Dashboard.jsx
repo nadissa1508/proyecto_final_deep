@@ -26,6 +26,8 @@ export default function Dashboard({ onBackToLanding }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [delConfirm, setDelConfirm] = useState(null)
   const [weatherRegion, setWeatherRegion] = useState(null)
+  // fecha de consulta del pronóstico y de la decisión: vacía = hoy; con fecha = consulta histórica (uso académico)
+  const [asOf, setAsOf] = useState('')
 
   useEffect(() => { saveParcelas(parcelas) }, [parcelas])
 
@@ -180,8 +182,8 @@ export default function Dashboard({ onBackToLanding }) {
                 <BayesianCard parcela={selected} />
                 <MLCard parcela={selected} />
                 <MDPCard parcela={selected} />
-                {weatherRegion && <ForecastCard regionKey={weatherRegion} />}
-                {weatherRegion && <RustDecisionCard parcela={selected} regionKey={weatherRegion} />}
+                {weatherRegion && <ForecastCard regionKey={weatherRegion} asOf={asOf} onAsOfChange={setAsOf} />}
+                {weatherRegion && <RustDecisionCard parcela={selected} regionKey={weatherRegion} asOf={asOf} />}
               </div>
             </>
           )}

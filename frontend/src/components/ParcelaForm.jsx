@@ -47,7 +47,7 @@ export default function ParcelaForm({ initial, onSave, onCancel }) {
           <div className="form-grid">
             <div className="field">
               <label>Altitud (m)</label>
-              <input type="number" min="0" max="4000" step="50" value={p.altitud} onChange={num('altitud')} />
+              <input type="number" min="0" max="4000" step="any" value={p.altitud} onChange={num('altitud')} />
             </div>
             <div className="field">
               <label>pH del suelo</label>

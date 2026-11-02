@@ -4,6 +4,9 @@
 hojas fotografiadas (observaciones del clasificador) y el MDP (política QMDP con la creencia). Sin fotos decide solo con el clima.
 Responde 503 si falta algún módulo. La acción es una recomendación de apoyo, no una orden; la incidencia que se reporta es la de las
 hojas fotografiadas, con su intervalo, y no reemplaza el muestreo de ANACAFE.
+
+`as_of` (opcional, uso académico) hace una **consulta histórica**, igual que en el pronóstico (`history_as_of`): sirve para ver cómo responde
+el sistema en otra época del año (por ejemplo, en la época de lluvias); no es un pronóstico de hoy.
 """
 
 from __future__ import annotations
@@ -14,7 +17,7 @@ from typing import Dict, List, Optional
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from pydantic import BaseModel, Field
 
-from src.api.routers.forecast import load_history
+from src.api.routers.forecast import history_as_of
 from src.api.state import get_state
 from src.api.uploads import read_images
 from src.forecast.download import load_regions
@@ -71,6 +74,8 @@ class DecisionResponse(BaseModel):
     alarma: Optional[AlertOut] = None
     incidencia: Optional[IncidenceOut] = None
     clima: ClimateOut
+    fecha_consulta: str
+    consulta_historica: bool = False
     notas: List[str]
     advertencia: str
 
@@ -82,7 +87,7 @@ def _dist(values) -> Dict[str, float]:
 @router.post("", response_model=DecisionResponse)
 async def decide(region: str = Form(...), files: List[UploadFile] = File(default=[]), source: str = Form("live"),
                  altitud: Optional[float] = Form(None, ge=0, le=4000), sombra: int = Form(1, ge=0, le=2),
-                 humedad_tipica: Optional[float] = Form(None, ge=0, le=100)):
+                 humedad_tipica: Optional[float] = Form(None, ge=0, le=100), as_of: Optional[date] = Form(None)):
     state = get_state()
     if region not in load_regions():
         raise HTTPException(404, f"Región desconocida: {region}. Disponibles: {', '.join(load_regions())}")
@@ -102,11 +107,14 @@ async def decide(region: str = Form(...), files: List[UploadFile] = File(default
                 leaves.append(leaf_from_prediction(prediction))
             else:
                 discarded.append(f"{upload.filename or 'foto'}: {prediction.reason}")
-    history, _, notes = load_history(region, source)
+    history, _, notes = history_as_of(region, source, as_of)
     if discarded:
         notes.append(f"{len(discarded)} de {len(files)} fotos no se usaron por no ser concluyentes ({'; '.join(discarded[:5])}"
                      f"{'…' if len(discarded) > 5 else ''}). Tome la foto de una hoja completa, con buena luz y sin movimiento.")
-    forecast = state.forecaster.predict(history, region, as_of=date.today())
+    try:  # historia insuficiente para la fecha pedida: error del pedido (422), no del servidor (500)
+        forecast = state.forecaster.predict(history, region, as_of=as_of or date.today())
+    except ValueError as exc:
+        raise HTTPException(422, f"No se pudo pronosticar desde {as_of or date.today()}: {exc}") from exc
     if forecast.stale_days > 30:
         raise HTTPException(422, f"La historia termina el {forecast.last_observed}, {forecast.stale_days} días antes de hoy")
 
@@ -141,6 +149,7 @@ async def decide(region: str = Form(...), files: List[UploadFile] = File(default
                          humedad_media=w.mean_humidity, lluvia_total_mm=w.total_rain,
                          respecto_de_lo_habitual={"temperatura": _dist(climate.p_T), "humedad": _dist(climate.p_H),
                                                   "lluvia": _dist(climate.p_P)}, poco_confiable=w.degraded),
+        fecha_consulta=forecast.as_of, consulta_historica=as_of is not None,
         notas=notes + forecast.notes + decision.notes,
         advertencia="Recomendación de apoyo basada en un modelo con supuestos documentados (docs/decision_umbral_roya.md); "
                     "no reemplaza el muestreo de campo ni la asesoría técnica.")
